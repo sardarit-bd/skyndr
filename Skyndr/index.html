@@ -6,6 +6,100 @@
     <title>SKYNDR</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="assets/images/Logo.svg">
+    <style>
+        .strategy-right {
+            background: #0b0b0b;
+            padding: 32px;
+            border-radius: 16px;
+            color: #fff;
+            width: 100%;
+            max-width: 420px;
+        }
+
+        .form-title {
+            font-size: 26px;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        .strategy-form {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .strategy-form label {
+            font-size: 13px;
+            color: #cfcfcf;
+        }
+
+        .strategy-form input,
+        .strategy-form textarea,
+        .strategy-form select {
+            background: #0b0b0b;
+            border: 1px solid #3a3a3a;
+            border-radius: 8px;
+            padding: 12px;
+            color: #fff;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .strategy-form textarea {
+            min-height: 90px;
+            resize: none;
+        }
+
+        .strategy-form input::placeholder,
+        .strategy-form textarea::placeholder {
+            color: #777;
+        }
+
+        /* Add Guest Button */
+        .add-guest {
+            width: fit-content;
+            padding: 8px 14px;
+            background: transparent;
+            border: 1px solid #3a3a3a;
+            color: #fff;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        /* Checkbox Group */
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .checkbox-group label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+
+        /* Submit Button */
+        .submit-btn-lg {
+            margin-top: 10px;
+            background: #bbfe00;
+            color: #000;
+            font-weight: 700;
+            border: none;
+            border-radius: 6px;
+            padding: 14px;
+            cursor: pointer;
+            font-size: 14px;
+            width: 260px;
+        }
+
+        .submit-btn-lg:hover {
+            opacity: 0.9;
+        }
+
+    </style>
 </head>
 
 <body>
@@ -82,11 +176,12 @@
     </section>
 
 
-    <section class="logo-section">
+    <!-- <section class="logo-section">
         <div class="logo-wrapper">
-            <div class="logo-track">
+            <div class="marquee">
+                <div class="marquee-track">
 
-                <!-- REPEAT YOUR LOGOS (for seamless infinite scroll) -->
+                
                 <img src="assets/images/work-1.png" alt="Logo" class="logo">
                 <img src="assets/images/work-2.png" alt="Logo" class="logo">
                 <img src="assets/images/work-3.png" alt="Logo" class="logo">
@@ -94,7 +189,7 @@
                 <img src="assets/images/work-5.png" alt="Logo" class="logo">
                 <img src="assets/images/work-6.png" alt="Logo" class="logo">
 
-                <!-- Duplicate logos for infinite loop -->
+                
                 <img src="assets/images/work-7.png" alt="Logo" class="logo">
                 <img src="assets/images/work-2.png" alt="Logo" class="logo">
                 <img src="assets/images/work-1.png" alt="Logo" class="logo">
@@ -102,7 +197,7 @@
                 <img src="assets/images/work-3.png" alt="Logo" class="logo">
                 <img src="assets/images/work-4.png" alt="Logo" class="logo">
 
-                <!-- Duplicate logos for infinite loop -->
+                
                 <img src="assets/images/work-5.png" alt="Logo" class="logo">
                 <img src="assets/images/work-6.png" alt="Logo" class="logo">
                 <img src="assets/images/work-7.png" alt="Logo" class="logo">
@@ -110,7 +205,7 @@
                 <img src="assets/images/work-1.png" alt="Logo" class="logo">
                 <img src="assets/images/work-2.png" alt="Logo" class="logo">
 
-                <!-- REPEAT YOUR LOGOS (for seamless infinite scroll) -->
+                
                 <img src="assets/images/work-1.png" alt="Logo" class="logo">
                 <img src="assets/images/work-2.png" alt="Logo" class="logo">
                 <img src="assets/images/work-3.png" alt="Logo" class="logo">
@@ -118,7 +213,7 @@
                 <img src="assets/images/work-5.png" alt="Logo" class="logo">
                 <img src="assets/images/work-6.png" alt="Logo" class="logo">
 
-                <!-- Duplicate logos for infinite loop -->
+                
                 <img src="assets/images/work-7.png" alt="Logo" class="logo">
                 <img src="assets/images/work-2.png" alt="Logo" class="logo">
                 <img src="assets/images/work-1.png" alt="Logo" class="logo">
@@ -126,8 +221,50 @@
                 <img src="assets/images/work-3.png" alt="Logo" class="logo">
                 <img src="assets/images/work-4.png" alt="Logo" class="logo">
             </div>
+            </div>
+        </div>
+    </section> -->
+
+    <section class="logo-section">
+        <div class="logo-wrapper">
+            <div class="marquee">
+                <div class="marquee-track">
+                    <img src="assets/images/work-1.png">
+                    <img src="assets/images/work-2.png">
+                    <img src="assets/images/work-3.png">
+                    <img src="assets/images/work-4.png">
+                    <img src="assets/images/work-5.png">
+                    <img src="assets/images/work-6.png">
+                    <img src="assets/images/work-7.png">
+                    <img src="assets/images/work-8.png">
+                    <img src="assets/images/work-1.png">
+                    <img src="assets/images/work-2.png">        
+                </div>
+
+                <!-- SECOND TRACK (CLONE) -->
+                <div class="marquee-track">        
+                    <img src="assets/images/work-3.png">
+                    <img src="assets/images/work-4.png">
+                    <img src="assets/images/work-5.png">
+                    <img src="assets/images/work-6.png">
+                    <img src="assets/images/work-7.png">
+                    <img src="assets/images/work-8.png">
+                    <img src="assets/images/work-1.png">
+                    <img src="assets/images/work-2.png">
+                    <img src="assets/images/work-3.png">
+                    <img src="assets/images/work-4.png">
+                    <img src="assets/images/work-5.png">
+                    <img src="assets/images/work-6.png">
+                    <img src="assets/images/work-7.png">
+                    <img src="assets/images/work-8.png">
+                    <img src="assets/images/work-1.png">
+                    <img src="assets/images/work-2.png">
+                </div>
+            </div>
+
         </div>
     </section>
+
 
     <section class="apart-section" id="about">
         <div class="apart-container">
@@ -160,9 +297,9 @@
 
             <h2>Our Services</h2>
 
-            <h3 class="services-subtitle">
+            <p class="services-subtitle">
                 <span>Built for growth. Designed for impact.</span>
-            </h3>
+            </p>
 
             <p class="services-text">
                 At Skyndr Marketing Agency, we deliver powerful digital solutions across Shopify
@@ -189,7 +326,7 @@
                     creatives, and deliver results you can measure.
                 </p>
 
-                <h4>Key features:</h4>
+                <h4 style="color: #c8cccf; font-weight: 600; ">Key features:</h4>
 
                 <ul class="service-list" style="margin-left: -40px;">
                     <li><img src="assets/images/check.svg" class="tick"> Full-funnel campaign planning & execution</li>
@@ -198,7 +335,7 @@
                     <li><img src="assets/images/check.svg" class="tick"> Transparent reporting & ROI tracking</li>
                 </ul>
 
-                <a href="#" class="service-btn">Scale my brand</a>
+                <a href="#strategy" class="service-btn">Scale my brand</a>
             </div>
 
             <!-- RIGHT SLIDER -->
@@ -251,7 +388,7 @@
                     <li><img src="assets/images/check.svg" class="tick"> Storytelling with brand voice & authenticity</li>
                 </ul>
 
-                <a href="#" class="service-btn">Scale my brand</a>
+                <a href="#strategy" class="service-btn">Scale my brand</a>
             </div>
 
             <!-- RIGHT SLIDER -->
@@ -304,7 +441,7 @@
                     <li><img src="assets/images/check.svg" class="tick"> Print & digital graphic collateral</li>
                 </ul>
 
-                <a href="#" class="service-btn">Scale my brand</a>
+                <a href="#strategy" class="service-btn">Scale my brand</a>
             </div>
 
             <!-- RIGHT SLIDER -->
@@ -358,7 +495,7 @@
                     <li><img src="assets/images/check.svg" class="tick"> Reliable post-launch support</li>
                 </ul>
 
-                <a href="#" class="service-btn">Scale my brand</a>
+                <a href="#strategy" class="service-btn">Scale my brand</a>
             </div>
 
             <!-- RIGHT SLIDER -->
@@ -508,28 +645,28 @@
     <section class="why-work-section">
         <div class="why-container">
 
-            <h2>WHY WORK<br>WITH US</h2>
+            <h2 style="font-weight: 900; font-size: 70px; color: #eaf0f3;">WHY WORK<br>WITH US</h2>
 
             <div class="why-items">
 
                 <div class="why-item">
                     <div class="why-dot"></div>
-                    <p>Attention to <br> detail.</p>
+                    <p style="font-weight: 500; font-size: 26px; line-height: 100%;  color: #eaf0f3;">Attention to <br> detail.</p>
                 </div>
 
                 <div class="why-item">
                     <div class="why-dot"></div>
-                    <p>Results focused</p>
+                    <p style="font-weight: 500; font-size: 26px; line-height: 100%; color: #eaf0f3;">Results focused</p>
                 </div>
 
                 <div class="why-item">
                     <div class="why-dot"></div>
-                    <p>We deliver fast</p>
+                    <p style="font-weight: 500; font-size: 26px; line-height: 100%; color: #eaf0f3;">We deliver fast</p>
                 </div>
 
                 <div class="why-item">
                     <div class="why-dot"></div>
-                    <p>No sacrificing <br> quality</p>
+                    <p style="font-weight: 500; font-size: 26px; line-height: 100%; color: #eaf0f3;">No sacrificing <br> quality</p>
                 </div>
 
                 <!-- Animated line -->
@@ -546,7 +683,7 @@
             <!-- LEFT SIDE CONTENT -->
             <div class="strategy-left">
 
-                <h2><span>Book</span> 30 Minutes Strategy Call</h2>
+                <h2 style=" color: #eaf0f3;"><span>Book</span> 30 Minutes Strategy Call</h2>
 
                 <div class="strategy-list">
 
@@ -573,17 +710,58 @@
             <!-- RIGHT SIDE (CALENDLY PLACEHOLDER) -->
             <div class="strategy-right">
 
-                <h3>Enter Details</h3>
+    <h3 class="form-title">Enter Details</h3>
 
-                <!-- Calendly embed goes here -->
-                <div class="calendly-placeholder">
-                    <!-- Example:
-                    <div class="calendly-inline-widget" data-url="YOUR_CALENDLY_LINK"></div>
-                    -->
-                    <p class="placeholder-text">Calendly form will appear here.</p>
-                </div>
+    <form class="strategy-form">
 
-            </div>
+        <label>Name*</label>
+        <input type="text" placeholder="e.g. John Doe" required>
+
+        <label>Email Address*</label>
+        <input type="email" placeholder="e.g. johndoe@gmail.com" required>
+
+        <button type="button" class="add-guest">Add Guest</button>
+
+        <label>Message</label>
+        <textarea placeholder="Share anything that will help prepare for your meeting"></textarea>
+
+        <label>
+            Please share your current website and/or Amazon storefront and product*
+        </label>
+        <textarea placeholder="Fill this form"></textarea>
+
+        <label>What’s your average monthly revenue*</label>
+        <select required>
+            <option value="">Select...</option>
+            <option>Less than $10k</option>
+            <option>$10k – $50k</option>
+            <option>$50k – $100k</option>
+            <option>$100k+</option>
+        </select>
+
+        <label>What’s 2+2?*</label>
+        <select required>
+            <option value="">Select...</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
+
+        <label>Would be interested in chatting about</label>
+
+        <div class="checkbox-group">
+            <label><input type="checkbox"> Search Ads</label>
+            <label><input type="checkbox"> Social Ads</label>
+            <label><input type="checkbox"> Amazon</label>
+        </div>
+
+        <button type="submit" class="submit-btn-lg">
+            SCHEDULE MEETING
+        </button>
+
+    </form>
+</div>
+
 
         </div>
 
@@ -601,10 +779,10 @@
 
                 <form action="https://skyndr-ryhan.web.app/send.php" method="POST" class="contact-form">
 
-                    <label>Email</label>
-                    <input type="email" name="email" placeholder="Enter your email..." required>
+                    <label class="contant-lebel">Email</label>
+                    <input  type="email" name="email" placeholder="Enter your email..." required>
 
-                    <label>Services</label>
+                    <label class="contant-lebel">Services</label>
 
                     <div class="custom-select">
                         <div class="selected-option" style="border: 1px solid #fff;border-radius: 16px;">Select a service...</div>
@@ -620,10 +798,10 @@
                         <input type="hidden" name="service" id="serviceInput">
                     </div>
 
-                    <label>Website</label>
+                    <label class="contant-lebel">Website</label>
                     <input type="text" name="website" placeholder="Enter your website...">
 
-                    <label>Message</label>
+                    <label class="contant-lebel">Message</label>
                     <textarea name="message" placeholder="Write your message..." required></textarea>
 
                     <button type="submit" class="submit-btn">Submit</button>
@@ -652,7 +830,7 @@
 
             <!-- COLUMN 2 — CONTACT + SOCIAL -->
             <div class="footer-col contact-col">
-                <h4>Contact Us</h4>
+                <h4 style="font-weight: 600; color: #FFFFFF;">Contact Us</h4>
                 <p class="footer-email">Skyndrbusiness@gmail.com</p>
 
                 <div class="footer-social">
