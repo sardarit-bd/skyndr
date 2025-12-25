@@ -184,10 +184,10 @@ document.addEventListener("scroll", () => {
     const isMobile = window.innerWidth <= 900;
 
     if (isMobile) {
-        progress.style.width = "4px"; // force correct value
+        progress.style.width = "1px"; // force correct value
         progress.style.height = progressPercent + "%";
     } else {
-        progress.style.height = "4px"; // force correct value
+        progress.style.height = "1px"; // force correct value
         progress.style.width = progressPercent + "%";
     }
 

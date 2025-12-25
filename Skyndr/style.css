@@ -899,7 +899,6 @@ body {
     transition: background 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease, opacity 0.4s ease;
 }
 
-/* Dot image for glow - hidden until active */
 .why-dot::after {
     content: "";
     position: absolute;
@@ -912,6 +911,19 @@ body {
     transition: opacity 0.4s ease;
 }
 
+.why-item:first-child .why-dot::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;          /* border circle size */
+  height: 20px;
+  border: 1px solid #bbfe00;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
 /* ACTIVE glowing effect */
 .why-dot.why-active {
     background: #C6FF00;
@@ -919,13 +931,9 @@ body {
     box-shadow: 0 0 20px #C6FF00, 0 0 40px #C6FF00;
 }
 
-/* Show the inner glowing image when active */
 .why-dot.why-active::after {
     opacity: 1;
 }
-
-
-
 
 /* STRATEGY SECTION */
 .strategy-section {
@@ -946,7 +954,7 @@ body {
     width: 45%;
     height: 1100px;
     padding-right: 100px;
-    border-right: 5px inset #BBFE00;
+    border-right: 1px inset #BBFE00;
 }
 .strategy-left h2 {
     font-size: 42px;
@@ -1012,8 +1020,9 @@ body {
 
 .form-title {
     font-size: 26px;
-    margin-bottom: 30px;
+    margin-bottom: 24px;
     font-weight: 700;
+    color: #EAF0F3;
 }
 
 .strategy-form {
@@ -1023,8 +1032,9 @@ body {
 }
 
 .strategy-form label {
-    font-size: 13px;
-    color: #cfcfcf;
+    font-size: 16px;
+    color: #eaf0f3;
+    gap: 4px;
 }
 
 .strategy-form input,
@@ -1034,7 +1044,7 @@ body {
     border: 1px solid #3a3a3a;
     border-radius: 8px;
     padding: 12px;
-    color: #fff;
+    color: #EAF0F3;
     font-size: 14px;
     outline: none;
     font-family: 'Montserrat', sans-serif;
@@ -1068,6 +1078,11 @@ body {
     border-color: #BBFE00;
 }
 
+.checkbox-group {
+    display: flex;
+    flex-direction: column; 
+    gap: 16px; 
+}
 
 .checkbox-item {
     display: flex;
@@ -1082,6 +1097,9 @@ body {
     display: none;
 }
 
+.checkbox-level{
+    gap: 4px;
+}
 .custom-checkbox {
     width: 18px;
     height: 18px;
@@ -1106,17 +1124,19 @@ body {
 
 
 .submit-btn-lg {
-    margin-top: 10px;
+    margin-top: 20px;
     background: #bbfe00;
     color: #000;
     font-weight: 700;
     border: none;
     border-radius: 6px;
-    padding: 14px;
+    padding: 15px 24px;
     cursor: pointer;
-    font-size: 14px;
-    width: 100%;
+    font-size: 16px;
+    /* width: 100%; */
     transition: all 0.3s ease;
+    gap: 24px;
+    width: 250px;
 }
 
 .submit-btn-lg:hover {
@@ -1161,7 +1181,7 @@ body {
 .contact-form {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    /* gap: 20px; */
 }
 
 .contact-form label {
@@ -1172,7 +1192,7 @@ body {
 }
 
 .contact-form input,
-.contact-form textarea {
+.contact-form textarea{
     width: 100%;
     background: transparent;
     border: 1px solid #fff;
@@ -1181,6 +1201,7 @@ body {
     border-radius: 16px;
     font-size: 16px;
     font-family: 'Montserrat', sans-serif;
+    margin-bottom: 20px;
 }
 
 .contact-form input::placeholder,
@@ -1206,6 +1227,7 @@ body {
     color: #7c7c7c;
     cursor: pointer;
     background: transparent;
+    margin-bottom: 20px;
 }
 
 .options-list {
