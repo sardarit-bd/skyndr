@@ -10,8 +10,6 @@ const tDots = document.querySelectorAll(".t-dot");
 const tPrev = document.getElementById("tPrev");
 const tNext = document.getElementById("tNext");
 
-let tIndex = 0;
-const tTotal = 3; // real slides count
 let index = 0;
 
 
@@ -134,37 +132,82 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-function updateTestimonials() {
+//testimonial slider auto swipe in mobile
+document.addEventListener("DOMContentLoaded", () => {
 
-    const card = tSlider.querySelector(".testimonial-card");
-    const cardWidth = card.offsetWidth;
-    const gap = 30; // whatever your CSS gap is between cards
+    const slider = document.getElementById("tSlider");
+    const prev = document.getElementById("tPrev");
+    const next = document.getElementById("tNext");
 
-    const offset = -(tIndex * (cardWidth + gap));
+    if (!slider) return;
 
-    tSlider.style.transform = `translateX(${offset}px)`;
+    let index = 0;
+    let autoInterval;
 
-    tDots.forEach((dot, i) =>
-        dot.classList.toggle("active", i === tIndex)
-    );
-}
+    function isMobile() {
+        return window.innerWidth <= 768;
+    }
 
+    function cardWidth() {
+        const style = getComputedStyle(slider);
+        const gap = parseInt(style.gap || style.columnGap) || 0;
+        return slider.children[0].offsetWidth + gap;
+    }
 
-tNext.addEventListener("click", () => {
-    tIndex = (tIndex + 1) % tTotal;
-    updateTestimonials();
+    /* DESKTOP MOVE */
+    function moveDesktop() {
+        slider.style.transform = `translateX(-${index * cardWidth()}px)`;
+    }
+
+    /* MOBILE MOVE */
+    function moveMobile() {
+        slider.scrollTo({
+            left: index * cardWidth(),
+            behavior: "smooth"
+        });
+    }
+
+    /* AUTOPLAY */
+    function startAutoPlay() {
+        stopAutoPlay();
+        autoInterval = setInterval(() => {
+            index++;
+            if (index >= slider.children.length) index = 0;
+            isMobile() ? moveMobile() : moveDesktop();
+        }, 3500);
+    }
+
+    function stopAutoPlay() {
+        clearInterval(autoInterval);
+    }
+
+    /* ARROWS */
+    next?.addEventListener("click", () => {
+        index++;
+        if (index >= slider.children.length) index = 0;
+        isMobile() ? moveMobile() : moveDesktop();
+    });
+
+    prev?.addEventListener("click", () => {
+        index = Math.max(index - 1, 0);
+        isMobile() ? moveMobile() : moveDesktop();
+    });
+
+    /* TOUCH PAUSE */
+    slider.addEventListener("touchstart", stopAutoPlay);
+    slider.addEventListener("touchend", startAutoPlay);
+
+    /* RESIZE RESET */
+    window.addEventListener("resize", () => {
+        index = 0;
+        slider.style.transform = "translateX(0)";
+        slider.scrollLeft = 0;
+    });
+
+    /* INIT */
+    startAutoPlay();
 });
 
-tPrev.addEventListener("click", () => {
-    tIndex = (tIndex - 1 + tTotal) % tTotal;
-    updateTestimonials();
-});
-
-///* AUTO-SLIDE */
-setInterval(() => {
-    tIndex = (tIndex + 1) % tTotal;
-    updateTestimonials();
-}, 4000);
 
 
 document.addEventListener("scroll", () => {

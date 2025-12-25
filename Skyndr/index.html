@@ -848,76 +848,23 @@
 
     <script src="script.js"></script>
     <script>
-        document.getElementById("year").textContent = new Date().getFullYear();
-        // Smooth scroll for all anchor links including navbar links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if(targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80, // Adjust offset for navbar height
-                        behavior: 'smooth'
-                    });
-                    
-                    // Close mobile menu if open
-                    const mobileMenu = document.getElementById('mobileMenu');
-                    const hamburger = document.getElementById('hamburger');
-                    if(mobileMenu && mobileMenu.classList.contains('active')) {
-                        mobileMenu.classList.remove('active');
-                        hamburger.classList.remove('active');
-                    }
-                }
-            });
-        });
         document.addEventListener('DOMContentLoaded', function() {
-    const hamburger = document.getElementById('hamburger');
-    const mobileMenu = document.getElementById('mobileMenu');
-    
-    if (hamburger && mobileMenu) {
-        hamburger.addEventListener('click', function(e) {
-            e.stopPropagation();
-            mobileMenu.classList.toggle('active');
-            hamburger.classList.toggle('active');
-        });
-        
-        // Close menu when clicking outside
-        document.addEventListener('click', function(e) {
-            if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
-                mobileMenu.classList.remove('active');
-                hamburger.classList.remove('active');
-            }
-        });
-        
-        // Close menu when clicking a link
-        mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', function() {
-                mobileMenu.classList.remove('active');
-                hamburger.classList.remove('active');
-            });
-        });
-    }
-});
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const header = document.querySelector('.nav-header');
 
-// MOBILE MENU TOGGLE
-document.addEventListener('DOMContentLoaded', function() {
-    const hamburger = document.getElementById('hamburger');
-    const mobileMenu = document.getElementById('mobileMenu');
-    
-    if (hamburger && mobileMenu) {
-        hamburger.addEventListener('click', function(e) {
-            e.stopPropagation();
-            this.classList.toggle('active');
-            mobileMenu.classList.toggle('active');
-        });
-        
-        // Close menu when clicking outside
+        // TOGGLE MENU
+        if (hamburger && mobileMenu) {
+            hamburger.addEventListener('click', function(e) {
+                e.stopPropagation();
+                this.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+            });
+        }
+
+        // CLOSE MENU WHEN CLICKING OUTSIDE
         document.addEventListener('click', function(e) {
-            if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
+            if (mobileMenu && !mobileMenu.contains(e.target) && !hamburger.contains(e.target)) {
                 hamburger.classList.remove('active');
                 mobileMenu.classList.remove('active');
             }
@@ -1272,6 +1219,7 @@ function initializeTrustTabs() {
         });
     });
 }
+>>>>>>> origin/main
 
 // CUSTOM SELECT
 function initializeCustomSelect() {
@@ -1387,39 +1335,39 @@ function initializeFormValidation() {
 initializeFormValidation();
     </script>
 
-    <script>
-        // Keep a reference to the track template OUTSIDE the function
-const marquee = document.getElementById('marquee');
-const trackTemplate = document.getElementById('track').cloneNode(true); 
+        <script>
+            // Keep a reference to the track template OUTSIDE the function
+    const marquee = document.getElementById('marquee');
+    const trackTemplate = document.getElementById('track').cloneNode(true); 
 
-function setupMarquee() {
-    if (!marquee || !trackTemplate) return;
-    
-    // Use the template to get the width so it never becomes 0
-    marquee.innerHTML = '';
-    marquee.appendChild(trackTemplate.cloneNode(true));
-    
-    const singleTrack = marquee.firstElementChild;
-    const trackWidth = singleTrack.offsetWidth;
+    function setupMarquee() {
+        if (!marquee || !trackTemplate) return;
+        
+        // Use the template to get the width so it never becomes 0
+        marquee.innerHTML = '';
+        marquee.appendChild(trackTemplate.cloneNode(true));
+        
+        const singleTrack = marquee.firstElementChild;
+        const trackWidth = singleTrack.offsetWidth;
 
-    if (trackWidth <= 0) return; // Safety check
+        if (trackWidth <= 0) return; // Safety check
 
-    marquee.style.setProperty('--move-distance', `-${trackWidth}px`);
-    const clonesNeeded = Math.ceil(window.innerWidth / trackWidth) + 1;
+        marquee.style.setProperty('--move-distance', `-${trackWidth}px`);
+        const clonesNeeded = Math.ceil(window.innerWidth / trackWidth) + 1;
 
-    // We already have 1, add the rest
-    for (let i = 0; i < clonesNeeded; i++) {
-            marquee.appendChild(trackTemplate.cloneNode(true));
+        // We already have 1, add the rest
+        for (let i = 0; i < clonesNeeded; i++) {
+                marquee.appendChild(trackTemplate.cloneNode(true));
+            }
         }
-    }
 
-    // Use a debounce for resize to prevent crashing during window dragging
-    let resizeTimer;
-    window.addEventListener('resize', () => {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(setupMarquee, 200);
-    });
-    window.addEventListener('load', setupMarquee);
+        // Use a debounce for resize to prevent crashing during window dragging
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(setupMarquee, 200);
+        });
+        window.addEventListener('load', setupMarquee);
     </script>
 </body>
 </html>
