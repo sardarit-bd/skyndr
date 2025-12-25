@@ -1183,6 +1183,53 @@ body {
     position: relative;
 }
 
+@media (max-width: 768px) {
+
+    .strategy-section {
+        padding: 60px 0;
+    }
+
+    .strategy-container {
+        flex-direction: column;
+        gap: 40px;
+        width: 100%;
+        padding: 0 16px;
+    }
+
+    .strategy-left {
+        width: 100%;
+        height: auto;           
+        padding-right: 0;    
+        border-right: none;
+    }
+
+    .strategy-left h2 {
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+
+    .strategy-list h4 {
+        font-size: 16px;
+    }
+
+    .strategy-list li {
+        font-size: 15px;
+    }
+
+    .strategy-right {
+        width: 100%;
+        max-width: 100%;
+        padding: 24px;
+    }
+
+    .form-title {
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
+
+}
+
+
 /* REAL tick using borders */
 .checkbox-item input:checked + .custom-checkbox::after {
     content: "";
