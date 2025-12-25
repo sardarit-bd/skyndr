@@ -173,59 +173,10 @@
     </section>
 
 
-    <!-- <section class="logo-section">
-        <div class="logo-wrapper">
-            <div class="marquee">
-                <div class="marquee-track">
-
-                
-                <img src="assets/images/work-1.png" alt="Logo" class="logo">
-                <img src="assets/images/work-2.png" alt="Logo" class="logo">
-                <img src="assets/images/work-3.png" alt="Logo" class="logo">
-                <img src="assets/images/work-4.png" alt="Logo" class="logo">
-                <img src="assets/images/work-5.png" alt="Logo" class="logo">
-                <img src="assets/images/work-6.png" alt="Logo" class="logo">
-
-                
-                <img src="assets/images/work-7.png" alt="Logo" class="logo">
-                <img src="assets/images/work-2.png" alt="Logo" class="logo">
-                <img src="assets/images/work-1.png" alt="Logo" class="logo">
-                <img src="assets/images/work-2.png" alt="Logo" class="logo">
-                <img src="assets/images/work-3.png" alt="Logo" class="logo">
-                <img src="assets/images/work-4.png" alt="Logo" class="logo">
-
-                
-                <img src="assets/images/work-5.png" alt="Logo" class="logo">
-                <img src="assets/images/work-6.png" alt="Logo" class="logo">
-                <img src="assets/images/work-7.png" alt="Logo" class="logo">
-                <img src="assets/images/work-8.png" alt="Logo" class="logo">
-                <img src="assets/images/work-1.png" alt="Logo" class="logo">
-                <img src="assets/images/work-2.png" alt="Logo" class="logo">
-
-                
-                <img src="assets/images/work-1.png" alt="Logo" class="logo">
-                <img src="assets/images/work-2.png" alt="Logo" class="logo">
-                <img src="assets/images/work-3.png" alt="Logo" class="logo">
-                <img src="assets/images/work-4.png" alt="Logo" class="logo">
-                <img src="assets/images/work-5.png" alt="Logo" class="logo">
-                <img src="assets/images/work-6.png" alt="Logo" class="logo">
-
-                
-                <img src="assets/images/work-7.png" alt="Logo" class="logo">
-                <img src="assets/images/work-2.png" alt="Logo" class="logo">
-                <img src="assets/images/work-1.png" alt="Logo" class="logo">
-                <img src="assets/images/work-2.png" alt="Logo" class="logo">
-                <img src="assets/images/work-3.png" alt="Logo" class="logo">
-                <img src="assets/images/work-4.png" alt="Logo" class="logo">
-            </div>
-            </div>
-        </div>
-    </section> -->
-
     <section class="logo-section">
         <div class="logo-wrapper">
-            <div class="marquee">
-                <div class="marquee-track">
+            <div class="marquee" id="marquee">
+                <div class="marquee-track" id="track">
                     <img src="assets/images/work-1.png">
                     <img src="assets/images/work-2.png">
                     <img src="assets/images/work-3.png">
@@ -234,31 +185,8 @@
                     <img src="assets/images/work-6.png">
                     <img src="assets/images/work-7.png">
                     <img src="assets/images/work-8.png">
-                    <img src="assets/images/work-1.png">
-                    <img src="assets/images/work-2.png">        
-                </div>
-
-                <!-- SECOND TRACK (CLONE) -->
-                <div class="marquee-track">        
-                    <img src="assets/images/work-3.png">
-                    <img src="assets/images/work-4.png">
-                    <img src="assets/images/work-5.png">
-                    <img src="assets/images/work-6.png">
-                    <img src="assets/images/work-7.png">
-                    <img src="assets/images/work-8.png">
-                    <img src="assets/images/work-1.png">
-                    <img src="assets/images/work-2.png">
-                    <img src="assets/images/work-3.png">
-                    <img src="assets/images/work-4.png">
-                    <img src="assets/images/work-5.png">
-                    <img src="assets/images/work-6.png">
-                    <img src="assets/images/work-7.png">
-                    <img src="assets/images/work-8.png">
-                    <img src="assets/images/work-1.png">
-                    <img src="assets/images/work-2.png">
                 </div>
             </div>
-
         </div>
     </section>
 
@@ -1167,6 +1095,94 @@ function initializeTestimonialSlider() {
 }
 
 // TRUST TABS
+// function initializeTrustTabs() {
+//     const tabs = document.querySelectorAll('.trust-tab');
+//     const trustImage = document.getElementById('trustImage');
+//     const trustTitle = document.getElementById('trustTitle');
+//     const trustText = document.getElementById('trustText');
+//     const trustAuthor = document.getElementById('trustAuthor');
+    
+//     // Trust content data
+//     const trustData = {
+//         kdx: {
+//             image: 'assets/images/whyus.png',
+//             title: 'Ads Management + Strategy',
+//             text: `We've been partnering with Skyndr for nearly a year now, and their impact on our ad performance has been outstanding. From the very beginning,
+//                     they took the time to understand our brand, our audience, and our goals and then built campaigns that actually delivered results.<br><br>
+
+//                     What sets Skyndr apart is their strategic approach. They don’t just run ads; they constantly analyze, test,
+//                     and optimize every detail to make sure each dollar spent creates real growth.
+//                     Their transparency and clear communication have made the entire process smooth and stress free.<br><br>
+
+//                     We've worked with other marketing agencies before, but none have matched Skyndr's level of expertise, attention to detail,
+//                     and commitment to seeing us succeed.`,
+//             author: 'Odai, founder of KDX Middle East'
+//         },
+//         washclub: {
+//             image: 'assets/images/whyus.png',
+//             title: 'Web Development + Design',
+//             text: `Skyndr transformed our online presence with a stunning website that perfectly captures our brand. 
+//                     The team was professional, responsive, and delivered beyond our expectations.<br><br>
+                    
+//                     They not only built a beautiful site but also optimized it for performance and conversions. 
+//                     Our bounce rate decreased by 40% and conversions increased by 35% within the first month.`,
+//             author: 'Mahmoud, Washclub Mobile autodetailing'
+//         },
+//         luster: {
+//             image: 'assets/images/whyus.png',
+//             title: 'Content Creation + Social Media',
+//             text: `Working with Skyndr for our content needs has been a game-changer. Their authentic, user-generated style content 
+//                     resonates perfectly with our audience and has significantly increased engagement.<br><br>
+                    
+//                     The video content they created for our social media campaigns performed 3x better than our previous content. 
+//                     They truly understand what connects with customers in our industry.`,
+//             author: 'Hassan - Luster PPF'
+//         },
+//         sunguard: {
+//             image: 'assets/images/whyus.png',
+//             title: 'Graphic Design + Branding',
+//             text: `Skyndr helped us establish a cohesive brand identity that stands out in a crowded market. 
+//                     Their designs are not just visually appealing but also strategically crafted to drive results.<br><br>
+                    
+//                     From our logo to our marketing materials, every design element tells our brand story and 
+//                     has helped us build a stronger connection with our customers.`,
+//             author: 'Ahmed - Sunguard Protection'
+//         },
+//         snake: {
+//             image: 'assets/images/whyus.png',
+//             title: 'Full Digital Marketing',
+//             text: `As a new player in the market, we needed comprehensive digital marketing support, 
+//                     and Skyndr delivered exactly what we needed. They handled everything from ads to content to web development.<br><br>
+                    
+//                     Their holistic approach has helped us establish a strong online presence quickly and effectively. 
+//                     We're seeing consistent growth month over month.`,
+//             author: 'Abdallah - Snake Protection PPF'
+//         }
+//     };
+    
+//     tabs.forEach(tab => {
+//         tab.addEventListener('click', function() {
+//             // Remove active class from all tabs
+//             tabs.forEach(t => t.classList.remove('active'));
+            
+//             // Add active class to clicked tab
+//             this.classList.add('active');
+            
+//             // Get target data
+//             const target = this.dataset.target;
+//             const data = trustData[target];
+            
+//             // Update content
+//             if (data && trustImage && trustTitle && trustText && trustAuthor) {
+//                 trustImage.src = data.image;
+//                 trustTitle.textContent = data.title;
+//                 trustText.innerHTML = data.text;
+//                 trustAuthor.textContent = data.author;
+//             }
+//         });
+//     });
+// }
+=======
 function initializeTrustTabs() {
     const tabs = document.querySelectorAll('.trust-tab');
     const trustImage = document.getElementById('trustImage');
@@ -1254,6 +1270,7 @@ function initializeTrustTabs() {
         });
     });
 }
+>>>>>>> origin/main
 
 // CUSTOM SELECT
 function initializeCustomSelect() {
@@ -1368,7 +1385,40 @@ function initializeFormValidation() {
 // Initialize form validation
 initializeFormValidation();
     </script>
-</body>
 
-<!-- Mirrored from skyndr-ryhan.web.app/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 22 Dec 2025 22:36:53 GMT -->
+    <script>
+        // Keep a reference to the track template OUTSIDE the function
+const marquee = document.getElementById('marquee');
+const trackTemplate = document.getElementById('track').cloneNode(true); 
+
+function setupMarquee() {
+    if (!marquee || !trackTemplate) return;
+    
+    // Use the template to get the width so it never becomes 0
+    marquee.innerHTML = '';
+    marquee.appendChild(trackTemplate.cloneNode(true));
+    
+    const singleTrack = marquee.firstElementChild;
+    const trackWidth = singleTrack.offsetWidth;
+
+    if (trackWidth <= 0) return; // Safety check
+
+    marquee.style.setProperty('--move-distance', `-${trackWidth}px`);
+    const clonesNeeded = Math.ceil(window.innerWidth / trackWidth) + 1;
+
+    // We already have 1, add the rest
+    for (let i = 0; i < clonesNeeded; i++) {
+            marquee.appendChild(trackTemplate.cloneNode(true));
+        }
+    }
+
+    // Use a debounce for resize to prevent crashing during window dragging
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(setupMarquee, 200);
+    });
+    window.addEventListener('load', setupMarquee);
+    </script>
+</body>
 </html>

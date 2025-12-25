@@ -71,6 +71,9 @@ document.querySelectorAll(".service-slider").forEach((slider) => {
     update();
 });
 
+/* -------------------------------------------
+    TRUST SECTION
+--------------------------------------------*/
 const trustData = {
     kdx: {
         title: "Ads Management + Strategy",
@@ -109,20 +112,35 @@ document.addEventListener("DOMContentLoaded", () => {
     const titleEl = document.getElementById("trustTitle");
     const textEl = document.getElementById("trustText");
     const authorEl = document.getElementById("trustAuthor");
+
     if (!tabs.length || !imgEl) return;
+
+    if (!tabs.length || !imgEl) return;
+
     tabs.forEach(tab => {
         tab.addEventListener("click", function() {
             tabs.forEach(t => t.classList.remove("active"));
             this.classList.add("active");
+
+            const key = this.getAttribute("data-target");
+            const data = trustData[key];
+
             const key = this.getAttribute("data-target");
             const data = trustData[key];
             if (data) {
                 titleEl.textContent = data.title;
                 textEl.innerHTML = data.text;
                 authorEl.textContent = data.author;
+
+                const imgLoader = new Image();
+                imgLoader.src = data.image;
+                
+                imgEl.style.opacity = "0.2";
+                
                 const imgLoader = new Image();
                 imgLoader.src = data.image;
                 imgEl.style.opacity = "0.2";
+
                 imgLoader.onload = () => {
                     imgEl.src = data.image;
                     imgEl.style.opacity = "1";
@@ -138,7 +156,7 @@ function updateTestimonials() {
 
     const card = tSlider.querySelector(".testimonial-card");
     const cardWidth = card.offsetWidth;
-    const gap = 30; // whatever your CSS gap is between cards
+    const gap = 30;
 
     const offset = -(tIndex * (cardWidth + gap));
 
@@ -184,10 +202,10 @@ document.addEventListener("scroll", () => {
     const isMobile = window.innerWidth <= 900;
 
     if (isMobile) {
-        progress.style.width = "4px"; // force correct value
+        progress.style.width = "4px";
         progress.style.height = progressPercent + "%";
     } else {
-        progress.style.height = "4px"; // force correct value
+        progress.style.height = "4px";
         progress.style.width = progressPercent + "%";
     }
 
