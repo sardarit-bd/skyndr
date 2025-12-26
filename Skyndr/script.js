@@ -1,4 +1,4 @@
-﻿const trustTabs = document.querySelectorAll(".trust-tab");
+const trustTabs = document.querySelectorAll(".trust-tab");
 
 const trustImage = document.getElementById("trustImage");
 const trustTitle = document.getElementById("trustTitle");
