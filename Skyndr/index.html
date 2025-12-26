@@ -177,20 +177,29 @@
 
     <section class="logo-section">
         <div class="logo-wrapper">
-            <div class="marquee" id="marquee">
-                <div class="marquee-track" id="track">
-                    <img src="assets/images/work-1.png">
-                    <img src="assets/images/work-2.png">
-                    <img src="assets/images/work-3.png">
-                    <img src="assets/images/work-4.png">
-                    <img src="assets/images/work-5.png">
-                    <img src="assets/images/work-6.png">
-                    <img src="assets/images/work-7.png">
-                    <img src="assets/images/work-8.png">
-                </div>
+            <div class="marquee">
+            <div class="marquee-track">
+                <img src="assets/images/work-1.png">
+                <img src="assets/images/work-2.png">
+                <img src="assets/images/work-3.png">
+                <img src="assets/images/work-4.png">
+                <img src="assets/images/work-5.png">
+                <img src="assets/images/work-6.png">
+                <img src="assets/images/work-7.png">
+                <img src="assets/images/work-8.png">
+                <img src="assets/images/work-1.png">
+                <img src="assets/images/work-2.png">
+                <img src="assets/images/work-3.png">
+                <img src="assets/images/work-4.png">
+                <img src="assets/images/work-5.png">
+                <img src="assets/images/work-6.png">
+                <img src="assets/images/work-7.png">
+                <img src="assets/images/work-8.png">
+            </div>
             </div>
         </div>
     </section>
+
 
 
     <section class="apart-section" id="about">
@@ -848,494 +857,65 @@
 
     <script src="script.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
+
         const hamburger = document.getElementById('hamburger');
         const mobileMenu = document.getElementById('mobileMenu');
-        const header = document.querySelector('.nav-header');
 
-        // TOGGLE MENU
+        // TOGGLE MOBILE MENU
         if (hamburger && mobileMenu) {
-            hamburger.addEventListener('click', function(e) {
+            hamburger.addEventListener('click', function (e) {
                 e.stopPropagation();
-                this.classList.toggle('active');
+                hamburger.classList.toggle('active');
                 mobileMenu.classList.toggle('active');
             });
         }
 
-        // CLOSE MENU WHEN CLICKING OUTSIDE
-        document.addEventListener('click', function(e) {
-            if (mobileMenu && !mobileMenu.contains(e.target) && !hamburger.contains(e.target)) {
+        // CLOSE WHEN CLICKING OUTSIDE
+        document.addEventListener('click', function (e) {
+            if (
+                mobileMenu.classList.contains('active') &&
+                !mobileMenu.contains(e.target) &&
+                !hamburger.contains(e.target)
+            ) {
                 hamburger.classList.remove('active');
                 mobileMenu.classList.remove('active');
             }
         });
-        
-        // Close menu when clicking a link
+
+        // CLOSE WHEN CLICKING A LINK
         mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', function() {
+            link.addEventListener('click', () => {
                 hamburger.classList.remove('active');
                 mobileMenu.classList.remove('active');
             });
         });
-    }
-    
-    // SMOOTH SCROLL
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
-            
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                // Close mobile menu if open
-                const mobileMenu = document.getElementById('mobileMenu');
-                const hamburger = document.getElementById('hamburger');
-                if (mobileMenu && mobileMenu.classList.contains('active')) {
-                    mobileMenu.classList.remove('active');
-                    hamburger.classList.remove('active');
-                }
-                
-                // Calculate scroll position
-                const headerHeight = document.querySelector('.nav-header').offsetHeight;
-                const targetPosition = targetElement.offsetTop - headerHeight;
-                
+
+        // SMOOTH SCROLL
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                const target = document.querySelector(targetId);
+                if (!target) return;
+
+                e.preventDefault();
+
+                const header = document.querySelector('.nav-header');
+                const offset = header ? header.offsetHeight : 0;
+
                 window.scrollTo({
-                    top: targetPosition,
+                    top: target.offsetTop - offset,
                     behavior: 'smooth'
                 });
-            }
-        });
-    });
-    
-    // SERVICE SLIDERS
-    initializeServiceSliders();
-    
-    // TESTIMONIAL SLIDER
-    initializeTestimonialSlider();
-    
-    // TRUST TABS
-    initializeTrustTabs();
-    
-    // CUSTOM SELECT
-    initializeCustomSelect();
-    
-    // WHY WORK PROGRESS ANIMATION
-    initializeWhyWorkAnimation();
-    
-    // SET CURRENT YEAR IN FOOTER
-    document.getElementById('year').textContent = new Date().getFullYear();
-});
-
-// SERVICE SLIDERS FUNCTION
-function initializeServiceSliders() {
-    const sliders = document.querySelectorAll('.fixed-slider');
-    
-    sliders.forEach((slider, index) => {
-        const slides = slider.querySelector('.slides');
-        const slideImgs = slider.querySelectorAll('.slide-img');
-        const prevBtn = slider.querySelector('.arrow.left');
-        const nextBtn = slider.querySelector('.arrow.right');
-        const dotsContainer = slider.querySelector('.dots');
-        
-        let currentSlide = 0;
-        const totalSlides = slideImgs.length;
-
-        dotsContainer.innerHTML = "";
-        
-        // Create dots
-        for (let i = 0; i < totalSlides; i++) {
-            const dot = document.createElement('div');
-            dot.classList.add('dot');
-            if (i === 0) dot.classList.add('active');
-            dotsContainer.appendChild(dot);
-        }
-        
-        const dots = dotsContainer.querySelectorAll('.dot');
-        
-        // Update slider position
-        function updateSlider() {
-            slides.style.transform = `translateX(-${currentSlide * 100}%)`;
-            
-            // Update dots
-            dots.forEach((dot, idx) => {
-                dot.classList.toggle('active', idx === currentSlide);
-            });
-        }
-        
-        // Next slide
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % totalSlides;
-            updateSlider();
-        }
-        
-        // Previous slide
-        function prevSlide() {
-            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-            updateSlider();
-        }
-        
-        // Dot click
-        dots.forEach((dot, idx) => {
-            dot.addEventListener('click', () => {
-                currentSlide = idx;
-                updateSlider();
             });
         });
-        
-        // Button events
-        if (prevBtn) prevBtn.addEventListener('click', prevSlide);
-        if (nextBtn) nextBtn.addEventListener('click', nextSlide);
-        
-        // Auto slide (optional)
-        // setInterval(nextSlide, 5000);
+
     });
-}
-
-// TESTIMONIAL SLIDER
-function initializeTestimonialSlider() {
-    const slider = document.getElementById('tSlider');
-    const prevBtn = document.getElementById('tPrev');
-    const nextBtn = document.getElementById('tNext');
-    const dots = document.querySelectorAll('.t-dot');
-    
-    if (!slider) return;
-    
-    const cards = slider.querySelectorAll('.testimonial-card');
-    let currentIndex = 0;
-    const cardWidth = cards[0].offsetWidth + 30; // width + gap
-    
-    function updateSlider() {
-        slider.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
-        
-        // Update dots
-        dots.forEach((dot, idx) => {
-            dot.classList.toggle('active', idx === currentIndex);
-        });
-    }
-    
-    // Next slide
-    function nextSlide() {
-        currentIndex = (currentIndex + 1) % Math.min(cards.length, dots.length);
-        updateSlider();
-    }
-    
-    // Previous slide
-    function prevSlide() {
-        currentIndex = (currentIndex - 1 + Math.min(cards.length, dots.length)) % Math.min(cards.length, dots.length);
-        updateSlider();
-    }
-    
-    // Button events
-    if (prevBtn) prevBtn.addEventListener('click', prevSlide);
-    if (nextBtn) nextBtn.addEventListener('click', nextSlide);
-    
-    // Dot click
-    dots.forEach((dot, idx) => {
-        dot.addEventListener('click', () => {
-            currentIndex = idx;
-            updateSlider();
-        });
-    });
-    
-    // Auto slide (optional)
-    // setInterval(nextSlide, 4000);
-}
-
-// TRUST TABS
-// function initializeTrustTabs() {
-//     const tabs = document.querySelectorAll('.trust-tab');
-//     const trustImage = document.getElementById('trustImage');
-//     const trustTitle = document.getElementById('trustTitle');
-//     const trustText = document.getElementById('trustText');
-//     const trustAuthor = document.getElementById('trustAuthor');
-    
-//     // Trust content data
-//     const trustData = {
-//         kdx: {
-//             image: 'assets/images/whyus.png',
-//             title: 'Ads Management + Strategy',
-//             text: `We've been partnering with Skyndr for nearly a year now, and their impact on our ad performance has been outstanding. From the very beginning,
-//                     they took the time to understand our brand, our audience, and our goals and then built campaigns that actually delivered results.<br><br>
-
-//                     What sets Skyndr apart is their strategic approach. They don’t just run ads; they constantly analyze, test,
-//                     and optimize every detail to make sure each dollar spent creates real growth.
-//                     Their transparency and clear communication have made the entire process smooth and stress free.<br><br>
-
-//                     We've worked with other marketing agencies before, but none have matched Skyndr's level of expertise, attention to detail,
-//                     and commitment to seeing us succeed.`,
-//             author: 'Odai, founder of KDX Middle East'
-//         },
-//         washclub: {
-//             image: 'assets/images/whyus.png',
-//             title: 'Web Development + Design',
-//             text: `Skyndr transformed our online presence with a stunning website that perfectly captures our brand. 
-//                     The team was professional, responsive, and delivered beyond our expectations.<br><br>
-                    
-//                     They not only built a beautiful site but also optimized it for performance and conversions. 
-//                     Our bounce rate decreased by 40% and conversions increased by 35% within the first month.`,
-//             author: 'Mahmoud, Washclub Mobile autodetailing'
-//         },
-//         luster: {
-//             image: 'assets/images/whyus.png',
-//             title: 'Content Creation + Social Media',
-//             text: `Working with Skyndr for our content needs has been a game-changer. Their authentic, user-generated style content 
-//                     resonates perfectly with our audience and has significantly increased engagement.<br><br>
-                    
-//                     The video content they created for our social media campaigns performed 3x better than our previous content. 
-//                     They truly understand what connects with customers in our industry.`,
-//             author: 'Hassan - Luster PPF'
-//         },
-//         sunguard: {
-//             image: 'assets/images/whyus.png',
-//             title: 'Graphic Design + Branding',
-//             text: `Skyndr helped us establish a cohesive brand identity that stands out in a crowded market. 
-//                     Their designs are not just visually appealing but also strategically crafted to drive results.<br><br>
-                    
-//                     From our logo to our marketing materials, every design element tells our brand story and 
-//                     has helped us build a stronger connection with our customers.`,
-//             author: 'Ahmed - Sunguard Protection'
-//         },
-//         snake: {
-//             image: 'assets/images/whyus.png',
-//             title: 'Full Digital Marketing',
-//             text: `As a new player in the market, we needed comprehensive digital marketing support, 
-//                     and Skyndr delivered exactly what we needed. They handled everything from ads to content to web development.<br><br>
-                    
-//                     Their holistic approach has helped us establish a strong online presence quickly and effectively. 
-//                     We're seeing consistent growth month over month.`,
-//             author: 'Abdallah - Snake Protection PPF'
-//         }
-//     };
-    
-//     tabs.forEach(tab => {
-//         tab.addEventListener('click', function() {
-//             // Remove active class from all tabs
-//             tabs.forEach(t => t.classList.remove('active'));
-            
-//             // Add active class to clicked tab
-//             this.classList.add('active');
-            
-//             // Get target data
-//             const target = this.dataset.target;
-//             const data = trustData[target];
-            
-//             // Update content
-//             if (data && trustImage && trustTitle && trustText && trustAuthor) {
-//                 trustImage.src = data.image;
-//                 trustTitle.textContent = data.title;
-//                 trustText.innerHTML = data.text;
-//                 trustAuthor.textContent = data.author;
-//             }
-//         });
-//     });
-// }
-=======
-function initializeTrustTabs() {
-    const tabs = document.querySelectorAll('.trust-tab');
-    const trustImage = document.getElementById('trustImage');
-    const trustTitle = document.getElementById('trustTitle');
-    const trustText = document.getElementById('trustText');
-    const trustAuthor = document.getElementById('trustAuthor');
-    
-    // Trust content data
-    const trustData = {
-        kdx: {
-            image: 'assets/images/whyus.png',
-            title: 'Ads Management + Strategy',
-            text: `We've been partnering with Skyndr for nearly a year now, and their impact on our ad performance has been outstanding. From the very beginning,
-                    they took the time to understand our brand, our audience, and our goals and then built campaigns that actually delivered results.<br><br>
-
-                    What sets Skyndr apart is their strategic approach. They don’t just run ads; they constantly analyze, test,
-                    and optimize every detail to make sure each dollar spent creates real growth.
-                    Their transparency and clear communication have made the entire process smooth and stress free.<br><br>
-
-                    We've worked with other marketing agencies before, but none have matched Skyndr's level of expertise, attention to detail,
-                    and commitment to seeing us succeed.`,
-            author: 'Odai, founder of KDX Middle East'
-        },
-        washclub: {
-            image: 'assets/images/whyus.png',
-            title: 'Web Development + Design',
-            text: `Skyndr transformed our online presence with a stunning website that perfectly captures our brand. 
-                    The team was professional, responsive, and delivered beyond our expectations.<br><br>
-                    
-                    They not only built a beautiful site but also optimized it for performance and conversions. 
-                    Our bounce rate decreased by 40% and conversions increased by 35% within the first month.`,
-            author: 'Mahmoud, Washclub Mobile autodetailing'
-        },
-        luster: {
-            image: 'assets/images/whyus.png',
-            title: 'Content Creation + Social Media',
-            text: `Working with Skyndr for our content needs has been a game-changer. Their authentic, user-generated style content 
-                    resonates perfectly with our audience and has significantly increased engagement.<br><br>
-                    
-                    The video content they created for our social media campaigns performed 3x better than our previous content. 
-                    They truly understand what connects with customers in our industry.`,
-            author: 'Hassan - Luster PPF'
-        },
-        sunguard: {
-            image: 'assets/images/whyus.png',
-            title: 'Graphic Design + Branding',
-            text: `Skyndr helped us establish a cohesive brand identity that stands out in a crowded market. 
-                    Their designs are not just visually appealing but also strategically crafted to drive results.<br><br>
-                    
-                    From our logo to our marketing materials, every design element tells our brand story and 
-                    has helped us build a stronger connection with our customers.`,
-            author: 'Ahmed - Sunguard Protection'
-        },
-        snake: {
-            image: 'assets/images/whyus.png',
-            title: 'Full Digital Marketing',
-            text: `As a new player in the market, we needed comprehensive digital marketing support, 
-                    and Skyndr delivered exactly what we needed. They handled everything from ads to content to web development.<br><br>
-                    
-                    Their holistic approach has helped us establish a strong online presence quickly and effectively. 
-                    We're seeing consistent growth month over month.`,
-            author: 'Abdallah - Snake Protection PPF'
-        }
-    };
-    
-    tabs.forEach(tab => {
-        tab.addEventListener('click', function() {
-            // Remove active class from all tabs
-            tabs.forEach(t => t.classList.remove('active'));
-            
-            // Add active class to clicked tab
-            this.classList.add('active');
-            
-            // Get target data
-            const target = this.dataset.target;
-            const data = trustData[target];
-            
-            // Update content
-            if (data && trustImage && trustTitle && trustText && trustAuthor) {
-                trustImage.src = data.image;
-                trustTitle.textContent = data.title;
-                trustText.innerHTML = data.text;
-                trustAuthor.textContent = data.author;
-            }
-        });
-    });
-}
->>>>>>> origin/main
-
-// CUSTOM SELECT
-function initializeCustomSelect() {
-    const customSelects = document.querySelectorAll('.custom-select');
-    
-    customSelects.forEach(select => {
-        const selectedOption = select.querySelector('.selected-option');
-        const optionsList = select.querySelector('.options-list');
-        const options = select.querySelectorAll('.options-list li');
-        const hiddenInput = select.querySelector('input[type="hidden"]');
-        
-        // Toggle dropdown
-        selectedOption.addEventListener('click', function(e) {
-            e.stopPropagation();
-            select.classList.toggle('open');
-        });
-        
-        // Select option
-        options.forEach(option => {
-            option.addEventListener('click', function() {
-                const value = this.dataset.value;
-                const text = this.textContent;
-                
-                selectedOption.textContent = text;
-                if (hiddenInput) hiddenInput.value = value;
-                
-                select.classList.remove('open');
-            });
-        });
-        
-        // Close dropdown when clicking outside
-        document.addEventListener('click', function() {
-            select.classList.remove('open');
-        });
-    });
-}
-
-// WHY WORK ANIMATION
-function initializeWhyWorkAnimation() {
-    const whyItems = document.querySelectorAll('.why-item');
-    const whyDots = document.querySelectorAll('.why-dot');
-    
-    // Set first dot as active
-    if (whyDots.length > 0) {
-        whyDots[0].classList.add('active');
-    }
-    
-    // Intersection Observer for animation
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry, index) => {
-            if (entry.isIntersecting) {
-                // Animate dots sequentially
-                setTimeout(() => {
-                    whyDots.forEach(dot => dot.classList.remove('active'));
-                    if (index < whyDots.length) {
-                        whyDots[index].classList.add('active');
-                    }
-                }, index * 200);
-            }
-        });
-    }, {
-        threshold: 0.5
-    });
-    
-    // Observe each why item
-    whyItems.forEach(item => {
-        observer.observe(item);
-    });
-}
-
-// FORM VALIDATION
-function initializeFormValidation() {
-    const strategyForm = document.querySelector('.strategy-form');
-    
-    if (strategyForm) {
-        strategyForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Basic validation
-            const requiredFields = this.querySelectorAll('[required]');
-            let isValid = true;
-            
-            requiredFields.forEach(field => {
-                if (!field.value.trim()) {
-                    isValid = false;
-                    field.style.borderColor = '#ff4444';
-                } else {
-                    field.style.borderColor = '#3a3a3a';
-                }
-            });
-            
-            if (isValid) {
-                // Form submission logic here
-                alert('Form submitted successfully! We will contact you soon.');
-                this.reset();
-            } else {
-                alert('Please fill in all required fields.');
-            }
-        });
-    }
-    
-    // Contact form
-    const contactForm = document.querySelector('.contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            // You can add validation here
-            // For now, we'll just allow submission
-        });
-    }
-}
-
-// Initialize form validation
-initializeFormValidation();
     </script>
 
-        <script>
+    <script>
             // Keep a reference to the track template OUTSIDE the function
     const marquee = document.getElementById('marquee');
     const trackTemplate = document.getElementById('track').cloneNode(true); 
@@ -1368,6 +948,16 @@ initializeFormValidation();
             resizeTimer = setTimeout(setupMarquee, 200);
         });
         window.addEventListener('load', setupMarquee);
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const track = document.querySelector('.marquee-track');
+            if (!track) return;
+
+            // Clone the logos to create the second half of the track
+            const clone = track.innerHTML;
+            track.innerHTML += clone;
+        });
     </script>
 </body>
 </html>
