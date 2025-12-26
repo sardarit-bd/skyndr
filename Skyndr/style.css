@@ -1918,7 +1918,7 @@ body {
     .strategy-left {
         padding-right: 0;
         border-right: none;
-        border-bottom: 5px inset #BBFE00;
+        border-bottom: 1px inset #BBFE00;
         padding-bottom: 40px;
     }
     
