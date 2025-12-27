@@ -515,7 +515,7 @@ body {
     margin: auto;
     display: flex;
     align-items: stretch;
-    /* justify-content: space-between; */
+    justify-content: space-between;
     gap: 80px;
 }
 
