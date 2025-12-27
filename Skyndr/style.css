@@ -77,7 +77,7 @@ body {
 
 /* Style the links for a full-screen feel */
 .mobile-menu a {
-    color: white;
+    color: #EAF0F3;
     text-decoration: none;
     font-size: 24px; /* Larger font for full screen */
     font-weight: 500;
@@ -226,7 +226,7 @@ body {
 
 .mobile-menu a {
     padding: 15px 20px;
-    color: white;
+    color: #EAF0F3;
     text-decoration: none;
     font-weight: 600;
     font-size: 18px;
@@ -296,7 +296,7 @@ body {
     font-weight: 800;
     line-height: 52px;
     text-transform: uppercase;
-    margin: 0 0 60px;
+    margin: 0 0 40px;
 }
 
 .highlight {
@@ -350,7 +350,7 @@ body {
 
 /* LOGO MARQUEE SECTION */
 .logo-section {
-    padding: 10px 0 60px;
+    padding: 10px 50px 60px 50px;
     background: #0F0F0F;
     overflow: hidden;
 }
@@ -505,17 +505,18 @@ body {
 
 /* SERVICE SLIDER SECTIONS */
 .service-slider-section {
-    padding: 80px 0;
+    padding: 80px 100px;
     background: #0F0F0F;
 }
 
 .service-container {
-    width: 90%;
-    max-width: 1400px;
+    width: 100%;
+    max-width: 1500px;
     margin: auto;
     display: flex;
     align-items: stretch;
-    gap: 65px;
+    /* justify-content: space-between; */
+    gap: 80px;
 }
 
 .reverse-layout .service-container {
@@ -525,13 +526,12 @@ body {
 .service-text-box {
     background: #1A1A1A;
     border: 1px solid #333;
-    padding: 30px;
+    padding: 45px;
     border-radius: 24px;
     width: 40%;
     
-    display: grid;
+    display: flex;
     flex-direction: column;
-    justify-content: space-between;
     /* border: 1px solid red; */
 }
 
@@ -549,7 +549,7 @@ body {
 }
 
 .service-text-box h4 {
-    margin: 20px 0 10px;
+    margin: 40px 0 0 0;
     font-size: 16px;
     font-weight: 700;
     color: #c8cccf;
@@ -558,7 +558,7 @@ body {
 .service-list {
     list-style: none;
     padding: 0;
-    margin: 20px 0;
+    margin: 0 0 40px 0;
 }
 
 .service-list li {
@@ -589,6 +589,7 @@ body {
     text-align: center;
     width: 190px;
     height: 55px;
+    margin-top: auto;
 }
 
 .service-btn:hover {
@@ -598,16 +599,19 @@ body {
 
 /* SERVICE SLIDER */
 .service-slider {
-    width: 55%;
-    height: 100%;   
-    position: relative;
+    width: 50%;
+    /* height: 100%;    */
+    /* position: relative; */
+    display: flex;
+    flex-direction: column;
     /* border: 1px solid red;      */
 }
 
 .image-wrapper {
+    flex: 1;      
     width: 100%;
-    height: 100%;   
-    height: 500px;
+    /* height: auto;    */
+    /* height: 500px; */
     overflow: hidden;
     border-radius: 20px;
     background: #111;
@@ -641,7 +645,7 @@ body {
     height: 45px;
     cursor: pointer;
     font-size: 20px;
-    color: white;
+    color: #EAF0F3;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -725,7 +729,7 @@ body {
 .trust-tab.active {
     background: #BBFE00;
     color: #000;
-    border-color: white;
+    border-color: #EAF0F3;
 }
 
 @media (max-width: 768px) {
@@ -863,17 +867,19 @@ body {
 
 /* Wrapper */
 .testimonials-wrapper {
-    width: 85%;
-    max-width: 1200px;
+    width: 100%;
+    /* max-width: 1200px; */
+    /* padding: 0 60px; */
     margin: 0 auto;
     position: relative;
-    overflow: hidden; /* FIXES OVERFLOW */
+    overflow: visible; /* FIXES OVERFLOW */
 }
 
 /* Slider */
 .testimonials-slider {
     display: flex;
     gap: 30px;
+    margin: 0 100px;
     transition: transform 0.5s ease;
 }
 
@@ -922,6 +928,7 @@ body {
     justify-content: center;
     z-index: 10;
     transition: 0.3s;
+    margin: 0 30px;
 }
 
 .t-left { left: 0; }
@@ -953,23 +960,45 @@ body {
 /* 📱 MOBILE */
 @media (max-width: 768px) {
 
-    .testimonials-wrapper {
-        width: 100%;
-        padding: 0 15px;
-    }
+     .testimonials-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  }
 
     .testimonials-slider {
+        display: flex;
         gap: 16px;
         overflow-x: auto;
         scroll-snap-type: x mandatory;
         -webkit-overflow-scrolling: touch;
         transform: none !important;
+        margin: 0 !important; /* ← REMOVE desktop margin */
+        padding: 0 0 10px 0; /* ← Add bottom padding for scrollbar space */
+        width: 100%;
+        
+    }
+    .testimonials-slider::-webkit-scrollbar {
+        display: none;
     }
 
     .testimonial-card {
-        min-width: 85%;
+      flex: 0 0 calc(85% - 8px); /* ← Mobile এ 85% width */
+        min-width: calc(85% - 8px);
+        max-width: calc(85% - 8px); /* ← Override desktop max-width */
+        padding: 25px 20px;
+        border-radius: 16px;
         scroll-snap-align: center;
-        padding: 25px;
+    }
+
+    .testimonial-card p {
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .testimonial-card .author {
+        font-size: 14px;
+        margin-top: 12px;
     }
 
     .testimonials-title {
@@ -978,12 +1007,26 @@ body {
     }
 
     .t-arrow {
-        display: none;
-    }
+      position: static;
+      margin: 0 10px;
+  }
 
     .t-dots {
         display: flex;
     }
+    .testimonials-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .testimonials-wrapper > .t-arrow {
+      order: 2;
+  }
+
+  .testimonials-slider {
+      order: 1;
+  }
 }
 
 
@@ -995,8 +1038,8 @@ body {
 }
 
 .why-container {
-    width: 90%;
-    max-width: 1400px;
+    width: 100%;
+    padding: 0 0 0 10%;
     margin: auto;
 }
 
@@ -1016,8 +1059,10 @@ body {
 .why-item p {
     margin-top: 40px;
     font-size: 26px;
-    font-weight: 400;
+    font-weight: 500;
     text-align: left;
+    line-height: 100%;
+    color: #EAF0F3;
 }
 
 .why-items {
@@ -1025,6 +1070,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+    /* padding-top: 10px; */
 }
 
 .why-progress-line {
@@ -1032,6 +1078,7 @@ body {
     left: 0;
     height: 1px;
     width: 0%;
+    top: 2px;       
     background: #BBFE00;
     transition: width 1.4s ease-out;
     z-index: 1;
@@ -1045,6 +1092,7 @@ body {
     border-radius: 50%;
     position: relative;
     transition: background 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease, opacity 0.4s ease;
+    z-index: 2; /* line এর উপরে থাকবে */
 }
 
 .why-dot::after {
@@ -1060,15 +1108,15 @@ body {
 }
 
 .why-item:first-child .why-dot::after {
-  content: "";
+  /* content: "";
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 20px;          /* border circle size */
-  height: 20px;
+  width: 20px;          
+  height: 20px; */
   border: 1px solid #bbfe00;
   border-radius: 50%;
-  transform: translate(-50%, -50%);
+  /* transform: translate(-50%, -50%); */
 }
 
 
@@ -1090,25 +1138,25 @@ body {
 }
 
 .strategy-container {
-    width: 90%;
+    width: 100%;
     max-width: 1500px;
     margin: auto;
     display: flex;
     gap: 80px;
-    align-items: flex-start;
+    /* align-items: flex-start; */
 }
 
 .strategy-left {
-    width: 45%;
+    width: 50%;
     height: 1100px;
-    padding-right: 100px;
+    /* padding: 0 150px 0 80px; */
     border-right: 1px inset #BBFE00;
 }
 .strategy-left h2 {
     font-size: 42px;
     font-weight: 800;
-    line-height: 1.2;
-    margin-bottom: 30px;
+    line-height: 150%;
+    /* margin-bottom: 30px; */
     color: #eaf0f3;
 }
 
@@ -1117,20 +1165,20 @@ body {
 }
 
 .strategy-list {
-    margin-top: 30px;
+    /* margin-top: 30px; */
 }
 
 .strategy-list h4 {
     font-size: 18px;
     font-weight: 700;
-    margin: 20px 0 10px;
+    margin: 0 0 10px;
     color: #ffffff;
 }
 
 .strategy-list ul {
     list-style: none;
     padding-left: 20px;
-    margin: 15px 0;
+    margin: 15px 30px;
 }
 
 .strategy-list li {
@@ -1283,10 +1331,11 @@ body {
 
     .strategy-list h4 {
         font-size: 16px;
+        text-align: center;
     }
 
     .strategy-list li {
-        font-size: 15px;
+        font-size: 16px;
     }
 
     .strategy-right {
@@ -1392,7 +1441,7 @@ body {
     background: transparent;
     border: 1px solid #fff;
     padding: 14px;
-    color: white;
+    color: #EAF0F3;
     border-radius: 16px;
     font-size: 16px;
     font-family: 'Montserrat', sans-serif;
@@ -1448,7 +1497,7 @@ body {
 .options-list li {
     padding: 13px 20px;
     font-size: 18px;
-    color: white;
+    color: #EAF0F3;
     border-bottom: 1px solid rgba(255,255,255,0.25);
     cursor: pointer;
     transition: all 0.3s ease;
@@ -1498,7 +1547,7 @@ body {
 .footer {
     background: #0F0F0F;
     padding: 90px 0 40px;
-    color: white;
+    color: #EAF0F3;
 }
 
 .footer-container {
@@ -1569,7 +1618,7 @@ body {
 }
 
 .links-col a {
-    color: white;
+    color: #EAF0F3;
     text-decoration: none;
     font-size: 16px;
     opacity: 0.85;
@@ -1589,7 +1638,7 @@ body {
 }
 
 .footer-copy {
-    margin-top: 50px;
+    margin-top: 40px;
     text-align: center;
     font-size: 14px;
     opacity: 0.7;
@@ -1723,7 +1772,14 @@ body {
     .hamburger {
         display: flex;
     }
-    
+
+    /* logo section */
+
+    .logo-section {
+    padding: 10px 20px 30px 20px;
+    background: #0F0F0F;
+    overflow: hidden;
+    }
     /* HERO */
     .hero {
         min-height: auto;
@@ -1733,6 +1789,7 @@ body {
     .hero h1 {
         font-size: 32px;
         text-align: center;
+        padding: 30px 0 0 0;
     }
     
     .new123test {
@@ -1851,13 +1908,17 @@ body {
         padding: 60px 0;
     }
     
+    
     .testimonials-title {
         font-size: 36px;
         margin-bottom: 30px;
+        line-height: 1.2;
+      text-align: center;
     }
     
     .testimonials-wrapper {
         padding: 0 30px;
+        position: relative;
     }
     
     .testimonial-card {
@@ -1878,27 +1939,54 @@ body {
     }
     
     .why-container h2 {
-        font-size: 48px;
+        font-size: 30px;
         margin-bottom: 40px;
-        text-align: center;
+        text-align: start;
     }
     
     .why-items {
-        flex-direction: column;
-        gap: 40px;
-        align-items: center;
-    }
+      flex-direction: column;
+      align-items: flex-start;   /* 🔥 IMPORTANT */
+      position: relative;
+      /* padding-left: 30px;        line + dot space */
+      gap: 40px;
+  }
     
     .why-item {
-        text-align: center;
-        width: 100%;
-    }
+      display: flex;
+      align-items: flex-start;
+      /* gap: 20px; */
+      text-align: left;
+      position: relative;
+  }
+
+  .why-dot {
+      margin-top: 6px;
+      flex-shrink: 0;
+      top: 5px;
+      margin-right: 20px;
+  }
+
+  .why-dot.why-active {
+    background: #C6FF00;
+    transform: scale(1.1);
+    box-shadow: 0 0 20px #C6FF00, 0 0 40px #C6FF00;
+}
     
-    .why-item p {
-        font-size: 20px;
-        text-align: center;
-    }
+     .why-item p {
+      margin-top: 0;
+      text-align: left;
+      font-size: 18px;
+      line-height: 1.3;
+  }
     
+     .why-progress-line {
+      width: 2px;
+      height: 100%;
+      background: #BBFE00;
+      left: 1.3px;
+      top: 15px;
+  }
     
     /* STRATEGY */
     .strategy-section {
@@ -1918,13 +2006,14 @@ body {
     .strategy-left {
         padding-right: 0;
         border-right: none;
-        border-bottom: 1px inset #BBFE00;
+        border-bottom: 8px inset #BBFE00;
         padding-bottom: 40px;
     }
     
     .strategy-left h2 {
         text-align: center;
-        font-size: 32px;
+        font-size: 26px;
+        color: #EAF0F3;
     }
     
     /* CONTACT */
@@ -1957,31 +2046,65 @@ body {
     
     /* FOOTER */
     .footer {
-        padding: 60px 0 30px;
+        padding: 20px 0 30px;
     }
     
     .footer-container {
         flex-direction: column;
-        gap: 40px;
+        gap: 30px;
         text-align: center;
     }
     
     .footer-col {
         width: 100%;
+        text-align: start;
     }
     
     .links-col {
-        align-items: center;
+        align-items: start;
     }
     
     .footer-social {
-        justify-content: center;
+        justify-content: start;
     }
     
     .right-col h2 {
-        font-size: 32px;
-        text-align: center;
+        font-size: 25px;
+        text-align: start;
     }
+    .footer-copy{
+        margin-top: 40px;
+    }
+
+    .logo-col {
+      order: 1;
+      padding: 20px 30px;
+  }
+
+  .right-col {
+      order: 2;
+  }
+
+  .contact-col {
+      order: 3;
+  }
+
+  .footer-social {
+      order: 4;
+  }
+
+  .links-col {
+      order: 5;
+  }
+
+  .footer-copy {
+      order: 6;
+  }
+  .footer-logo {
+        width: 60px;
+        margin-left: 25px;
+    }
+
 }
 
 /* MOBILE - 480px */
@@ -2111,6 +2234,7 @@ body {
     
     .footer-logo {
         width: 60px;
+        margin-left: 25px;
     }
     
     .footer-brand {
