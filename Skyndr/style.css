@@ -511,7 +511,7 @@ body {
 
 .service-container {
     width: 100%;
-    max-width: 1500px;
+    max-width: 1400px;
     margin: auto;
     display: flex;
     align-items: stretch;
@@ -872,7 +872,7 @@ body {
     /* padding: 0 60px; */
     margin: 0 auto;
     position: relative;
-    overflow: visible; /* FIXES OVERFLOW */
+    overflow: hidden; /* FIXES OVERFLOW */
 }
 
 /* Slider */
@@ -885,14 +885,17 @@ body {
 
 /* Card */
 .testimonial-card {
+    min-width: 400px;        
+    max-width: 400px;
     flex-shrink: 0;
-    width: 100%;
+    width: 400px;
     max-width: 400px;
     background: #1A1A1A;
     padding: 35px;
     border-radius: 18px;
     border: 1px solid #333;
     color: #ddd;
+    border-radius: 20px;
 }
 
 .stars {
@@ -912,6 +915,18 @@ body {
     font-weight: 600;
     opacity: 0.8;
 }
+
+/* INFINITY SCROLL DUPLICATE CARDS (for seamless loop) */
+.testimonial-card:nth-child(6),
+.testimonial-card:nth-child(7),
+.testimonial-card:nth-child(8),
+.testimonial-card:nth-child(9),
+.testimonial-card:nth-child(10) {
+    /* These are your duplicate cards */
+    opacity: 1;
+}
+
+
 
 /* Arrows */
 .t-arrow {
@@ -1139,7 +1154,7 @@ body {
 
 .strategy-container {
     width: 100%;
-    max-width: 1500px;
+    max-width: 1400px;
     margin: auto;
     display: flex;
     gap: 80px;
@@ -1177,7 +1192,7 @@ body {
 
 .strategy-list ul {
     list-style: none;
-    padding-left: 20px;
+    /* padding-left: 20px; */
     margin: 15px 30px;
 }
 
@@ -1787,13 +1802,15 @@ body {
     }
     
     .hero h1 {
-        font-size: 32px;
+        font-size: 20px;
         text-align: center;
         padding: 30px 0 0 0;
+        line-height: 120%;
     }
     
     .new123test {
         text-align: center;
+        margin: 120px 0 0 0;
     }
     
     .launch-btn {
@@ -1808,7 +1825,7 @@ body {
     
     /* APART SECTION */
     .apart-section {
-        padding: 60px 0;
+        padding: 30px 0;
     }
     
     .apart-section h2 {
@@ -1827,7 +1844,7 @@ body {
     
     /* SERVICES SECTION */
     .services-section {
-        padding: 60px 0;
+        padding: 30px 0;
     }
     
     .services-section h2 {
@@ -1905,7 +1922,7 @@ body {
     
     /* TESTIMONIALS */
     .testimonials-section {
-        padding: 60px 0;
+        padding: 30px 0;
     }
     
     
@@ -1917,7 +1934,7 @@ body {
     }
     
     .testimonials-wrapper {
-        padding: 0 30px;
+        /* padding: 0 30px; */
         position: relative;
     }
     
@@ -1935,7 +1952,7 @@ body {
     
     /* WHY WORK */
     .why-work-section {
-        padding: 60px 0;
+        padding: 30px 0;
     }
     
     .why-container h2 {
@@ -1990,7 +2007,7 @@ body {
     
     /* STRATEGY */
     .strategy-section {
-        padding: 60px 0;
+        padding: 30px 0;
     }
     
     .strategy-container {
@@ -2119,9 +2136,9 @@ body {
         padding: 80px 15px 30px;
     }
     
-    .hero h1 {
-        font-size: 28px;
-    }
+    /* .hero h1 {
+        font-size: 20px;
+    } */
     
     .launch-btn {
         font-size: 20px;
@@ -2251,5 +2268,103 @@ body {
     
     .hero h1 {
         font-size: 36px;
+    }
+}
+
+/* MOBILE DOTS ONLY - Desktop এ দেখা যাবে না */
+.mobile-dots-container {
+    display: none; /* Default: hidden */
+}
+
+@media (max-width: 768px) {
+    .mobile-dots-container {
+        display: flex !important; 
+        justify-content: center;
+        gap: 12px;
+        /* margin-top: 25px; */
+        padding: 15px 0;
+        width: 100%;
+    }
+    .new123test{
+
+    }
+    
+    .mobile-slider-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        border: none;
+        background-color: #dddddd;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        padding: 0;
+    }
+    
+    .mobile-slider-dot:hover,
+    .mobile-slider-dot.active {
+        background-color:  #FF3D00 !important; /* RED color */
+        transform: scale(1.3);
+        box-shadow: 0 0 8px rgba(255, 0, 0, 0.3);
+    }
+    
+    /* Mobile slider styles - CENTERED */
+    .testimonial-slider-container {
+        overflow: hidden;
+        width: 100%;
+    }
+    
+    #tSlider {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        padding-left: calc(50vw - (85vw / 2)); /* Center alignment */
+    }
+    
+    #tSlider::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .testimonial-card {
+        flex: 0 0 auto;
+        width: 85vw;
+        scroll-snap-align: center; /* Center alignment */
+        margin-right: 30px;
+        transition: transform 0.3s ease;
+    }
+    
+    /* Last card adjustment */
+    .testimonial-card:last-child {
+        margin-right: 0;
+    }
+    
+    /* Active card styling */
+    .testimonial-card.active {
+        transform: scale(1.02);
+    }
+    
+    /* Hide desktop navigation on mobile */
+    #tPrev, #tNext {
+        display: none !important;
+    }
+}
+
+/* Desktop এ dots container সম্পূর্ণ hide */
+@media (min-width: 769px) {
+    .mobile-dots-container {
+        display: none !important;
+    }
+    
+    /* Desktop slider reset */
+    #tSlider {
+        padding-left: 0 !important;
+    }
+    
+    .testimonial-card {
+        scroll-snap-align: none !important;
+        margin-right: 30px;
     }
 }
