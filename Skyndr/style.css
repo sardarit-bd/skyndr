@@ -1261,6 +1261,7 @@ body {
     font-size: 16px;
     color: #eaf0f3;
     gap: 8px;
+    margin-bottom: 10px;
 }
 
 .strategy-form input,
@@ -2256,7 +2257,7 @@ body {
     
     .trust-text-box h3 {
         font-size: 24px;
-        line-height: 1;
+        line-height: 30px;
     }
     
     /* TESTIMONIALS */
