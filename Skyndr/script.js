@@ -233,7 +233,7 @@ document.addEventListener("DOMContentLoaded", () => {
             
             // Remove last card margin
             if (i === cards.length - 1) {
-                card.style.marginRight = "0";
+                card.style.marginRight = "40px";
             }
         });
         
@@ -425,9 +425,9 @@ document.addEventListener("DOMContentLoaded", () => {
         dots.forEach((dot, i) => {
             const isActive = i === activeIndex;
             // RED COLOR for active dot
-            dot.style.backgroundColor = isActive ? '#ff0000' : '#dddddd';
+            dot.style.backgroundColor = isActive ? '#fff' : '#dddddd';
             dot.style.transform = `scale(${isActive ? 1.3 : 1})`;
-            dot.style.boxShadow = isActive ? '0 0 8px rgba(255, 0, 0, 0.3)' : 'none';
+            dot.style.boxShadow = isActive ? '0 0 8px '#fff'' : 'none';
         });
     }
     
