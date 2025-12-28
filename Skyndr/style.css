@@ -1260,7 +1260,7 @@ body {
 .strategy-form label {
     font-size: 16px;
     color: #eaf0f3;
-    gap: 4px;
+    gap: 8px;
 }
 
 .strategy-form input,
@@ -1288,16 +1288,18 @@ body {
 }
 
 .add-guest {
-    width: fit-content;
-    padding: 10px 24px;
-    background: transparent;
-    border: 1px solid #3a3a3a;
-    color: #fff;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 13px;
-    transition: all 0.3s ease;
-}
+            width: 200px;
+            height: 48px;
+            padding: 10px 24px;
+            background: transparent;
+            border: 1px solid #3A3A3A;
+            color: #fff;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 13px;
+            margin-bottom: 16px
+        }
+
 
 .add-guest:hover {
     background: rgba(187, 254, 0, 0.1);
@@ -2238,6 +2240,10 @@ body {
     }
     
     /* TRUST SECTION */
+
+    .trust-section {
+        padding: 0;
+    }
     .trust-title {
         font-size: 30px;
         padding: 0 20px ;
@@ -2429,5 +2435,528 @@ body {
     
     .trust-title br {
         display: none; /* Hide any existing br tags */
+    }
+}
+
+
+/* ==========================================
+   TABLET RESPONSIVE DESIGN (768px - 1024px)
+   ========================================== */
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    /* HEADER - Tablet এ hamburger menu show করব */
+    .nav-links,
+    .desktop-cta {
+        display: none;
+    }
+    
+    .hamburger {
+        display: flex;
+    }
+    
+    .mobile-menu {
+        display: none;
+    }
+    
+    .mobile-menu.active {
+        display: flex;
+    }
+    
+    /* HERO SECTION */
+    .hero {
+        padding: 120px 20px 60px;
+    }
+    
+    .hero h1 {
+        font-size: 40px;
+        line-height: 1.3;
+        margin-bottom: 30px;
+    }
+    .hero-content {
+        padding-bottom: 150px;
+    }
+    
+    .new123test {
+        margin-top: 80px;
+    }
+    
+    .launch-btn {
+        font-size: 30px;
+    }
+    
+    .subtitle {
+        font-size: 16px;
+        max-width: 600px;
+    }
+    
+    /* LOGO MARQUEE */
+    .logo-section {
+        padding: 10px 30px 40px 30px;
+    }
+    
+    .marquee-track img {
+        height: 45px;
+    }
+    
+    /* WHAT SETS US APART */
+    .apart-section h2 {
+        font-size: 40px;
+        margin-bottom: 50px;
+    }
+    
+    .apart-items {
+        gap: 50px;
+        padding: 0 20px;
+    }
+    
+    .apart-box {
+        min-width: 200px;
+    }
+    
+    /* SERVICES SECTION */
+    .services-section {
+        padding: 50px 20px;
+    }
+    
+    .services-section h2 {
+        font-size: 38px;
+    }
+    
+    .services-subtitle,
+    .services-text {
+        font-size: 18px;
+    }
+    
+    /* SERVICE SLIDER SECTIONS */
+    .service-slider-section {
+        padding: 30px 30px;
+    }
+    
+    .service-container {
+        gap: 40px;
+    }
+    
+    .service-text-box {
+        width: 45%;
+        padding: 30px;
+    }
+    
+    .service-slider {
+        width: 50%;
+    }
+    
+    .service-text-box h2 {
+        font-size: 26px;
+    }
+    
+    .image-wrapper {
+        height: 350px;
+    }
+    
+    /* TRUST SECTION */
+    .trust-section {
+        padding: 80px 20px;
+    }
+    
+    .trust-title {
+        font-size: 38px;
+        margin-bottom: 40px;
+    }
+    
+    .trust-tabs {
+        gap: 15px;
+        padding: 0 20px;
+        margin-bottom: 40px;
+    }
+    
+    .trust-tab {
+        padding: 15px 20px;
+        font-size: 16px;
+        width: 160px;
+        height: 50px;
+    }
+    
+    .trust-content-wrapper {
+        flex-direction: column;
+        gap: 40px;
+        padding: 0 20px;
+    }
+    
+    .trust-image-box,
+    .trust-text-box {
+        width: 100%;
+    }
+    
+    .trust-image-box {
+        height: 500px;
+    }
+    
+    .trust-text-box h3 {
+        font-size: 26px;
+    }
+    
+    /* TESTIMONIALS */
+    .testimonials-section {
+        padding: 60px 20px;
+    }
+    
+    .testimonials-title {
+        font-size: 32px;
+        margin-bottom: 40px;
+        padding: 0 20px;
+    }
+    
+    .testimonials-wrapper {
+        padding: 0 20px;
+    }
+    
+    .testimonials-slider {
+        margin: 0;
+    }
+    
+    .testimonial-card {
+        min-width: 320px;
+        max-width: 320px;
+        width: 320px;
+        padding: 30px;
+    }
+    
+    /* WHY WORK SECTION */
+    .why-work-section {
+        padding: 30px 20px;
+    }
+    
+    .why-container {
+        padding: 0 20px;
+    }
+    
+    .why-container h2 {
+        font-size: 50px;
+        margin-bottom: 60px;
+    }
+    
+    .why-item p {
+        font-size: 18px;
+    }
+    
+    /* =========================
+   STRATEGY SECTION (DESKTOP + TABLET)
+========================= */
+
+.strategy-section {
+    padding: 30px 20px;
+}
+
+.strategy-container {
+    display: flex;
+    flex-direction: row;          /* PASAPASI */
+    gap: 30px;
+    padding: 0 20px;
+}
+
+.strategy-left {
+    width: 50%;
+    height: auto;
+    padding: 0 40px 0 0;
+    border-right: 1px solid #BBFE00;
+    border-bottom: none;        /* REMOVE BOTTOM BORDER */
+}
+
+.strategy-left h2 {
+    font-size: 48px;
+    text-align: left;
+}
+
+.strategy-right {
+    width: 50%;
+    max-width: none;
+    margin: 0;
+}
+
+    
+    
+    /* CONTACT SECTION */
+    .contact-section {
+        padding: 30px 20px;
+    }
+    
+    .contact-container {
+        flex-direction: column;
+        gap: 50px;
+        padding: 0 20px;
+    }
+    
+    .contact-left,
+    .contact-right {
+        width: 100%;
+    }
+    
+    .contact-left h2 {
+        font-size: 50px;
+    }
+    
+    /* FOOTER */
+    .footer {
+        padding: 60px 20px 30px;
+    }
+    
+    .footer-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+    }
+    
+    .right-col {
+        grid-column: span 2;
+    }
+    
+    .right-col h2 {
+        font-size: 26px;
+        text-align: start;
+        font-weight: 500;
+    }
+    
+    /* TABLET SPECIFIC MENU STYLES */
+    .mobile-menu {
+        position: fixed;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        height: calc(100vh - 80px);
+        background: rgba(15, 15, 15, 0.98);
+        backdrop-filter: blur(10px);
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding-top: 40px;
+        gap: 25px;
+        z-index: 999;
+    }
+    
+    .mobile-menu.active {
+        display: flex;
+    }
+    
+    .mobile-menu a {
+        color: #EAF0F3;
+        text-decoration: none;
+        font-size: 20px;
+        font-weight: 600;
+        padding: 15px 0;
+        width: 80%;
+        text-align: center;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.3s ease;
+    }
+    
+    .mobile-menu a:hover {
+        color: #BBFE00;
+    }
+    
+    .mobile-menu .mobile-cta {
+        background: #BBFE00;
+        color: #000;
+        padding: 15px 30px;
+        border-radius: 10px;
+        font-weight: 700;
+        margin-top: 20px;
+        border: none;
+    }
+    
+    /* HAMBURGER FOR TABLET */
+    .hamburger {
+        width: 30px;
+        height: 24px;
+    }
+    
+    .hamburger span {
+        height: 3px;
+        background: #BBFE00;
+    }
+    
+    .hamburger.active span:nth-child(1) {
+        transform: translateY(10px) rotate(45deg);
+    }
+    
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .hamburger.active span:nth-child(3) {
+        transform: translateY(-10px) rotate(-45deg);
+    }
+}
+
+/* TABLET LANDSCAPE MODE */
+@media (min-width: 769px) and (max-width: 1024px) and (orientation: landscape) {
+    .hero {
+        min-height: 100vh;
+        padding: 120px 20px;
+    }
+    
+    .hero h1 {
+        font-size: 36px;
+    }
+    
+    .mobile-menu {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        padding-top: 20px;
+        gap: 20px;
+    }
+    
+    .mobile-menu a {
+        width: auto;
+        border-bottom: none;
+        padding: 10px 20px;
+    }
+    
+    .mobile-menu .mobile-cta {
+        margin-top: 0;
+    }
+    
+}
+
+/* TABLET SPECIFIC ADJUSTMENTS (900px - 1024px) */
+@media (min-width: 900px) and (max-width: 1024px) {
+    /* SERVICE CONTAINER */
+    .service-container {
+        flex-direction: row !important;
+    }
+    
+    .reverse-layout .service-container {
+        flex-direction: row-reverse !important;
+    }
+    
+    .service-text-box {
+        width: 45%;
+    }
+    
+    .service-slider {
+        width: 50%;
+    }
+    
+    /* TRUST SECTION */
+    .trust-content-wrapper {
+        flex-direction: row;
+    }
+    
+    .trust-image-box {
+        width: 45%;
+        height: 400px;
+    }
+    
+    .trust-text-box {
+        width: 50%;
+    }
+    
+    /* TESTIMONIALS */
+    .testimonials-slider {
+        margin: 0 60px;
+    }
+    
+    /* STRATEGY SECTION */
+    .strategy-container {
+        flex-direction: row;
+    }
+    
+    .strategy-left {
+        width: 50%;
+        border-right: 1px solid #BBFE00;
+        border-bottom: none;
+        padding-right: 40px;
+        padding-bottom: 0;
+    }
+    
+    .strategy-right {
+        width: 45%;
+        max-width: none;
+        margin: 0;
+    }
+    
+    /* CONTACT SECTION */
+    .contact-container {
+        flex-direction: row;
+    }
+    
+    .contact-left {
+        width: 50%;
+    }
+    
+    .contact-right {
+        width: 45%;
+    }
+    
+    /* FOOTER */
+    .footer-container {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .right-col {
+        grid-column: span 1;
+    }
+    
+    .right-col h2 {
+        text-align: right;
+    }
+}
+
+/* TABLET PORTRAIT MODE (768px - 899px) */
+@media (min-width: 768px) and (max-width: 899px) {
+    .service-container {
+        flex-direction: column;
+    }
+    
+    .reverse-layout .service-container {
+        flex-direction: column;
+    }
+    
+    .service-text-box,
+    .service-slider {
+        width: 100%;
+    }
+    
+    .trust-content-wrapper {
+        flex-direction: column;
+    }
+    
+    .trust-image-box,
+    .trust-text-box {
+        width: 100%;
+    }
+    
+    .strategy-container {
+        flex-direction: column;
+    }
+    
+    .strategy-left {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #BBFE00;
+        padding-right: 0;
+        padding-bottom: 40px;
+    }
+    
+    .strategy-right {
+        width: 100%;
+    }
+    
+    .contact-container {
+        flex-direction: column;
+    }
+    
+    .contact-left,
+    .contact-right {
+        width: 100%;
+    }
+    
+    .footer-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .right-col {
+        grid-column: span 2;
     }
 }
