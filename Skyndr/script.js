@@ -32,7 +32,7 @@ document.addEventListener("scroll", () => {
     let progressPercent = (visible / rect.height) * 150;
     if (progressPercent > 100) progressPercent = 100;
 
-    const isMobile = window.innerWidth <= 900;
+    const isMobile = window.innerWidth <= 767;
 
     if (isMobile) {
         progress.style.width = "1px"; // force correct value
@@ -40,6 +40,7 @@ document.addEventListener("scroll", () => {
     } else {
         progress.style.height = "1px"; // force correct value
         progress.style.width = progressPercent + "%";
+        progress.style.transform = "none";
     }
 
     // DOT ACTIVATION
