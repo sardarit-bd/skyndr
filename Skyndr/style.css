@@ -733,6 +733,11 @@ body {
 }
 
 @media (max-width: 768px) {
+
+    .service-text-box h4 {
+        margin: 10px 0 0 0;
+    }
+
     .trust-tabs {
         justify-content: flex-start;
         flex-wrap: nowrap;
@@ -1566,15 +1571,15 @@ body {
 }
 
 .footer-container {
-    width: 90%;
+    width: 100%;
     max-width: 1600px;
     margin: auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 80px;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* gap: 60px; */
+    align-items: start;
 }
+
 
 .footer-col {
     flex: 1;
@@ -1644,6 +1649,10 @@ body {
     opacity: 1;
     color: #C6FF00;
     transform: translateX(5px);
+}
+
+.footer-col .right-col{
+    width: 400px;
 }
 
 .right-col h2 {
@@ -2213,7 +2222,7 @@ body {
     }
     
     .testimonial-card {
-        padding: 20px;
+        padding: 30px;
     }
     
     /* WHY WORK */
@@ -2332,7 +2341,7 @@ body {
         flex: 0 0 auto;
         width: 85vw;
         scroll-snap-align: center; /* Center alignment */
-        margin-right: 30px;
+        margin: 30px;
         transition: transform 0.3s ease;
     }
     
