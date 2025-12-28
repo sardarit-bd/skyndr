@@ -532,7 +532,7 @@ body {
     
     display: flex;
     flex-direction: column;
-    /* border: 1px solid red; */
+    border: 1px solid #EAF0F3;
 }
 
 .service-text-box h2 {
@@ -733,6 +733,11 @@ body {
 }
 
 @media (max-width: 768px) {
+
+    .service-btn{
+        width: auto;
+        margin: 50 20px;
+    }
 
     .service-text-box h4 {
         margin: 10px 0 0 0;
@@ -1326,6 +1331,14 @@ body {
 
 @media (max-width: 768px) {
 
+    .checkbox-group {    
+        gap: 6px; 
+    }
+    
+    .checkbox-item{
+        margin: 5px 0;
+    }
+
     .strategy-section {
         padding: 60px 0;
     }
@@ -1573,9 +1586,9 @@ body {
 .footer-container {
     width: 100%;
     max-width: 1600px;
-    margin: auto;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    margin: 50px 20px;
+    display: flex;
+    /* grid-template-columns: repeat(4, 1fr); */
     /* gap: 60px; */
     align-items: start;
 }
@@ -1591,7 +1604,7 @@ body {
 }
 
 .footer-logo {
-    width: 80px;
+    width: 130px;
     /* margin-bottom: 10px; */
 }
 
@@ -1839,7 +1852,7 @@ body {
     
     .apart-section h2 {
         font-size: 36px;
-        margin-bottom: 40px;
+        margin: 10px 20px;
     }
     
     .apart-items {
@@ -1853,7 +1866,7 @@ body {
     
     /* SERVICES SECTION */
     .services-section {
-        padding: 30px 0;
+        padding: 30px 20px;
     }
     
     .services-section h2 {
@@ -1874,6 +1887,7 @@ body {
     .reverse-layout .service-container {
         flex-direction: column;
         gap: 40px;
+        margin: 0 20px;
     }
     
     .service-text-box,
@@ -2044,7 +2058,7 @@ body {
     
     /* CONTACT */
     .contact-section {
-        padding: 60px 0;
+        padding: 30px 0;
     }
     
     .contact-container {
@@ -2058,12 +2072,14 @@ body {
     }
     
     .contact-left h2 {
-        font-size: 48px;
-        text-align: center;
+        font-size: 40px;
+        text-align: start;
+        margin-bottom: 0;
     }
     
     .contact-sub {
-        text-align: center;
+        text-align: start;
+        margin-bottom: 20px;
     }
     
     .submit-btn {
@@ -2104,7 +2120,7 @@ body {
 
     .logo-col {
       order: 1;
-      padding: 20px 30px;
+      /* padding: 20px 30px; */
   }
 
   .right-col {
@@ -2127,8 +2143,8 @@ body {
       order: 6;
   }
   .footer-logo {
-        width: 60px;
-        margin-left: 25px;
+        width: 130px;
+        /* margin-left: 25px; */
     }
 
 }
@@ -2168,7 +2184,7 @@ body {
     
     /* APART SECTION */
     .apart-section h2 {
-        font-size: 28px;
+        font-size: 30px;
     }
     
     .apart-box img {
@@ -2245,7 +2261,7 @@ body {
     
     /* CONTACT */
     .contact-left h2 {
-        font-size: 36px;
+        font-size: 40px;
     }
     
     .contact-form input,
@@ -2259,8 +2275,8 @@ body {
     }
     
     .footer-logo {
-        width: 60px;
-        margin-left: 25px;
+        width: 130px;
+        /* margin-left: 25px; */
     }
     
     .footer-brand {
@@ -2347,7 +2363,7 @@ body {
     
     /* Last card adjustment */
     .testimonial-card:last-child {
-        margin-right: 0;
+        margin-right: 40px;
     }
     
     /* Active card styling */
