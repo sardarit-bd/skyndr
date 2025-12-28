@@ -1122,7 +1122,7 @@ body {
     border-radius: 50%;
     position: relative;
     transition: background 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease, opacity 0.4s ease;
-    z-index: 2; /* line এর উপরে থাকবে */
+    z-index: 2; 
 }
 
 .why-dot::after {
@@ -1131,7 +1131,7 @@ body {
     inset: 50%;
     width: 20px;
     height: 20px;
-    background: url("assets/images/dot-circle.png") no-repeat center/contain;
+    background: url("https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903238/dot-circle_escunb.png") no-repeat center/contain;
     transform: translate(-50%, -50%);
     opacity: 0;
     transition: opacity 0.4s ease;
