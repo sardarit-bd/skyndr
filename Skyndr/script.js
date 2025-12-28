@@ -387,7 +387,7 @@ document.addEventListener("DOMContentLoaded", () => {
         dotsContainer.style.cssText = `
             display: none;
             justify-content: center;
-            gap: 12px;
+            gap: 8px;
             
             padding: 15px 0;
             width: 100%;
