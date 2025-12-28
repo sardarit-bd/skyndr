@@ -404,7 +404,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 height: 12px;
                 border-radius: 50%;
                 border: none;
-                background-color: ${i === 0 ? '#ff0000' : '#dddddd'}; /* RED for active */
+                background-color: ${i === 0 ? '#fff' : '#dddddd'}; /* RED for active */
                 cursor: pointer;
                 transition: all 0.3s ease;
                 padding: 0;
@@ -427,7 +427,7 @@ document.addEventListener("DOMContentLoaded", () => {
             // RED COLOR for active dot
             dot.style.backgroundColor = isActive ? '#fff' : '#dddddd';
             dot.style.transform = `scale(${isActive ? 1.3 : 1})`;
-            dot.style.boxShadow = isActive ? '0 0 8px '#fff'' : 'none';
+            dot.style.boxShadow = isActive ? '0 0 8px rgba(245, 235, 235, 1)0.91)' : 'none';
         });
     }
     
