@@ -1503,7 +1503,7 @@ body {
 }
 
 .selected-option {
-    padding: 14px;
+    padding: 10px;
     border: 1px solid #fff;
     border-radius: 16px;
     color: #7c7c7c;
