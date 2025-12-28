@@ -280,7 +280,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to bottom, rgba(15, 15, 15, 0.55) 0%, rgba(15, 15, 15, 0.3) 50%, rgba(15, 15, 15, -1.9) 100%);
+    background: linear-gradient(to bottom, rgba(15, 15, 15, 0.12) 0%, rgba(15, 15, 15, 0.3) 50%, rgba(15, 15, 15, -1.9) 100%);
     z-index: 2;
 }
 
@@ -734,6 +734,11 @@ body {
 
 @media (max-width: 768px) {
 
+    .service-list {
+        margin: 0 0 10px 0;
+    }
+
+
     .service-btn{
         width: auto;
         margin: 50 20px;
@@ -870,7 +875,7 @@ body {
 .testimonials-title {
     padding: 10px;
     font-size: 30px;
-    font-weight: 500;
+    font-weight: 600;
     margin-bottom: 50px;
     color: #fff;
 }
@@ -1027,8 +1032,8 @@ body {
     }
 
     .testimonials-title {
-        font-size: 22px;
-        margin-bottom: 30px;
+        font-size: 30px;
+        margin-bottom: 25px;
     }
 
     .t-arrow {
@@ -1174,7 +1179,7 @@ body {
 .strategy-left {
     width: 50%;
     height: 1100px;
-    /* padding: 0 150px 0 80px; */
+    padding: 0 150px 0 0;
     border-right: 1px inset #BBFE00;
 }
 .strategy-left h2 {
@@ -1284,7 +1289,7 @@ body {
 
 .add-guest {
     width: fit-content;
-    padding: 8px 14px;
+    padding: 10px 24px;
     background: transparent;
     border: 1px solid #3a3a3a;
     color: #fff;
@@ -1579,14 +1584,14 @@ body {
 /* FOOTER */
 .footer {
     background: #0F0F0F;
-    padding: 90px 0 40px;
+    padding: 50px 0 40px;
     color: #EAF0F3;
 }
 
 .footer-container {
     width: 100%;
     max-width: 1600px;
-    margin: 50px 20px;
+    margin: auto;
     display: flex;
     /* grid-template-columns: repeat(4, 1fr); */
     /* gap: 60px; */
@@ -1600,7 +1605,7 @@ body {
 }
 
 .logo-col {
-    text-align: center;
+    text-align: start;
 }
 
 .footer-logo {
@@ -1683,6 +1688,15 @@ body {
     line-height: 1.5;
     padding-top: 30px;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Control line breaks with br tags */
+.desktop-only {
+    display: block;
+}
+
+.mobile-only {
+    display: none;
 }
 
 /* ================================
@@ -1880,14 +1894,14 @@ body {
     
     /* SERVICE SLIDER SECTIONS */
     .service-slider-section {
-        padding: 40px 0;
+        padding: 40px 20px;
     }
     
     .service-container,
     .reverse-layout .service-container {
         flex-direction: column;
         gap: 40px;
-        margin: 0 20px;
+        /* margin: 0 20px; */
     }
     
     .service-text-box,
@@ -1950,10 +1964,11 @@ body {
     
     
     .testimonials-title {
-        font-size: 36px;
-        margin-bottom: 30px;
+        font-size: 30px;
+        margin-bottom: 0;
         line-height: 1.2;
-      text-align: center;
+        text-align: center;
+        padding: 0 40px;
     }
     
     .testimonials-wrapper {
@@ -2088,7 +2103,7 @@ body {
     
     /* FOOTER */
     .footer {
-        padding: 20px 0 30px;
+        padding: 30px 20px;
     }
     
     .footer-container {
@@ -2146,12 +2161,15 @@ body {
         width: 130px;
         /* margin-left: 25px; */
     }
-
 }
 
 /* MOBILE - 480px */
 @media (max-width: 480px) {
     /* HEADER */
+    .add-guest {            
+            border: 1px solid #BBFE00 !important;
+            color: #BBFE00 !important;            
+        }
     .logo {
         width: 35px;
     }
@@ -2220,7 +2238,8 @@ body {
     
     /* TRUST SECTION */
     .trust-title {
-        font-size: 28px;
+        font-size: 30px;
+        padding: 0 20px ;
     }
     
     .trust-tab {
@@ -2230,11 +2249,12 @@ body {
     
     .trust-text-box h3 {
         font-size: 24px;
+        line-height: 1;
     }
     
     /* TESTIMONIALS */
     .testimonials-title {
-        font-size: 28px;
+        font-size: 30px;
     }
     
     .testimonial-card {
@@ -2271,7 +2291,7 @@ body {
     
     /* FOOTER */
     .right-col h2 {
-        font-size: 28px;
+        font-size: 25px;
     }
     
     .footer-logo {
@@ -2391,5 +2411,22 @@ body {
     .testimonial-card {
         scroll-snap-align: none !important;
         margin-right: 30px;
+    }
+}
+
+.mobile-break {
+    display: none;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    
+    
+    .mobile-break {
+        display: block;
+    }
+    
+    .trust-title br {
+        display: none; /* Hide any existing br tags */
     }
 }
