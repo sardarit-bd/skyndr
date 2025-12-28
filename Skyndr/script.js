@@ -106,31 +106,31 @@ const trustData = {
         title: "Ads Management + Strategy",
         text: `We've been partnering with Skyndr for nearly a year now, and their impact on our ad performance has been outstanding. From the very beginning, they took the time to understand our brand, our audience, and our goals and then built campaigns that actually delivered results.<br><br>What sets Skyndr apart is their strategic approach. They don't just run ads; they constantly analyze, test, and optimize every detail to make sure each dollar spent creates real growth.`,
         author: "Odai, Founder of KDX Middle East",
-        image: "assets/images/whyus.png"
+        image: "https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903234/whyus_fuozyi.png"
     },
     washclub: {
         title: "Paid Social",
         text: `We've worked with Skyndr for several months now, and the difference in our paid social results has been incredible. Their team took over our Meta ads, optimized our funnels, and even improved parts of our website to help increase conversions.`,
         author: "Mahmoud CEO of Washclub",
-        image: "assets/images/whyus2.jpg"
+        image: "https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903234/whyus2_brjt0z.jpg"
     },
     luster: {
         title: "Full-Service Marketing (Strategy + Ads + UGC)",
         text: `Our partnership with Skyndr has completely transformed our online presence. From ad strategy to creative production and content testing, they've managed every detail with precision and passion.`,
         author: "Hassan Co-founder of Luster ",
-        image: "assets/images/whyus3.jpg"
+        image: "https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903235/whyus3_cmiuxe.jpg"
     },
     sunguard: {
         title: "UGC Content + Creative Ads",
         text: `Working with Skyndr on our creative ad strategy has been a game changer. They helped us completely revamp our content with fresh UGC-style videos and authentic visuals that actually connect with our audience.`,
         author: "Saad CEO of Sunguard",
-        image: "assets/images/whyus4.jpg"
+        image: "https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903236/whyus4_rpruvd.jpg"
     },
     snake: {
         title: "Branding",
         text: `Our experience with Skyndr on our paid social, branding, and content creation has been nothing short of amazing. They took our scattered online presence and transformed it into a cohesive, high-performing brand.`,
         author: "Ahmad Owner of Snake Protection",
-        image: "assets/images/whyus6.jpg"
+        image: "https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903237/whyus6_fdw8gv.png"
     }
 };
 document.addEventListener("DOMContentLoaded", () => {
@@ -528,19 +528,19 @@ document.addEventListener("DOMContentLoaded", () => {
         clearInterval(autoSlide);
         slider.innerHTML = ""; 
         
-        // ১. অরিজিনাল কার্ডগুলো আবার ইনসার্ট করা
+
         cards.forEach(card => slider.appendChild(card.cloneNode(true)));
 
-        // ২. ডেক্সটপের জন্য ক্লোন তৈরি (Infinite feel এর জন্য শুরুতে এবং শেষে)
+
         const firstBatch = cards.map(card => card.cloneNode(true));
         const lastBatch = cards.map(card => card.cloneNode(true));
 
-        firstBatch.forEach(clone => slider.appendChild(clone)); // শেষে যোগ
-        lastBatch.reverse().forEach(clone => slider.insertBefore(clone, slider.firstChild)); // শুরুতে যোগ
+        firstBatch.forEach(clone => slider.appendChild(clone)); 
+        lastBatch.reverse().forEach(clone => slider.insertBefore(clone, slider.firstChild));
 
         const allCards = slider.querySelectorAll(".testimonial-card");
         
-        // ৩. শুরুর পজিশন সেট করা (আমরা এখন মিডল সেকশনে আছি)
+
         index = cards.length;
         slider.style.transition = "none";
         slider.style.transform = `translateX(-${index * totalCardWidth}px)`;
@@ -555,17 +555,15 @@ document.addEventListener("DOMContentLoaded", () => {
             slider.style.transition = "transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)";
             slider.style.transform = `translateX(-${index * totalCardWidth}px)`;
         }
-
-        // ৫. ট্রানজিশন শেষ হলে লুপ হ্যান্ডলিং (Jerk-free jump)
         slider.ontransitionend = () => {
             isMoving = false;
-            // যদি একদম শেষের ক্লোন ব্যাচে চলে যায়
+
             if (index >= cards.length * 2) {
                 slider.style.transition = "none";
                 index = cards.length;
                 slider.style.transform = `translateX(-${index * totalCardWidth}px)`;
             }
-            // যদি একদম শুরুর ক্লোন ব্যাচে চলে যায়
+
             if (index <= cards.length - cards.length) {
                 slider.style.transition = "none";
                 index = cards.length;
@@ -573,11 +571,11 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         };
 
-        // বাটনে ক্লিক ইভেন্ট
+    
         nextBtn.onclick = () => moveDesktop('next');
         prevBtn.onclick = () => moveDesktop('prev');
 
-        // অটো প্লে
+
         startAutoSlide();
         slider.onmouseenter = () => clearInterval(autoSlide);
         slider.onmouseleave = startAutoSlide;
@@ -589,17 +587,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     /* ========= MOBILE SLIDER (DOTS) ========= */
-    // আপনার আগের মোবাইল লজিক এখানে থাকবে, শুধু কার্ডগুলোর ক্লোন রিমুভ নিশ্চিত করবেন।
     function setupMobileSlider() {
         clearInterval(autoSlide);
         slider.style.transition = "none";
         slider.innerHTML = "";
         cards.forEach(card => slider.appendChild(card.cloneNode(true)));
-        
-        // ... (বাকি মোবাইল ডটস কোড যা আপনি আগে দিয়েছিলেন)
     }
 
-    // উইন্ডো রিসাইজ হ্যান্ডলার
     window.addEventListener("resize", () => {
         clearTimeout(window.resizer);
         window.resizer = setTimeout(init, 250);
