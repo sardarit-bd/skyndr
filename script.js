@@ -530,3 +530,19 @@ document.addEventListener("click", (e) => {
         }
     });
 });
+
+// Mobile touch scrolling for trust tabs
+if ('ontouchstart' in window) {
+    const trustTabs = document.querySelector('.trust-tabs');
+    if (trustTabs) {
+        trustTabs.style.cursor = 'grab';
+        
+        trustTabs.addEventListener('touchstart', function() {
+            this.style.cursor = 'grabbing';
+        }, { passive: true });
+        
+        trustTabs.addEventListener('touchend', function() {
+            this.style.cursor = 'grab';
+        }, { passive: true });
+    }
+}

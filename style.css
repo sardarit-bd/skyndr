@@ -790,14 +790,19 @@ body {
 
     .trust-tabs {
         justify-content: flex-start;
-        flex-wrap: nowrap;
-        overflow-x: auto !important;
+        flex-wrap: nowrap !important;
+        overflow-x: scroll !important;
+        overflow-y: hidden;
         gap: 12px;
         padding: 10px 16px;
         margin-bottom: 30px;
-        -webkit-overflow-scrolling: touch;
+        -webkit-overflow-scrolling: touch !important;
         scroll-behavior: smooth;
-        scroll-snap-type: x mandatory;
+        scroll-snap-type: x proximity;
+        
+        /* Force GPU acceleration for iOS */
+        transform: translateZ(0);
+        -webkit-transform: translateZ(0);
     }
 
     .trust-tabs::-webkit-scrollbar {
