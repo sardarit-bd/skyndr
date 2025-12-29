@@ -401,8 +401,8 @@ document.addEventListener("DOMContentLoaded", () => {
             dot.setAttribute("aria-label", `Go to testimonial ${i + 1}`);
             dot.setAttribute("data-index", i);
             dot.style.cssText = `
-                width: 12px;
-                height: 12px;
+                width: 6px;
+                height: 6px;
                 border-radius: 50%;
                 border: none;
                 background-color: ${i === 0 ? '#fff' : '#dddddd'}; /* RED for active */
@@ -426,9 +426,9 @@ document.addEventListener("DOMContentLoaded", () => {
         dots.forEach((dot, i) => {
             const isActive = i === activeIndex;
             // RED COLOR for active dot
-            dot.style.backgroundColor = isActive ? '#fff' : '#dddddd';
+            dot.style.backgroundColor = isActive ? '#ff3d00' : '#dddddd';
             dot.style.transform = `scale(${isActive ? 1.3 : 1})`;
-            dot.style.boxShadow = isActive ? '0 0 8px rgba(245, 235, 235, 1)0.91)' : 'none';
+            dot.style.boxShadow = isActive ? '0 0 8px rgba(255, 61, 0, 0.6)' : 'none';
         });
     }
     
