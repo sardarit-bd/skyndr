@@ -1,0 +1,961 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SKYNDR</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="assets/images/Logo.svg">
+    <style>
+        .strategy-right {
+            background: #0b0b0b;
+            padding: 32px;
+            border-radius: 16px;
+            color: #fff;
+            width: 100%;
+            max-width: 420px;
+        }
+
+        /* .form-title {
+            font-size: 26px;
+            margin-bottom: 30px;
+            font-weight: 700;
+        } */
+
+        /* .strategy-form {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        } */
+
+        /* .strategy-form label {
+            font-size: 13px;
+            color: #cfcfcf;
+            gap: 4px;
+        } */
+
+        .strategy-form input,
+        .strategy-form textarea,
+        .strategy-form select {
+            background: #0b0b0b;
+            border: 1px solid #3a3a3a;
+            border-radius: 8px;
+            padding: 12px;
+            color: #fff;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .strategy-form textarea {
+            min-height: 90px;
+            resize: none;
+        }
+
+        .strategy-form input::placeholder,
+        .strategy-form textarea::placeholder {
+            color: #777;
+        }
+
+        /* Add Guest Button */
+        .add-guest {
+            width: fit-content;
+            padding: 10px 24px;
+            background: transparent;
+            border: 1px solid #3a3a3a;
+            color: #fff;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 13px;
+            margin-bottom: 16px
+        }
+
+        /* Checkbox Group */
+        /* .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .checkbox-group label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        } */
+
+        /* Submit Button */
+        /* .submit-btn-lg {
+            margin-top: 10px;
+            background: #bbfe00;
+            color: #000;
+            font-weight: 700;
+            border: none;
+            border-radius: 6px;
+            padding: 14px;
+            cursor: pointer;
+            font-size: 14px;
+            width: 260px;
+            gap: 24px
+        }
+
+        .submit-btn-lg:hover {
+            opacity: 0.9;
+        } */
+
+    </style>
+</head>
+
+<body>
+
+    <header class="nav-header">
+        <div class="header-inner">
+
+            <!-- LOGO -->
+            <a href="#">
+                <img src="https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903234/Logo_g1ao9q.svg" alt="Logo" class="logo">
+            </a>
+
+            <!-- DESKTOP NAV -->
+            <nav class="nav-links">
+                <a href="#about">ABOUT US</a>
+                <a href="#services">SERVICES</a>
+                <a href="#testimonial">TESTIMONIAL</a>
+                <a href="#trust">CASE STUDY</a>
+                <a href="#contact">CONTACT US</a>
+            </nav>
+
+            <a href="#strategy" class="cta-btn desktop-cta">BOOK A CALL</a>
+
+            <!-- HAMBURGER (MOBILE) -->
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span style="width: 20px;justify-self: right;"></span>
+            </div>
+
+        </div>
+
+        <!-- MOBILE MENU -->
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="#about">ABOUT US</a>
+            <a href="#services">SERVICES</a>
+            <a href="#testimonial">TESTIMONIAL</a>
+            <a href="#trust">CASE STUDY</a>
+            <a href="#contact">CONTACT US</a>
+            <a href="#book" class="cta-btn mobile-cta">BOOK A CALL</a>
+        </div>
+    </header>
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <img src="https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903232/Background-image_xxgiak.png" alt="Background" class="hero-bg">
+
+        <div class="hero-content">
+            <h1>
+                <span class="highlight">NO 1.</span> FULL SERVICE DIGITAL<br>
+                MARKETING AGENCY FOR<br>
+                <span class="highlight">AUTO FILM</span> AND <span class="highlight">
+                    DETAILING<br>
+                    BUSINESSES
+                </span>
+            </h1>
+        </div>
+        <div class="new123test">
+            <a href="#strategy" class="launch-btn">
+                LAUNCH NOW
+                <img src="https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903231/arrow_aooklo.svg" alt="" class="launch-arrow">
+            </a>
+
+            <p class="subtitle">
+                <span>
+                    EMPOWERING GROWTH FOR BUSINESSES AND THE PEOPLE BEHIND 
+                    THEM.
+                </span>
+            </p>
+        </div>
+    </section>
+
+
+    <section class="logo-section">
+        <div class="logo-wrapper">
+            <div class="marquee">
+            <div class="marquee-track">
+                <img src="https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903237/work-1_gg0kxw.png">
+                <img src="https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903238/work-2_pv3ppr.png">
+                <img src="https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903238/work-3_fdo2pw.png">
+                <img src="https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903238/work-4_omyln6.png">
+                <img src="https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903238/work-5_pdvyvp.png">
+                <img src="https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903238/work-6_oqoqgg.png">
+                <img src="https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903239/work-7_wiipza.png">
+                <img src="https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903239/work-8_p0esdt.png">
+                <img src="https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903237/work-1_gg0kxw.png">
+                <img src="https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903238/work-2_pv3ppr.png">
+                <img src="https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903238/work-3_fdo2pw.png">
+                <img src="https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903238/work-4_omyln6.png">
+                <img src="https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903238/work-5_pdvyvp.png">
+                <img src="https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903238/work-6_oqoqgg.png">
+                <img src="https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903239/work-7_wiipza.png">
+                <img src="https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903239/work-8_p0esdt.png">
+            </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="apart-section" id="about">
+        <div class="apart-container">
+
+            <h2>WHAT SETS US APART?</h2>
+
+            <div class="apart-items">
+
+                <div class="apart-box">
+                    <img src="https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903233/first_lcoscw.svg" alt="Results Focused">
+                    <p>Results Focused</p>
+                </div>
+
+                <div class="apart-box">
+                    <img src="https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903236/second_wvvvxy.svg" alt="Years Of Experience">
+                    <p>Years Of Experience</p>
+                </div>
+
+                <div class="apart-box">
+                    <img src="https://res.cloudinary.com/dvj0lqopq/image/upload/v1766914006/third_1_t34bix.png" alt="Execution > Excuses">
+                    <p>EXECUTION &gt; EXCUSES</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="services-section" id="services">
+        <div class="services-container">
+
+            <h2>Our Services</h2>
+
+            <p class="services-subtitle">
+                <span>Built for growth. Designed for impact.</span>
+            </p>
+
+            <p class="services-text">
+                At Skyndr Marketing Agency, we deliver powerful digital solutions across Shopify
+                development, ads management, UGC content, and graphic design — all focused on helping you
+                scale, improve conversion, and stand out in your market.
+            </p>
+
+        </div>
+    </section>
+
+    <section class="service-slider-section">
+
+        <div class="service-container">
+
+            <!-- LEFT TEXT BOX -->
+            <div class="service-text-box">
+                <h2>Ads Management</h2>
+                <p>
+                    Every dollar counts. Every campaign matters.
+                    We strategize and run ads across Meta, TikTok,
+                    and Google that target the right customers at
+                    the right time. We optimize constantly, test
+                    creatives, and deliver results you can measure.
+                </p>
+
+                <h4 style="color: #c8cccf; font-weight: 600; ">Key features:</h4>
+                <ul class="service-list">
+                    <li><img src="https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903231/check_wwbovd.svg" class="tick"> Full-funnel campaign planning & execution</li>
+                    <li><img src="https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903231/check_wwbovd.svg" class="tick"> Ad creative testing & optimization</li>
+                    <li><img src="https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903231/check_wwbovd.svg" class="tick"> Deep audience targeting & retargeting</li>
+                    <li><img src="https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903231/check_wwbovd.svg" class="tick"> Transparent reporting & ROI tracking</li>
+                </ul>
+
+                <a href="#strategy" class="service-btn">Scale my brand</a>
+            </div>
+
+            <!-- RIGHT SLIDER -->
+            <div class="service-slider fixed-slider">
+
+                <div class="image-wrapper">
+                    <div class="slides">
+                        <img src="https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903240/service1_g1z3dm.png" class="slide-img">
+                        <img src="https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903240/service1_g1z3dm.png" class="slide-img">
+                        <img src="https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903240/service1_g1z3dm.png" class="slide-img">
+                        <img src="https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903240/service1_g1z3dm.png" class="slide-img">
+                    </div>
+                </div>
+
+                <div class="slider-controls">
+                    <button class="arrow left" id="prevBtn">
+                        <svg width="22" height="15" viewBox="0 0 22 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0.292831 8.06712C-0.0975037 7.67678 -0.0975037 7.04392 0.292831 6.65359L6.65372 0.292697C7.04406 -0.0976381 7.67692 -0.0976381 8.06725 0.292697C8.45759 0.683033 8.45759 1.31589 8.06725 1.70623L2.41313 7.36035L8.06725 13.0145C8.45759 13.4048 8.45759 14.0377 8.06725 14.428C7.67692 14.8183 7.04406 14.8183 6.65372 14.428L0.292831 8.06712ZM21.3354 7.36035V8.35987H0.999598V7.36035V6.36083H21.3354V7.36035Z" fill="#EAF0F3"/>
+                        </svg>
+                    </button>
+                    <div class="dots"></div>
+                    <button class="arrow right" id="nextBtn">
+                        <svg width="22" height="15" viewBox="0 0 22 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M21.0426 8.06718C21.433 7.67684 21.433 7.04398 21.0426 6.65365L14.6817 0.292758C14.2914 -0.0975771 13.6585 -0.0975771 13.2682 0.292758C12.8779 0.683095 12.8779 1.31595 13.2682 1.70629L18.9223 7.36041L13.2682 13.0145C12.8779 13.4049 12.8779 14.0377 13.2682 14.4281C13.6585 14.8184 14.2914 14.8184 14.6817 14.4281L21.0426 8.06718ZM0 7.36041V8.35993H20.3359V7.36041V6.3609H0V7.36041Z" fill="#EAF0F3"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <p class="swipe-text">Swipe to see our work</p>
+            </div>
+
+        </div>
+    </section>
+
+
+
+    <section class="service-slider-section reverse-layout">
+
+        <div class="service-container">
+
+            <!-- LEFT TEXT BOX -->
+            <div class="service-text-box">
+                <h2>Content Creation</h2>
+
+                <p>
+                    Authentic content that connects.
+                    We create user-generated-style content
+                    that resonates — video scripts, real-feel
+                    visuals, social media stories — all crafted to
+                    build trust and drive engagement.
+                </p>
+
+                <h4>Whats included ?</h4>
+
+                <ul class="service-list" style="margin-left: ;">
+                    <li><img src="https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903231/check_wwbovd.svg" class="tick"> Concept & script development</li>
+                    <li><img src="https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903231/check_wwbovd.svg" class="tick"> Video shoots & editing optimized for ads</li>
+                    <li><img src="https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903231/check_wwbovd.svg" class="tick"> Storytelling with brand voice & authenticity</li>
+                </ul>
+
+                <a href="#strategy" class="service-btn">Scale my brand</a>
+            </div>
+
+            <!-- RIGHT SLIDER -->
+            <div class="service-slider fixed-slider">
+
+                <div class="image-wrapper">
+                    <div class="slides">
+                        <img src="https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903236/service2_cybjxk.png" class="slide-img">
+                        <img src="https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903236/service2_cybjxk.png" class="slide-img">
+                        <img src="https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903236/service2_cybjxk.png" class="slide-img">
+                        <img src="https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903236/service2_cybjxk.png" class="slide-img">
+                    </div>
+                </div>
+
+                <div class="slider-controls">
+                    <button class="arrow left" id="prevBtn">
+                        <svg width="22" height="15" viewBox="0 0 22 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0.292831 8.06712C-0.0975037 7.67678 -0.0975037 7.04392 0.292831 6.65359L6.65372 0.292697C7.04406 -0.0976381 7.67692 -0.0976381 8.06725 0.292697C8.45759 0.683033 8.45759 1.31589 8.06725 1.70623L2.41313 7.36035L8.06725 13.0145C8.45759 13.4048 8.45759 14.0377 8.06725 14.428C7.67692 14.8183 7.04406 14.8183 6.65372 14.428L0.292831 8.06712ZM21.3354 7.36035V8.35987H0.999598V7.36035V6.36083H21.3354V7.36035Z" fill="#EAF0F3"/>
+                        </svg>
+                    </button>
+                    <div class="dots"></div>
+                    <button class="arrow right" id="nextBtn">
+                        <svg width="22" height="15" viewBox="0 0 22 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M21.0426 8.06718C21.433 7.67684 21.433 7.04398 21.0426 6.65365L14.6817 0.292758C14.2914 -0.0975771 13.6585 -0.0975771 13.2682 0.292758C12.8779 0.683095 12.8779 1.31595 13.2682 1.70629L18.9223 7.36041L13.2682 13.0145C12.8779 13.4049 12.8779 14.0377 13.2682 14.4281C13.6585 14.8184 14.2914 14.8184 14.6817 14.4281L21.0426 8.06718ZM0 7.36041V8.35993H20.3359V7.36041V6.3609H0V7.36041Z" fill="#EAF0F3"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <p class="swipe-text">Swipe to see our work</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="service-slider-section">
+
+        <div class="service-container">
+
+            <!-- LEFT TEXT BOX -->
+            <div class="service-text-box">
+                <h2>Graphic Design</h2>
+
+                <p>
+                    Where visuals meet branding.
+                    From logos to ad graphics, every
+                    design we deliver supports your
+                    brand identity and strengthens
+                    how your audience sees you online.
+                </p>
+
+                <h4>Whats included ?</h4>
+
+                <ul class="service-list">
+                    <li><img src="https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903231/check_wwbovd.svg" class="tick"> Branding / Logo design</li>
+                    <li><img src="https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903231/check_wwbovd.svg" class="tick"> Ad creatives & campaign visuals</li>
+                    <li><img src="https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903231/check_wwbovd.svg" class="tick"> Social media graphics & post assets</li>
+                    <li><img src="https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903231/check_wwbovd.svg" class="tick"> Print & digital graphic collateral</li>
+                </ul>
+
+                <a href="#strategy" class="service-btn">Scale my brand</a>
+            </div>
+
+            <!-- RIGHT SLIDER -->
+            <div class="service-slider fixed-slider">
+
+                <div class="image-wrapper">
+                    <div class="slides">
+                        <img src="https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903237/service3_lzcuds.png" class="slide-img">
+                        <img src="https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903237/service3_lzcuds.png" class="slide-img">
+                        <img src="https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903237/service3_lzcuds.png" class="slide-img">
+                        <img src="https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903237/service3_lzcuds.png" class="slide-img">
+                    </div>
+                </div>
+
+                <div class="slider-controls">
+                    <button class="arrow left" id="prevBtn">
+                        <svg width="22" height="15" viewBox="0 0 22 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0.292831 8.06712C-0.0975037 7.67678 -0.0975037 7.04392 0.292831 6.65359L6.65372 0.292697C7.04406 -0.0976381 7.67692 -0.0976381 8.06725 0.292697C8.45759 0.683033 8.45759 1.31589 8.06725 1.70623L2.41313 7.36035L8.06725 13.0145C8.45759 13.4048 8.45759 14.0377 8.06725 14.428C7.67692 14.8183 7.04406 14.8183 6.65372 14.428L0.292831 8.06712ZM21.3354 7.36035V8.35987H0.999598V7.36035V6.36083H21.3354V7.36035Z" fill="#EAF0F3"/>
+                        </svg>
+                    </button>
+                    <div class="dots"></div>
+                    <button class="arrow right" id="nextBtn">
+                        <svg width="22" height="15" viewBox="0 0 22 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M21.0426 8.06718C21.433 7.67684 21.433 7.04398 21.0426 6.65365L14.6817 0.292758C14.2914 -0.0975771 13.6585 -0.0975771 13.2682 0.292758C12.8779 0.683095 12.8779 1.31595 13.2682 1.70629L18.9223 7.36041L13.2682 13.0145C12.8779 13.4049 12.8779 14.0377 13.2682 14.4281C13.6585 14.8184 14.2914 14.8184 14.6817 14.4281L21.0426 8.06718ZM0 7.36041V8.35993H20.3359V7.36041V6.3609H0V7.36041Z" fill="#EAF0F3"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <p class="swipe-text">Swipe to see our work</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="service-slider-section reverse-layout">
+
+        <div class="service-container">
+
+            <!-- LEFT TEXT BOX -->
+            <div class="service-text-box">
+                <h2>Web Development</h2>
+
+                <p>
+                    Fast. Responsive. Conversion-driven.
+                    We build custom websites from the ground up
+                    (or rebuild existing ones) using clean code,
+                    performance optimization, and user-first design.
+                    Your store will be easy to manage, secure,
+                    mobile-friendly, and built for sales.
+                </p>
+
+                <h4>Whats included ?</h4>
+
+                <ul class="service-list" style="margin-left: ;">
+                    <li><img src="https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903231/check_wwbovd.svg" class="tick"> Custom web design & developement</li>
+                    <li><img src="https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903231/check_wwbovd.svg" class="tick"> Analytics & Pixel integration</li>
+                    <li><img src="https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903231/check_wwbovd.svg" class="tick"> Mobile & speed optimization</li>
+                    <li><img src="https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903231/check_wwbovd.svg" class="tick"> Reliable post-launch support</li>
+                </ul>
+
+                <a href="#strategy" class="service-btn">Scale my brand</a>
+            </div>
+
+            <!-- RIGHT SLIDER -->
+            <div class="service-slider fixed-slider">
+
+                <div class="image-wrapper">
+                    <div class="slides">
+                        <img src="https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903237/service4_igyrza.png" class="slide-img">
+                        <img src="https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903237/service4_igyrza.png" class="slide-img">
+                        <img src="https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903237/service4_igyrza.png" class="slide-img">
+                        <img src="https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903237/service4_igyrza.png" class="slide-img">
+                    </div>
+                </div>
+
+                <div class="slider-controls">
+                    <button class="arrow left" id="prevBtn">
+                        <svg width="22" height="15" viewBox="0 0 22 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0.292831 8.06712C-0.0975037 7.67678 -0.0975037 7.04392 0.292831 6.65359L6.65372 0.292697C7.04406 -0.0976381 7.67692 -0.0976381 8.06725 0.292697C8.45759 0.683033 8.45759 1.31589 8.06725 1.70623L2.41313 7.36035L8.06725 13.0145C8.45759 13.4048 8.45759 14.0377 8.06725 14.428C7.67692 14.8183 7.04406 14.8183 6.65372 14.428L0.292831 8.06712ZM21.3354 7.36035V8.35987H0.999598V7.36035V6.36083H21.3354V7.36035Z" fill="#EAF0F3"/>
+                        </svg>
+                    </button>
+                    <div class="dots"></div>
+                    <button class="arrow right" id="nextBtn">
+                        <svg width="22" height="15" viewBox="0 0 22 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M21.0426 8.06718C21.433 7.67684 21.433 7.04398 21.0426 6.65365L14.6817 0.292758C14.2914 -0.0975771 13.6585 -0.0975771 13.2682 0.292758C12.8779 0.683095 12.8779 1.31595 13.2682 1.70629L18.9223 7.36041L13.2682 13.0145C12.8779 13.4049 12.8779 14.0377 13.2682 14.4281C13.6585 14.8184 14.2914 14.8184 14.6817 14.4281L21.0426 8.06718ZM0 7.36041V8.35993H20.3359V7.36041V6.3609H0V7.36041Z" fill="#EAF0F3"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <p class="swipe-text">Swipe to see our work</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="trust-section" id="trust">
+        <h2 class="trust-title">WHY SHOULD YOU TRUST US?</h2>
+
+        <!-- TAB BUTTONS -->
+        <div class="trust-tabs">
+            <button class="trust-tab active" data-target="kdx">KDX</button>
+            <button class="trust-tab" data-target="washclub">Washclub</button>
+            <button class="trust-tab" data-target="luster">Luster</button>
+            <button class="trust-tab" data-target="sunguard">Sunguard</button>
+            <button class="trust-tab" data-target="snake">Snake</button>
+        </div>
+
+        <!-- CONTENT WRAPPER -->
+        <div class="trust-content-wrapper">
+
+            <!-- LEFT IMAGE -->
+            <div class="trust-image-box">
+                <img id="trustImage" src="https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903234/whyus_fuozyi.png" alt="">
+            </div>
+
+            <!-- RIGHT TEXT -->
+            <div class="trust-text-box">
+                <h3 id="trustTitle" class="trust-title1">
+                    Ads Management +<span class="mobile-break"></span> Strategy
+                </h3>
+
+                <p id="trustText">
+                    We've been partnering with Skyndr for nearly a year now, and their impact on our ad performance has been outstanding. From the very beginning,
+                    they took the time to understand our brand, our audience, and our goals and then built campaigns that actually delivered results.<br>
+
+                    What sets Skyndr apart is their strategic approach. They don’t just run ads; they constantly analyze, test,
+                    and optimize every detail to make sure each dollar spent creates real growth.
+                    Their transparency and clear communication have made the entire process smooth and stress free.<br>
+
+                    We've worked with other marketing agencies before, but none have matched Skyndr's level of expertise, attention to detail,
+                    and commitment to seeing us succeed.
+                </p>
+
+                <p id="trustAuthor">Odai, founder of KDX Middle East</p>
+
+                <a href="#" class="trust-link">
+                    <span class="underline-text">HOW WE DO IT ?</span>
+                    <img src="https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903259/checkup_jhtgka.png" class="tickup">
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+
+    <section class="testimonials-section" id="testimonial">
+        <h2 class="testimonials-title">SUCCESS STORIES FROM OUR CLIENTS</h2>
+
+        <div class="testimonials-wrapper">
+
+            <!-- ARROW LEFT -->
+            <button class="t-arrow t-left" id="tPrev">
+                <svg width="22" height="15" viewBox="0 0 22 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0.292831 8.06712C-0.0975037 7.67678 -0.0975037 7.04392 0.292831 6.65359L6.65372 0.292697C7.04406 -0.0976381 7.67692 -0.0976381 8.06725 0.292697C8.45759 0.683033 8.45759 1.31589 8.06725 1.70623L2.41313 7.36035L8.06725 13.0145C8.45759 13.4048 8.45759 14.0377 8.06725 14.428C7.67692 14.8183 7.04406 14.8183 6.65372 14.428L0.292831 8.06712ZM21.3354 7.36035V8.35987H0.999598V7.36035V6.36083H21.3354V7.36035Z" fill="#EAF0F3"/>
+                </svg>
+            </button>
+
+            <!-- SLIDER -->
+            <div class="testimonials-slider" id="tSlider">
+
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p>
+                        We've been working with Skyndr for just over a year now, and at
+                        every stage they’ve shown exceptional professionalism, expertise,
+                        and genuine care for our business.
+                    </p>
+                    <span class="author">Hassan - Luster PPF</span>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p>
+                        Skyndr helped us achieve real, measurable growth through smart,
+                        data-driven strategies and A/B testing. Truly a team we highly
+                        recommend!
+                    </p>
+                    <span class="author">Odai - KDX PPF Distributor</span>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p>
+                        The Skyndr team built our eCommerce platform with incredible
+                        expertise and attention to detail. Their guidance saved us from
+                        countless challenges along the way.
+                    </p>
+                    <span class="author">Abdallah - Armadillo PPF</span>
+                </div>
+
+                <!-- Duplicate for infinite scroll -->
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p>
+                        The Skyndr team helped build our eCommerce platform with incredible expertise and attention to detail. Their guidance and experience saved us from countless challenges along the way.
+                    </p>
+                    <span class="author">Ahmed - Snake Protection PPF</span>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p>
+                        After just a few A/B tests, we were able to double our conversion rate. The Skyndr team has been an incredible partner, and we’re excited to keep growing together!
+                    </p>
+                    <span class="author">Mahmoud - Washclub Mobile autodetailing</span>
+                </div>
+            </div>
+
+            <!-- ARROW RIGHT -->
+            <button class="t-arrow t-right" id="tNext">
+                <svg width="22" height="15" viewBox="0 0 22 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21.0426 8.06718C21.433 7.67684 21.433 7.04398 21.0426 6.65365L14.6817 0.292758C14.2914 -0.0975771 13.6585 -0.0975771 13.2682 0.292758C12.8779 0.683095 12.8779 1.31595 13.2682 1.70629L18.9223 7.36041L13.2682 13.0145C12.8779 13.4049 12.8779 14.0377 13.2682 14.4281C13.6585 14.8184 14.2914 14.8184 14.6817 14.4281L21.0426 8.06718ZM0 7.36041V8.35993H20.3359V7.36041V6.3609H0V7.36041Z" fill="#EAF0F3"/>
+                </svg>
+            </button>
+        </div>
+
+        <!-- DOTS -->
+        <div class="t-dots">
+            <!-- <span class="t-dot active"></span>
+            <span class="t-dot"></span>
+            <span class="t-dot"></span> -->
+        </div>
+    </section>
+
+    <section class="why-work-section">
+        <div class="why-container">
+
+            <h2>WHY WORK<br>WITH US</h2>
+
+            <div class="why-items">
+
+                <div class="why-item">
+                    <div class="why-dot"></div>
+                    <p>Attention to detail.</p>
+                </div>
+
+                <div class="why-item">
+                    <div class="why-dot"></div>
+                    <p>Results focused</p>
+                </div>
+
+                <div class="why-item">
+                    <div class="why-dot"></div>
+                    <p>We deliver fast</p>
+                </div>
+
+                <div class="why-item">
+                    <div class="why-dot"></div>
+                    <p>No sacrificing <br> quality</p>
+                </div>
+
+                <!-- Animated line -->
+                <div class="why-progress-line"></div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="strategy-section" id="strategy">
+
+        <div class="strategy-container">
+
+            <!-- LEFT SIDE CONTENT -->
+            <div class="strategy-left">
+
+                <h2 style="color: #eaf0f3; "><span>Book</span> 30 Minutes <br> Strategy Call</h2>
+
+                <div class="strategy-list">
+
+                    <h4>On this strategy call we'll discuss:</h4>
+
+                    <ul>
+                        <li>Increase your conversion rate</li>
+                        <li>Lower your CPAs</li>
+                        <li>Scale & become more profitable</li>
+                    </ul>
+
+                    <h4 style="text-align: left;">Turn More Clicks Into <span class="green-text">Customers</span> — Without Spending More on Ads</h4>
+
+                    <ul>
+                        <li>Winning playbooks curated just for you</li>
+                        <li>Custom growth blueprint</li>
+                        <li>Prioritized action plan</li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+            <!-- RIGHT SIDE (CALENDLY PLACEHOLDER) -->
+            <div class="strategy-right">
+                <h3 class="form-title">Enter Details</h3>
+
+                <form class="strategy-form">
+
+                    <label>Name*</label>
+                    <input type="text" placeholder="e.g. John Doe" required>
+
+                    <label>Email Address*</label>
+                    <input type="email" placeholder="e.g. johndoe@gmail.com" required>
+
+                    <button type="button" class="add-guest">Add Guest</button>
+
+                    <label>Message</label>
+                    <textarea placeholder="Share anything that will help prepare for your meeting"></textarea>
+
+                    <label>
+                        Please share your current website and/or Amazon storefront and product*
+                    </label>
+                    <textarea placeholder="Fill this form"></textarea>
+
+                    <label>What’s your average monthly revenue*</label>
+                    <select required>
+                        <option value="">Select...</option>
+                        <option>Less than $10k</option>
+                        <option>$10k – $50k</option>
+                        <option>$50k – $100k</option>
+                        <option>$100k+</option>
+                    </select>
+
+                    <label>What’s 2+2?*</label>
+                    <select required>
+                        <option value="">Select...</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+
+                    <label>I would be interested in chatting about</label>
+
+                    <div class="checkbox-group">
+                        <label class="checkbox-item">
+                            <input type="checkbox" checked>
+                            <span class="custom-checkbox"></span>
+                            Search Ads
+                        </label>
+
+                        <label class="checkbox-item">
+                            <input type="checkbox">
+                            <span class="custom-checkbox"></span>
+                            Social Ads
+                        </label>
+
+                        <label class="checkbox-item">
+                            <input type="checkbox">
+                            <span class="custom-checkbox"></span>
+                            Amazon
+                        </label>
+                    </div>
+
+                    <button type="submit" class="submit-btn-lg">
+                        SCHEDULE MEETING
+                    </button>
+
+                </form>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="contact-section" id="contact">
+
+        <div class="contact-container">
+
+            <!-- LEFT COLUMN -->
+            <div class="contact-left">
+
+                <h2>CONTACT US</h2>
+                <p class="contact-sub">Your journey as an entrepreneur doesn’t have to be a lonely one.</p>
+
+                <form action="https://skyndr-ryhan.web.app/send.php" method="POST" class="contact-form">
+
+                    <label class="contant-lebel">Email</label>
+                    <input  type="email" name="email" placeholder="Enter your email..." required>
+
+                    <label class="contant-lebel">Services</label>
+
+                    <div class="custom-select">
+                        <div class="selected-option" style="border: 1px solid #fff;border-radius: 16px;">Select a service...</div>
+
+                        <ul class="options-list">
+                            <li data-value="Shopify Development">Shopify Dev</li>
+                            <li data-value="Content Creation">Content</li>
+                            <li data-value="Ads Management">Ads Management</li>
+                            <li data-value="Graphic Design">Graphic Design</li>
+                        </ul>
+
+                        <!-- Hidden input that gets submitted -->
+                        <input type="hidden" name="service" id="serviceInput">
+                    </div>
+
+                    <label class="contant-lebel">Website</label>
+                    <input type="text" name="website" placeholder="Enter your website...">
+
+                    <label class="contant-lebel">Message</label>
+                    <textarea name="message" placeholder="Write your message..." required></textarea>
+
+                    <button type="submit" class="submit-btn">Submit</button>
+
+                </form>
+
+            </div>
+
+            <!-- RIGHT COLUMN IMAGES -->
+            <div class="contact-right">
+                <img src="https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903232/contact-section_c7hynd.png" alt="Preview">
+            </div>
+
+        </div>
+
+    </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+
+            <!-- COLUMN 1 — LOGO + NAME -->
+            <div class="footer-col logo-col">
+                <img src="https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903233/sdfdvd_3_uw8fdo.png" class="footer-logo" alt="SKYNDR Logo">
+                <!-- <h3 class="footer-brand">SKYNDR</h3> -->
+            </div>
+
+            <!-- COLUMN 2 — CONTACT + SOCIAL -->
+            <div class="footer-col contact-col">
+                <h4 style="font-weight: 600; color: #FFFFFF;">Contact Us</h4>
+                <p class="footer-email">Skyndrbusiness@gmail.com</p>
+
+                <div class="footer-social">
+                    <a href="https://www.instagram.com/skyndr.solution/?igsh=MTBvc3h5ZWZta3h4bg%3D%3D&amp;utm_source=qr#"><img src="https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903232/ig_nndpxq.svg" alt="Instagram"></a>
+                    <a href="https://www.tiktok.com/@skyndr.solutions?_r=1&amp;_t=ZS-9272KiMpxn2"><img src="https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903233/tiktok_ukpi33.svg" alt="TikTok"></a>
+                    <a href="https://www.linkedin.com/in/skyndr-solution-5898013a0?utm_source=share&amp;utm_campaign=share_via&amp;utm_content=profile&amp;utm_medium=ios_app"><img src="https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903233/linkedin_dliwun.svg" alt="LinkedIn"></a>
+                    <a href="https://x.com/skyndrsolution?s=11"><img src="https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903239/x_cz6mnc.svg" alt="X"></a>
+                    <a href="https://youtube.com/@skyndrsolution?si=FASRF7MmDnKmowvS"><img src="https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903239/youtube_lmqrtd.svg" alt="YouTube"></a>
+                </div>
+            </div>
+
+            <!-- COLUMN 3 — FOOTER LINKS -->
+            <div class="footer-col links-col">
+                <a href="#about">About Us</a>
+                <a href="#services">Services</a>
+                <a href="#testimonial">Testimonial</a>
+                <a href="#trust">Case study</a>
+                <a href="#contact">Contact Us</a>
+            </div>
+
+            <!-- COLUMN 4 — RIGHT TEXT (4 LINE VERSION) -->
+            <div class="footer-col right-col">
+                <h2 class="right-text">
+                    Driving Real Leads<br class="desktop-only">
+                    And Booked<br class="mobile-only">
+                    Installs For<br>
+                    AutoFilm Shops
+                </h2>
+            </div>
+
+        </div>
+
+        <p class="footer-copy">© <span id="year"></span> Skyndr. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        // TOGGLE MOBILE MENU
+        if (hamburger && mobileMenu) {
+            hamburger.addEventListener('click', function (e) {
+                e.stopPropagation();
+                hamburger.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+            });
+        }
+
+        // CLOSE WHEN CLICKING OUTSIDE
+        document.addEventListener('click', function (e) {
+            if (
+                mobileMenu.classList.contains('active') &&
+                !mobileMenu.contains(e.target) &&
+                !hamburger.contains(e.target)
+            ) {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            }
+        });
+
+        // CLOSE WHEN CLICKING A LINK
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            });
+        });
+
+        // SMOOTH SCROLL
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                const target = document.querySelector(targetId);
+                if (!target) return;
+
+                e.preventDefault();
+
+                const header = document.querySelector('.nav-header');
+                const offset = header ? header.offsetHeight : 0;
+
+                window.scrollTo({
+                    top: target.offsetTop - offset,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+    });
+    </script>
+
+    <script>
+            // Keep a reference to the track template OUTSIDE the function
+    const marquee = document.getElementById('marquee');
+    const trackTemplate = document.getElementById('track').cloneNode(true); 
+
+    function setupMarquee() {
+        if (!marquee || !trackTemplate) return;
+        
+        // Use the template to get the width so it never becomes 0
+        marquee.innerHTML = '';
+        marquee.appendChild(trackTemplate.cloneNode(true));
+        
+        const singleTrack = marquee.firstElementChild;
+        const trackWidth = singleTrack.offsetWidth;
+
+        if (trackWidth <= 0) return; // Safety check
+
+        marquee.style.setProperty('--move-distance', `-${trackWidth}px`);
+        const clonesNeeded = Math.ceil(window.innerWidth / trackWidth) + 1;
+
+        // We already have 1, add the rest
+        for (let i = 0; i < clonesNeeded; i++) {
+                marquee.appendChild(trackTemplate.cloneNode(true));
+            }
+        }
+
+        // Use a debounce for resize to prevent crashing during window dragging
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(setupMarquee, 200);
+        });
+        window.addEventListener('load', setupMarquee);
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const track = document.querySelector('.marquee-track');
+            if (!track) return;
+
+            // Clone the logos to create the second half of the track
+            const clone = track.innerHTML;
+            track.innerHTML += clone;
+        });
+    </script>
+</body>
+</html>
