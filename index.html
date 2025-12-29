@@ -130,7 +130,7 @@
             <div class="hamburger" id="hamburger">
                 <span></span>
                 <span></span>
-                <span style="width: 20px;justify-self: right;"></span>
+                <span></span>
             </div>
 
         </div>
@@ -955,6 +955,32 @@
             // Clone the logos to create the second half of the track
             const clone = track.innerHTML;
             track.innerHTML += clone;
+        });
+
+
+        // Prevent mobile menu from interfering with trust tabs
+        document.addEventListener("DOMContentLoaded", () => {
+            const tabs = document.querySelectorAll(".trust-tab");
+            
+            tabs.forEach(tab => {
+                tab.addEventListener("click", function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    // Remove active from all tabs
+                    tabs.forEach(t => t.classList.remove("active"));
+                    
+                    // Add active to clicked tab
+                    this.classList.add("active");
+                    
+                    // Your existing code to change content...
+                    const key = this.getAttribute("data-target");
+                    const data = trustData[key];
+                    if (data) {
+                        // Update content...
+                    }
+                });
+            });
         });
     </script>
 </body>

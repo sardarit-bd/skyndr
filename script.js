@@ -164,25 +164,21 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-
 //testimonial slider auto swipe in mobile
 document.addEventListener("DOMContentLoaded", () => {
     const slider = document.getElementById("tSlider");
     const prevBtn = document.getElementById("tPrev");
     const nextBtn = document.getElementById("tNext");
-    const cards = slider.querySelectorAll(".testimonial-card");
+    const cards = Array.from(slider.querySelectorAll(".testimonial-card"));
     const container = slider.parentElement;
 
     if (!slider || cards.length === 0) return;
 
     const isMobile = () => window.innerWidth <= 768;
-    
-    // Gap and card width
     const gap = 30;
     const cardWidth = 400;
     const totalCardWidth = cardWidth + gap;
 
-    /* ========= VARIABLES ========= */
     let dotsContainer = null;
     let dots = [];
     let index = 0;
@@ -199,6 +195,9 @@ document.addEventListener("DOMContentLoaded", () => {
     
     /* ========= MOBILE SLIDER SETUP (WITH DOTS) ========= */
     function setupMobileSlider() {
+        // Clear any existing autoSlide
+        clearInterval(autoSlide);
+        
         // Hide desktop navigation buttons
         if (prevBtn && nextBtn) {
             prevBtn.style.display = "none";
@@ -220,20 +219,25 @@ document.addEventListener("DOMContentLoaded", () => {
             -webkit-overflow-scrolling: touch;
             scrollbar-width: none;
             -ms-overflow-style: none;
-            padding-left: calc(50vw - (85vw / 2)); /* Center cards */
+            padding-left: calc(50vw - (85vw / 2));
         `;
         
+        // Reset slider content - remove clones
+        slider.innerHTML = "";
+        cards.forEach(card => slider.appendChild(card.cloneNode(true)));
+        
+        const mobileCards = slider.querySelectorAll(".testimonial-card");
+        
         // Apply center alignment to cards
-        cards.forEach((card, i) => {
+        mobileCards.forEach((card, i) => {
             card.style.cssText = `
                 flex: 0 0 auto;
                 width: 85vw;
-                scroll-snap-align: center; /* Changed from 'start' to 'center' */
+                scroll-snap-align: center;
                 margin-right: ${gap}px;
             `;
             
-            // Remove last card margin
-            if (i === cards.length - 1) {
+            if (i === mobileCards.length - 1) {
                 card.style.marginRight = "40px";
             }
         });
@@ -252,13 +256,12 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }, 100);
         
-        // Handle dot click for mobile - CENTER THE CARD
+        // Handle dot click for mobile
         dots.forEach(dot => {
             dot.addEventListener("click", function() {
                 const dotIndex = parseInt(this.getAttribute("data-index"));
                 index = dotIndex;
                 
-                // Calculate scroll position to center the card
                 const cardWidthMobile = window.innerWidth * 0.85;
                 const containerWidth = window.innerWidth;
                 const cardOffset = (containerWidth - cardWidthMobile) / 2;
@@ -272,13 +275,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 updateDots(dotIndex);
             });
         });
-        
-        // Disable desktop autoplay on mobile
-        if (autoSlide) clearInterval(autoSlide);
     }
     
     /* ========= DESKTOP SLIDER SETUP (NO DOTS) ========= */
     function setupDesktopSlider() {
+        // Clear mobile autoSlide if exists
+        clearInterval(autoSlide);
+        
         // Show desktop navigation buttons
         if (prevBtn && nextBtn) {
             prevBtn.style.display = "flex";
@@ -292,18 +295,22 @@ document.addEventListener("DOMContentLoaded", () => {
         
         // Remove mobile styles
         slider.style.cssText = "";
-        cards.forEach(card => {
-            card.style.cssText = "";
-        });
         
-        // Desktop cloning for infinite effect
+        // Reset slider and add clones for infinite loop
+        slider.innerHTML = "";
+        cards.forEach(card => slider.appendChild(card.cloneNode(true)));
+        
         const firstClone = cards[0].cloneNode(true);
         const lastClone = cards[cards.length - 1].cloneNode(true);
         
         slider.appendChild(firstClone);
-        slider.insertBefore(lastClone, cards[0]);
+        slider.insertBefore(lastClone, slider.firstChild);
         
         const allCards = slider.querySelectorAll(".testimonial-card");
+        
+        allCards.forEach(card => {
+            card.style.cssText = "";
+        });
         
         index = 1;
         slider.style.transform = `translateX(-${index * totalCardWidth}px)`;
@@ -322,63 +329,65 @@ document.addEventListener("DOMContentLoaded", () => {
         
         // Desktop navigation
         if (nextBtn) {
-            nextBtn.addEventListener("click", () => {
+            nextBtn.onclick = () => {
                 index++;
                 moveDesktop();
-            });
+            };
         }
         
         if (prevBtn) {
-            prevBtn.addEventListener("click", () => {
+            prevBtn.onclick = () => {
                 index--;
                 moveDesktop();
-            });
+            };
         }
         
         // Desktop transition end
-        slider.addEventListener("transitionend", () => {
+        slider.ontransitionend = () => {
             slider.style.transition = "none";
             
-            if (allCards[index] === firstClone) {
+            if (index >= allCards.length - 1) {
                 index = 1;
                 slider.style.transform = `translateX(-${index * totalCardWidth}px)`;
             }
             
-            if (allCards[index] === lastClone) {
+            if (index <= 0) {
                 index = allCards.length - 2;
                 slider.style.transform = `translateX(-${index * totalCardWidth}px)`;
             }
             
             isMoving = false;
-        });
+        };
         
         // Desktop autoplay
         autoSlide = setInterval(() => {
             if (nextBtn) nextBtn.click();
         }, 4000);
         
-        slider.addEventListener("mouseenter", () => clearInterval(autoSlide));
-        slider.addEventListener("mouseleave", () => {
+        slider.onmouseenter = () => clearInterval(autoSlide);
+        slider.onmouseleave = () => {
+            clearInterval(autoSlide);
             autoSlide = setInterval(() => {
                 if (nextBtn) nextBtn.click();
             }, 4000);
-        });
+        };
         
         // Desktop touch support
         let startX = 0;
         
-        slider.addEventListener("touchstart", e => {
+        slider.ontouchstart = (e) => {
             startX = e.touches[0].clientX;
             clearInterval(autoSlide);
-        });
+        };
         
-        slider.addEventListener("touchend", e => {
+        slider.ontouchend = (e) => {
             const diff = startX - e.changedTouches[0].clientX;
             if (Math.abs(diff) > 50) {
                 diff > 0 ? nextBtn.click() : prevBtn.click();
             }
+            clearInterval(autoSlide);
             autoSlide = setInterval(() => nextBtn.click(), 4000);
-        });
+        };
     }
     
     /* ========= CREATE DOTS (MOBILE ONLY) ========= */
@@ -389,32 +398,20 @@ document.addEventListener("DOMContentLoaded", () => {
             display: none;
             justify-content: center;
             gap: 8px;
-            
             padding: 15px 0;
             width: 100%;
         `;
         
-        // Create dots based on number of cards
         for (let i = 0; i < cards.length; i++) {
             const dot = document.createElement("button");
             dot.className = "mobile-slider-dot";
             dot.setAttribute("aria-label", `Go to testimonial ${i + 1}`);
             dot.setAttribute("data-index", i);
-            dot.style.cssText = `
-                width: 12px;
-                height: 12px;
-                border-radius: 50%;
-                border: none;
-                background-color: ${i === 0 ? '#fff' : '#dddddd'}; /* RED for active */
-                cursor: pointer;
-                transition: all 0.3s ease;
-                padding: 0;
-            `;
+            dot.style.backgroundColor = '#4A4A4A';
             
             dotsContainer.appendChild(dot);
         }
         
-        // Insert dots after slider container
         container.parentNode.insertBefore(dotsContainer, container.nextSibling);
         dots = dotsContainer.querySelectorAll(".mobile-slider-dot");
     }
@@ -422,29 +419,24 @@ document.addEventListener("DOMContentLoaded", () => {
     /* ========= UPDATE DOTS FUNCTION ========= */
     function updateDots(activeIndex) {
         if (!dots || dots.length === 0) return;
-        
+
         dots.forEach((dot, i) => {
             const isActive = i === activeIndex;
-            // RED COLOR for active dot
-            dot.style.backgroundColor = isActive ? '#fff' : '#dddddd';
-            dot.style.transform = `scale(${isActive ? 1.3 : 1})`;
-            dot.style.boxShadow = isActive ? '0 0 8px rgba(245, 235, 235, 1)0.91)' : 'none';
+            dot.style.backgroundColor = isActive ? '#ff3d00' : '#4A4A4A';
+            dot.style.boxShadow = isActive ? '0 0 6px rgba(255, 61, 0, 0.6)' : 'none';
         });
     }
-    
+
     function updateDotsOnScroll() {
         if (!isMobile() || !dotsContainer || dotsContainer.style.display === "none") return;
         
-        // Clear previous timeout
         if (scrollTimeout) clearTimeout(scrollTimeout);
         
-        // Debounce scroll event
         scrollTimeout = setTimeout(() => {
             const cardWidthMobile = window.innerWidth * 0.85;
             const containerWidth = window.innerWidth;
             const cardOffset = (containerWidth - cardWidthMobile) / 2;
             
-            // Calculate which card is currently centered
             const scrollLeft = slider.scrollLeft + cardOffset;
             const currentIndex = Math.round(scrollLeft / (cardWidthMobile + gap));
             
@@ -457,6 +449,7 @@ document.addEventListener("DOMContentLoaded", () => {
     
     /* ========= RESIZE HANDLER ========= */
     function handleResize() {
+        clearInterval(autoSlide);
         if (isMobile()) {
             setupMobileSlider();
         } else {
@@ -464,21 +457,17 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
     
-    // Initial setup based on screen size
     handleResize();
     
-    // Listen for resize with debounce
     let resizeTimeout;
     window.addEventListener("resize", () => {
         clearTimeout(resizeTimeout);
         resizeTimeout = setTimeout(handleResize, 250);
     });
     
-    // Handle orientation change
     window.addEventListener("orientationchange", () => {
         setTimeout(() => {
             handleResize();
-            // Re-center after orientation change
             if (isMobile()) {
                 setTimeout(() => {
                     const cardWidthMobile = window.innerWidth * 0.85;
@@ -495,117 +484,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 100);
     });
 });
-
-// Progress bar functionality (unchanged)
-document.addEventListener("DOMContentLoaded", () => {
-    const slider = document.getElementById("tSlider");
-    const prevBtn = document.getElementById("tPrev");
-    const nextBtn = document.getElementById("tNext");
-    const cards = Array.from(slider.querySelectorAll(".testimonial-card"));
-    const container = slider.parentElement;
-
-    if (!slider || cards.length === 0) return;
-
-    const isMobile = () => window.innerWidth <= 768;
-    const gap = 30;
-    const cardWidth = 400;
-    const totalCardWidth = cardWidth + gap;
-
-    let index = 0;
-    let isMoving = false;
-    let autoSlide;
-
-    function init() {
-        if (isMobile()) {
-            setupMobileSlider();
-        } else {
-            setupDesktopSlider();
-        }
-    }
-
-    /* ========= DESKTOP SLIDER (INFINITE LOOP) ========= */
-    function setupDesktopSlider() {
-        // Clear previous interval and clones if any
-        clearInterval(autoSlide);
-        slider.innerHTML = ""; 
-        
-
-        cards.forEach(card => slider.appendChild(card.cloneNode(true)));
-
-
-        const firstBatch = cards.map(card => card.cloneNode(true));
-        const lastBatch = cards.map(card => card.cloneNode(true));
-
-        firstBatch.forEach(clone => slider.appendChild(clone)); 
-        lastBatch.reverse().forEach(clone => slider.insertBefore(clone, slider.firstChild));
-
-        const allCards = slider.querySelectorAll(".testimonial-card");
-        
-
-        index = cards.length;
-        slider.style.transition = "none";
-        slider.style.transform = `translateX(-${index * totalCardWidth}px)`;
-
-        // ৪. মুভ ফাংশন
-        function moveDesktop(direction) {
-            if (isMoving) return;
-            isMoving = true;
-
-            index = direction === 'next' ? index + 1 : index - 1;
-            
-            slider.style.transition = "transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)";
-            slider.style.transform = `translateX(-${index * totalCardWidth}px)`;
-        }
-        slider.ontransitionend = () => {
-            isMoving = false;
-
-            if (index >= cards.length * 2) {
-                slider.style.transition = "none";
-                index = cards.length;
-                slider.style.transform = `translateX(-${index * totalCardWidth}px)`;
-            }
-
-            if (index <= cards.length - cards.length) {
-                slider.style.transition = "none";
-                index = cards.length;
-                slider.style.transform = `translateX(-${index * totalCardWidth}px)`;
-            }
-        };
-
-    
-        nextBtn.onclick = () => moveDesktop('next');
-        prevBtn.onclick = () => moveDesktop('prev');
-
-
-        startAutoSlide();
-        slider.onmouseenter = () => clearInterval(autoSlide);
-        slider.onmouseleave = startAutoSlide;
-    }
-
-    function startAutoSlide() {
-        clearInterval(autoSlide);
-        autoSlide = setInterval(() => nextBtn.click(), 4000);
-    }
-
-    /* ========= MOBILE SLIDER (DOTS) ========= */
-    function setupMobileSlider() {
-        clearInterval(autoSlide);
-        slider.style.transition = "none";
-        slider.innerHTML = "";
-        cards.forEach(card => slider.appendChild(card.cloneNode(true)));
-    }
-
-    window.addEventListener("resize", () => {
-        clearTimeout(window.resizer);
-        window.resizer = setTimeout(init, 250);
-    });
-
-    init();
-});
-
-
-
-
 
 
 // MOBILE MENU DROPDOWN TOGGLE
