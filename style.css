@@ -448,6 +448,21 @@ body {
     }
 }
 
+@media (max-width: 768px) {
+    .logo-wrapper {
+        border-radius: 30px !important;
+        width: 354px !important;
+        height: 47px !important;
+        padding: 0 20px !important;
+    }
+    
+    .marquee-track img {
+        height: 35px !important;
+        padding: 5px 10px !important;
+        gap: 35px !important;
+    }
+}
+
 
 
 /* WHAT SETS US APART SECTION */
@@ -2301,7 +2316,9 @@ body {
     
     /* LOGO MARQUEE */
     .logo-wrapper {
-        border-radius: 20px;
+        border-radius: 2px;
+        width: 354px !important;
+        height: 47px !important;
     }
     
     .marquee-track img {
