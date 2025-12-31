@@ -426,6 +426,11 @@ img {
         font-size: 15px;
         margin-bottom: 15px;
     }
+
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder {
+        color: #EAF0F380;            
+    }
     
     /* CONTACT IMAGES GRID - TABLET SIZE */
     .contact-images-grid-reversed {
@@ -1277,7 +1282,7 @@ img {
     display: flex;
     /* width: 100%;
     height: 410px; */
-   height: 100%;
+    height: 100%;
     transition: transform 0.5s ease-in-out;
 }
 
@@ -2271,7 +2276,7 @@ img {
 
 
 .footer-col {
-    flex: 0 0 150px;
+    flex: 0 0 229px;
     text-align: start;
 }
 
@@ -2309,6 +2314,7 @@ img {
     font-size: 15px;
     opacity: 0.9;
     margin-bottom: 20px;
+    color: #FFFFFF;
 }
 
 .footer-social {
@@ -2334,7 +2340,8 @@ img {
     flex: 0 0 150px; /* ফিক্সড 150px */
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 8px;
+    color: #FFFFFF;
 }
 
 .links-col a {
@@ -2366,12 +2373,18 @@ img {
 }
 
 .footer-logo {
-    width: 130px;
+    width: 229px;
+    /* height: 235px */
 }
 
 .footer-brand {
     font-size: 28px;
     font-weight: 700;
+}
+
+.links-col, 
+.contact-col {
+    margin-top: 20px;
 }
 
 .footer-copy {
@@ -3038,8 +3051,8 @@ img {
         margin-top: 20px;        
         font-weight: 700;
         padding: 10px 24px;       
-        width: 100%;
-        /* width: 312px; */
+        /* width: 100%; */
+        width: 312px;
         height: 72px;
     }
     .strategy-right
@@ -5024,14 +5037,27 @@ img {
     .service-slider {
         width: 700px; /* Original width */
         height: 542px; /* Original height */
+        display: flex;
+        flex-direction: column;
     }
 
     .image-wrapper {
-        height: 410px; /* Original approximate height */
+        flex: 1; /* Takes available space */
+        min-height: 410px; /* Minimum height */
+        height: auto;
+        overflow: hidden;
+        border-radius: 20px;/* Original approximate height */
     }
 
     .slides {
         height: 100%; /* Original approximate height */
+        display: flex;
+    }
+    .slide-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        flex-shrink: 0;
     }
 
     .arrow {
@@ -5312,7 +5338,7 @@ img {
     }
 
     .footer-logo {
-        width: 130px; /* Original size */
+        width: 217px; /* Original size */
     }
 
     .footer-brand {
@@ -5351,6 +5377,9 @@ img {
         /* max-width: 1200px; */
         margin-left: auto;
         margin-right: auto;
+    }
+    .footer-logo {
+        width: 217px;
     }
 }
 
