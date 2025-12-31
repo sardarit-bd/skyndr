@@ -5030,7 +5030,7 @@ img {
     }
 
     .slides {
-        height: 410px; /* Original approximate height */
+        height: 100%; /* Original approximate height */
     }
 
     .arrow {
