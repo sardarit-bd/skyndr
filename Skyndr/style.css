@@ -3900,7 +3900,7 @@ img {
     
     .mobile-logo {
         display: block;
-        width: 80px;
+        width: 130px;
     }
     
     .logo-col {
@@ -4993,7 +4993,7 @@ img {
     }
 
     .service-container {
-        max-width: 1200px;
+        max-width: 1440px;
         margin: 0 auto;
         gap: 80px; /* Original gap */
     }
@@ -5086,7 +5086,7 @@ img {
     }
 
     .trust-content-wrapper {
-        max-width: 1200px;
+        max-width: 1440px;
         margin: 0 auto;
         gap: 80px; /* Original gap */
     }
@@ -5331,7 +5331,7 @@ img {
     }
 
     .footer-container {
-        max-width: 1200px;
+        max-width: 1440px;
         margin: 0 auto;
         padding: 0 50px; /* Original padding */
         gap: 60px; /* Original approximate gap */
