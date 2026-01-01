@@ -7,11 +7,6 @@
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903234/Logo_g1ao9q.svg">
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-    <script>
-        (function () {
-            emailjs.init("ZldMS341nOE4GKQgv");
-        })();
-    </script>
     <style>
         .strategy-right {
             padding: 32px;
@@ -781,13 +776,12 @@
             <h2>CONTACT US</h2>
             <p class="contact-sub">Your journey as an entrepreneur doesn’t have to be a lonely one.</p>
 
-            <form action="https://skyndr-ryhan.web.app/send.php" method="POST" class="contact-form">
+            <form id="contactForm" class="contact-form">
 
                 <label class="contant-lebel">Email</label>
                 <input type="email" name="email" placeholder="Enter your email..." required>
 
                 <label class="contant-lebel">Services</label>
-
                 <div class="custom-select">
                     <div class="selected-option" style="border: 1px solid #eaf0f3; border-radius: 16px;">Select a service...</div>
                     <ul class="options-list">
@@ -805,10 +799,11 @@
                 <label class="contant-lebel">Message</label>
                 <textarea name="message" placeholder="Write your message..." required></textarea>
 
-                <button type="submit" class="submit-btn">Submit</button>
+                <button type="button" id="submitBtn" class="submit-btn">Submit</button>
 
             </form>
         </div>
+
         <!-- RIGHT COLUMN IMAGES - REVERSED LAYOUT -->
         <div class="contact-right">
             <div class="contact-images-grid-reversed">
@@ -994,41 +989,66 @@
             track.innerHTML += clone;
         });
     </script>
+
     <script>
-        document.getElementById("strategyForm").addEventListener("submit", function (e) {
-            e.preventDefault();
+        // EmailJS
+        (function(){
+            emailjs.init("ZldMS341nOE4GKQgv"); 
+        })();
 
-            const interests = [...document.querySelectorAll(".interest:checked")]
-            .map(el => el.value)
-            .join(", ");
+        const submitBtn = document.getElementById('submitBtn');
+        const form = document.getElementById('contactForm'); 
+        const serviceInput = document.getElementById('serviceInput');
+        const selectedOption = document.querySelector('.selected-option');
+        const optionsList = document.querySelectorAll('.options-list li');
 
-            if (this.math.value !== "4") {
-                alert("❌ Wrong answer");
+        // Custom select click
+        selectedOption.addEventListener('click', () => {
+            document.querySelector('.options-list').classList.toggle('show');
+        });
+
+        optionsList.forEach(li => {
+            li.addEventListener('click', () => {
+                const value = li.getAttribute('data-value');
+                selectedOption.textContent = li.textContent;
+                serviceInput.value = value;
+                document.querySelector('.options-list').classList.remove('show');
+            });
+        });
+
+        // Click outside to close select
+        document.addEventListener('click', (e) => {
+            if(!e.target.closest('.custom-select')) {
+                document.querySelector('.options-list').classList.remove('show');
+            }
+        });
+
+        // Form submit
+        submitBtn.addEventListener('click', function() {
+            if(!serviceInput.value) {
+                alert('Please select a service.');
                 return;
             }
 
+            const formData = {
+                email: form.email.value,
+                service: serviceInput.value,
+                website: form.website.value,
+                message: form.message.value
+            };
 
-            emailjs.send(
-            "service_ufbfuzd",
-            "template_qt52um5",
-            {
-                name: this.name.value,
-                email: this.email.value,
-                message: this.message.value,
-                website: this.website.value,
-                revenue: this.revenue.value,
-                interest: interests
-            }
-            ).then(
-            () => {
-                alert("✅ Email sent successfully!");
-                this.reset();
-            },
-            (error) => {
-                alert("❌ Failed: " + error.text);
-            }
-            );
+            emailjs.send('service_ufbfuzd', 'template_qt52um5', formData)
+            .then(function(response) {
+                alert('Your message has been sent successfully!');
+                form.reset();
+                selectedOption.textContent = "Select a service...";
+                serviceInput.value = "";
+            }, function(error) {
+                alert('Failed to send message. Please try again.');
+                console.error(error);
+            });
         });
     </script>
+
 </body>
 </html>
