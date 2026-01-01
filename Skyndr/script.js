@@ -175,7 +175,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!slider || cards.length === 0) return;
 
-    const isMobile = () => window.innerWidth <= 768;
+    const isMobile = () => window.innerWidth <= 991;
     
     // Gap and card width
     const gap = 30;
@@ -506,7 +506,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!slider || cards.length === 0) return;
 
-    const isMobile = () => window.innerWidth <= 768;
+    const isMobile = () => window.innerWidth <= 991;
     const gap = 30;
     const cardWidth = 400;
     const totalCardWidth = cardWidth + gap;
