@@ -6,6 +6,12 @@
     <title>SKYNDR</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903234/Logo_g1ao9q.svg">
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script>
+        (function () {
+            emailjs.init("ZldMS341nOE4GKQgv");
+        })();
+    </script>
     <style>
         .strategy-right {
             padding: 32px;
@@ -700,26 +706,26 @@
             <div class="strategy-right">
                 <h3 class="form-title">Enter Details</h3>
 
-                <form class="strategy-form">
+                <form class="strategy-form"  id="strategyForm">
 
                     <label>Name*</label>
-                    <input type="text" placeholder="e.g. John Doe" required>
+                    <input type="text" name="name" placeholder="e.g. John Doe" required>
 
                     <label>Email Address*</label>
-                    <input type="email" placeholder="e.g. johndoe@gmail.com" required>
+                    <input type="email" name="email" placeholder="e.g. johndoe@gmail.com" required>
 
                     <button type="button" class="add-guest">Add Guest</button>
 
                     <label>Message</label>
-                    <textarea placeholder="Share anything that will help prepare for your meeting"></textarea>
+                    <textarea name="message" placeholder="Share anything that will help prepare for your meeting"></textarea>
 
                     <label>
                         Please share your current website and/or Amazon storefront and product*
                     </label>
-                    <textarea placeholder="Fill this form"></textarea>
+                    <textarea name="website" placeholder="Fill this form"></textarea>
 
                     <label>What’s your average monthly revenue*</label>
-                    <select required>
+                    <select name="revenue" required>
                         <option value="">Select...</option>
                         <option>Less than $10k</option>
                         <option>$10k – $50k</option>
@@ -728,7 +734,7 @@
                     </select>
 
                     <label>What’s 2+2?*</label>
-                    <select required>
+                    <select name="math" required>
                         <option value="">Select...</option>
                         <option>3</option>
                         <option>4</option>
@@ -739,19 +745,19 @@
 
                     <div class="checkbox-group">
                         <label class="checkbox-item">
-                            <input type="checkbox" checked>
+                            <input type="checkbox"  class="interest" value="Search Ads" checked>
                             <span class="custom-checkbox"></span>
                             Search Ads
                         </label>
 
                         <label class="checkbox-item">
-                            <input type="checkbox">
+                            <input type="checkbox" class="interest" value="Social Ads">
                             <span class="custom-checkbox"></span>
                             Social Ads
                         </label>
 
                         <label class="checkbox-item">
-                            <input type="checkbox">
+                            <input type="checkbox" class="interest" value="Amazon">
                             <span class="custom-checkbox"></span>
                             Amazon
                         </label>
@@ -760,7 +766,6 @@
                     <button type="submit" class="submit-btn-lg">
                         SCHEDULE MEETING
                     </button>
-
                 </form>
             </div>
         </div>
@@ -987,6 +992,42 @@
             // Clone the logos to create the second half of the track
             const clone = track.innerHTML;
             track.innerHTML += clone;
+        });
+    </script>
+    <script>
+        document.getElementById("strategyForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const interests = [...document.querySelectorAll(".interest:checked")]
+            .map(el => el.value)
+            .join(", ");
+
+            if (this.math.value !== "4") {
+                alert("❌ Wrong answer");
+                return;
+            }
+
+
+            emailjs.send(
+            "service_ufbfuzd",
+            "template_qt52um5",
+            {
+                name: this.name.value,
+                email: this.email.value,
+                message: this.message.value,
+                website: this.website.value,
+                revenue: this.revenue.value,
+                interest: interests
+            }
+            ).then(
+            () => {
+                alert("✅ Email sent successfully!");
+                this.reset();
+            },
+            (error) => {
+                alert("❌ Failed: " + error.text);
+            }
+            );
         });
     </script>
 </body>
