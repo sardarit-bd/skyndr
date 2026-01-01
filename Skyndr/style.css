@@ -3052,8 +3052,8 @@ img {
         margin-top: 20px;        
         font-weight: 700;
         padding: 10px 24px;       
-        /* width: 100%; */
-        width: 312px;
+        width: 100%;
+        /* width: 312px; */
         height: 72px;
     }
     .strategy-right
