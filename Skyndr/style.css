@@ -5738,3 +5738,11 @@ img {
         max-width: 1500px;
     }
 }
+
+
+
+@media (max-width: 768px) {
+    .strategy-list-head2{
+        text-align: left !important;
+    }
+}
