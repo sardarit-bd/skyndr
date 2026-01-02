@@ -4388,7 +4388,7 @@ img {
 
     .why-progress-line {
         left: 50px;
-        top: 4px;
+        top: 3px;
         width: calc(100% - 100px);
         height: 2px;
     }
