@@ -292,11 +292,12 @@ img {
 /* MOBILE RESPONSIVE STYLES - FIXED */
 @media (max-width: 768px) {
     .contact-images-grid-reversed {
-        height: auto;
-        min-height: 400px;
-        gap: 12px;
-        display: flex;
-        flex-direction: column;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+        position: relative !important;
+        width: 100% !important;
+        min-height: auto !important;
     }
 
     .top-images-row {
@@ -304,7 +305,7 @@ img {
         display: flex;
         gap: 8px;
         height: auto;
-        min-height: 150px;
+        /* min-height: 150px; */
     }
 
     .top-image-item {
@@ -325,16 +326,26 @@ img {
         width: 100%;
         height: 200px;
         position: relative;
-        top: 0;
+        /* top: 0; */
         /* Remove top positioning */
         margin-top: 0;
         /* Remove negative margin */
+         top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        order: 3; /* Ensure it comes after top images */
+        flex: 0 0 auto !important;
+        /* border: 1px solid red; */
     }
 
     .bottom-large-image img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+        width: 100% !important;
+        height: 341px !important;
+        object-fit: cover !important;
+        display: block !important;
+        position: relative !important;
     }
 
     /* Adjust overlay positioning for mobile */
@@ -342,6 +353,18 @@ img {
     .bottom-image-overlay {
         padding: 10px;
         font-size: 90%;
+    }
+
+    /* FIX THE OVERLAY */
+    .bottom-image-overlay {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        padding: 15px !important;
+        background: rgba(10, 10, 10, 0.7) !important;
+        z-index: 2 !important;
     }
 
     /* Adjust metrics for mobile */
@@ -379,9 +402,10 @@ img {
 
     .bottom-large-image {
         width: 100% !important;
-        height: 180px !important;
+        height: 100%;
         margin: 0 auto;
         top: 0;
+        /* border: 1px solid red; */
     }
 
     .mobile-show {
@@ -1776,7 +1800,7 @@ img {
 /* WHY WORK WITH US */
 .why-work-section {
     background: #0F0F0F;
-    padding: 50px 0;
+    /* padding: 50px 0; */
     width: 100%;
 }
 
@@ -1885,7 +1909,7 @@ img {
 .strategy-left {
     width: 50%;
     height: 1000px;
-    padding: 20px;
+    padding: 40px;
     border-right: 1px inset #BBFE00;
     font-family: 'Open Sans' !important;
 }
@@ -2151,9 +2175,9 @@ img {
 /* CONTACT SECTION */
 .contact-section {
     padding: 80px;
-    background:
+    /* background:
         url("https://res.cloudinary.com/dvj0lqopq/image/upload/v1766993449/8_jsnrdf.png") center / cover no-repeat,
-        #0F0F0F;
+        #0F0F0F; */
 
 }
 
@@ -2753,7 +2777,7 @@ img {
 
     /* WHY WORK */
     .why-work-section {
-        padding: 30px 0;
+        padding: 0;
     }
 
     .why-container {
@@ -2801,12 +2825,16 @@ img {
     }
 
     .why-progress-line {
-        width: 2px;
-        height: 100%;
+        width: 1px;
+        height: 0%;          /* শুরুতে 0% */
         background: #BBFE00;
-        left: 11.5px;
-        top: 15px;
+        left: 11.1px;
+        top: 15px;           /* উপরে ফিক্সড */
+        bottom: auto;        /* bottom রিমুভ */
+        transform-origin: top; /* উপরে থেকে নিচের দিকে বাড়বে */
+        transition: height 1.4s ease-out; /* উচ্চতা পরিবর্তনে ট্রানজিশন */
     }
+
 
     /* STRATEGY */
     .strategy-section {
@@ -3146,7 +3174,7 @@ img {
     /* CONTACT SECTION */
   .contact-section {
     background: 
-      url("https://res.cloudinary.com/dvj0lqopq/image/upload/v1766993449/8_jsnrdf.png"),#0F0F0F;
+      url("https://res.cloudinary.com/dvj0lqopq/image/upload/v1766993449/8_jsnrdf.png"), center / cover no-repeat, #0F0F0F;;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
