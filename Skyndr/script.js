@@ -37,6 +37,8 @@ document.addEventListener("scroll", () => {
     if (isMobile) {
         progress.style.width = "1px"; // force correct value
         progress.style.height = progressPercent + "%";
+        progress.style.top = "15px";    
+        progress.style.bottom = "auto"; 
     } else {
         progress.style.height = "1px"; // force correct value
         progress.style.width = progressPercent + "%";
@@ -496,159 +498,237 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-// Progress bar functionality (unchanged)
+// Progress bar functionality 
+// TESTIMONIAL SLIDER - SMOOTH INFINITE SCROLL (DESKTOP) + MOBILE DOTS
 document.addEventListener("DOMContentLoaded", () => {
     const slider = document.getElementById("tSlider");
     const prevBtn = document.getElementById("tPrev");
     const nextBtn = document.getElementById("tNext");
-    const cards = Array.from(slider.querySelectorAll(".testimonial-card"));
-    const container = slider.parentElement;
+    const originalCards = Array.from(slider.querySelectorAll(".testimonial-card"));
 
-    if (!slider || cards.length === 0) return;
+    if (!slider || originalCards.length === 0) return;
 
-    const isMobile = () => window.innerWidth <= 991;
+    // Dynamically get card width and gap for accurate shifting
     const gap = 30;
-    const cardWidth = 400;
+    const cardWidth = 300;
     const totalCardWidth = cardWidth + gap;
 
     let index = 0;
     let isMoving = false;
     let autoSlide;
+    let allCards = [];
+    let currentMobileIndex = 0; // for mobile auto-slide
 
-    function init() {
-        if (isMobile()) {
-            setupMobileSlider();
-        } else {
-            setupDesktopSlider();
-        }
+    const isMobile = () => window.innerWidth <= 991;
+
+    // Clear any previous clones and setup
+    function cleanupSlider() {
+        clearInterval(autoSlide);
+        slider.innerHTML = "";
+        originalCards.forEach(card => slider.appendChild(card.cloneNode(true)));
+        allCards = slider.querySelectorAll(".testimonial-card");
     }
 
-    /* ========= DESKTOP SLIDER (INFINITE LOOP) ========= */
     function setupDesktopSlider() {
-        // Clear previous interval and clones if any
-        clearInterval(autoSlide);
-        slider.innerHTML = ""; 
-        
+        cleanupSlider();
 
-        cards.forEach(card => slider.appendChild(card.cloneNode(true)));
+        const firstClone = originalCards[0].cloneNode(true);
+        const lastClone = originalCards[originalCards.length - 1].cloneNode(true);
 
+        slider.appendChild(firstClone);
+        slider.insertBefore(lastClone, slider.firstChild);
 
-        const firstBatch = cards.map(card => card.cloneNode(true));
-        const lastBatch = cards.map(card => card.cloneNode(true));
+        allCards = slider.querySelectorAll(".testimonial-card");
 
-        firstBatch.forEach(clone => slider.appendChild(clone)); 
-        lastBatch.reverse().forEach(clone => slider.insertBefore(clone, slider.firstChild));
-
-        const allCards = slider.querySelectorAll(".testimonial-card");
-        
-
-        index = cards.length;
+        index = 1;
         slider.style.transition = "none";
         slider.style.transform = `translateX(-${index * totalCardWidth}px)`;
 
-        // ৪. মুভ ফাংশন
-        function moveDesktop(direction) {
-            if (isMoving) return;
-            isMoving = true;
-
-            index = direction === 'next' ? index + 1 : index - 1;
-            
-            slider.style.transition = "transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)";
-            slider.style.transform = `translateX(-${index * totalCardWidth}px)`;
-        }
-        slider.ontransitionend = () => {
-            isMoving = false;
-
-            if (index >= cards.length * 2) {
-                slider.style.transition = "none";
-                index = cards.length;
-                slider.style.transform = `translateX(-${index * totalCardWidth}px)`;
-            }
-
-            if (index <= cards.length - cards.length) {
-                slider.style.transition = "none";
-                index = cards.length;
-                slider.style.transform = `translateX(-${index * totalCardWidth}px)`;
-            }
-        };
-
-    
-        nextBtn.onclick = () => moveDesktop('next');
-        prevBtn.onclick = () => moveDesktop('prev');
-
-
-        startAutoSlide();
-        slider.onmouseenter = () => clearInterval(autoSlide);
-        slider.onmouseleave = startAutoSlide;
+        requestAnimationFrame(() => {
+            slider.style.transition = "transform 1s ease-in-out";
+        });
     }
+
+    function setupMobileSlider() {
+        cleanupSlider();
+        currentMobileIndex = 0;
+
+        slider.style.cssText = `
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            padding-left: calc(50vw - (85vw / 2));
+            gap: ${gap}px;
+        `;
+
+        originalCards.forEach((card, i) => {
+            card.style.flex = "0 0 85vw";
+            card.style.scrollSnapAlign = "center";
+            if (i === originalCards.length - 1) card.style.marginRight = "40px";
+        });
+
+        slider.style.scrollbarWidth = "none";
+        slider.style.msOverflowStyle = "none";
+
+        // Start auto-slide on mobile
+        startMobileAutoSlide();
+    }
+
+    function move(direction) {
+        if (isMoving) return;
+        isMoving = true;
+
+        index += direction === "next" ? 1 : -1;
+        slider.style.transform = `translateX(-${index * totalCardWidth}px)`;
+    }
+
+    function handleTransitionEnd() {
+        if (allCards[index] === allCards[allCards.length - 1]) {
+            index = 1;
+            slider.style.transition = "none";
+            slider.style.transform = `translateX(-${index * totalCardWidth}px)`;
+            requestAnimationFrame(() => {
+                slider.style.transition = "transform 1s ease-in-out";
+            });
+        }
+
+        if (allCards[index] === allCards[0]) {
+            index = originalCards.length;
+            slider.style.transition = "none";
+            slider.style.transform = `translateX(-${index * totalCardWidth}px)`;
+            requestAnimationFrame(() => {
+                slider.style.transition = "transform 1s ease-in-out";
+            });
+        }
+
+        isMoving = false;
+    }
+
+    // === MOBILE AUTO-SLIDE LOGIC ===
+    function mobileNext() {
+        currentMobileIndex = (currentMobileIndex + 1) % originalCards.length;
+
+        const cardWidthMobile = window.innerWidth * 0.85;
+        const containerWidth = window.innerWidth;
+        const offset = (containerWidth - cardWidthMobile) / 2;
+
+        const scrollPosition = currentMobileIndex * (cardWidthMobile + gap) - offset;
+
+        slider.scrollTo({
+            left: scrollPosition,
+            behavior: "smooth"
+        });
+    }
+
+    function startMobileAutoSlide() {
+        clearInterval(autoSlide);
+        autoSlide = setInterval(mobileNext, 4000);
+    }
+
+    function stopMobileAutoSlide() {
+        clearInterval(autoSlide);
+    }
+
+    // Pause auto-slide on touch (user interaction)
+    slider.addEventListener("touchstart", () => {
+        stopMobileAutoSlide();
+    });
+
+    slider.addEventListener("touchend", () => {
+        // Resume after 3 seconds of inactivity
+        clearInterval(autoSlide);
+        autoSlide = setTimeout(startMobileAutoSlide, 3000);
+    });
+
+    // Also pause on scroll (manual drag)
+    slider.addEventListener("scroll", () => {
+        stopMobileAutoSlide();
+        clearTimeout(window.mobileResumeTimeout);
+        window.mobileResumeTimeout = setTimeout(startMobileAutoSlide, 3000);
+    });
 
     function startAutoSlide() {
         clearInterval(autoSlide);
-        autoSlide = setInterval(() => nextBtn.click(), 4000);
+        autoSlide = setInterval(() => {
+            if (!isMobile()) nextBtn.click();
+        }, 4000);
     }
 
-    /* ========= MOBILE SLIDER (DOTS) ========= */
-    function setupMobileSlider() {
-        clearInterval(autoSlide);
-        slider.style.transition = "none";
-        slider.innerHTML = "";
-        cards.forEach(card => slider.appendChild(card.cloneNode(true)));
+    function init() {
+        // Remove old listeners to prevent duplicates
+        slider.removeEventListener("transitionend", handleTransitionEnd);
+
+        if (isMobile()) {
+            setupMobileSlider();
+            if (prevBtn) prevBtn.style.display = "none";
+            if (nextBtn) nextBtn.style.display = "none";
+        } else {
+            setupDesktopSlider();
+            if (prevBtn) prevBtn.style.display = "flex";
+            if (nextBtn) nextBtn.style.display = "flex";
+
+            nextBtn.onclick = () => move("next");
+            prevBtn.onclick = () => move("prev");
+
+            slider.addEventListener("transitionend", handleTransitionEnd);
+
+            startAutoSlide();
+            slider.addEventListener("mouseenter", () => clearInterval(autoSlide));
+            slider.addEventListener("mouseleave", startAutoSlide);
+        }
     }
 
-    window.addEventListener("resize", () => {
-        clearTimeout(window.resizer);
-        window.resizer = setTimeout(init, 250);
+    // Touch swipe support (both mobile & desktop)
+    let touchStartX = 0;
+    slider.addEventListener("touchstart", e => {
+        touchStartX = e.touches[0].clientX;
+        if (isMobile()) stopMobileAutoSlide();
     });
 
+    slider.addEventListener("touchend", e => {
+        const diff = touchStartX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 50) {
+            if (diff > 0) {
+                // swipe left → next
+                isMobile() ? mobileNext() : nextBtn.click();
+            } else {
+                // swipe right → prev
+                currentMobileIndex = (currentMobileIndex - 1 + originalCards.length) % originalCards.length;
+                const cardWidthMobile = window.innerWidth * 0.85;
+                const containerWidth = window.innerWidth;
+                const offset = (containerWidth - cardWidthMobile) / 2;
+                const scrollPosition = currentMobileIndex * (cardWidthMobile + gap) - offset;
+                slider.scrollTo({ left: scrollPosition, behavior: "smooth" });
+                if (!isMobile()) prevBtn.click();
+            }
+        }
+        // Resume auto-slide after swipe on mobile
+        if (isMobile()) {
+            clearInterval(autoSlide);
+            autoSlide = setTimeout(startMobileAutoSlide, 3000);
+        }
+    });
+
+    // Resize handler
+    let resizeTimeout;
+    window.addEventListener("resize", () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            currentMobileIndex = 0; // reset index on resize
+            init();
+        }, 250);
+    });
+
+    // Orientation change (mobile)
+    window.addEventListener("orientationchange", () => {
+        setTimeout(init, 300);
+    });
+
+    // Initial setup
     init();
 });
 
 
-
-
-
-
-// MOBILE MENU DROPDOWN TOGGLE
-const hamburger = document.getElementById("hamburger");
-const mobileMenu = document.getElementById("mobileMenu");
-
-hamburger.addEventListener("click", () => {
-    mobileMenu.classList.toggle("show");
-});
-
-// CLOSE MOBILE MENU WHEN CLICKING A LINK
-document.querySelectorAll(".mobile-menu a").forEach(link => {
-    link.addEventListener("click", () => {
-        mobileMenu.classList.remove("show");
-    });
-});
-
-/* CUSTOM SELECT DROPDOWN */
-document.querySelectorAll(".custom-select").forEach(select => {
-    const selected = select.querySelector(".selected-option");
-    const optionsList = select.querySelector(".options-list");
-    const hiddenInput = select.querySelector("input");
-
-    // Toggle open / close
-    selected.addEventListener("click", () => {
-        select.classList.toggle("open");
-    });
-
-    // Select option
-    optionsList.querySelectorAll("li").forEach(option => {
-        option.addEventListener("click", () => {
-            selected.textContent = option.textContent;
-            hiddenInput.value = option.dataset.value;
-            select.classList.remove("open");
-        });
-    });
-});
-
-// Close dropdown if clicking outside
-document.addEventListener("click", (e) => {
-    document.querySelectorAll(".custom-select").forEach(select => {
-        if (!select.contains(e.target)) {
-            select.classList.remove("open");
-        }
-    });
-});
