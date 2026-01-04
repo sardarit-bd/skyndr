@@ -124,7 +124,7 @@
                 <a href="#testimonial">TESTIMONIAL</a>
                 <a href="#trust">CASE STUDY</a>
                 <a href="#contact">CONTACT US</a>
-                <button href="#strategy" class="cta-btn desktop-cta">BOOK A CALL</button>
+                <button class="cta-btn desktop-cta" id="bookCallBtn">BOOK A CALL</button>
             </nav>
 
             
@@ -145,7 +145,7 @@
             <a href="#testimonial">TESTIMONIAL</a>
             <a href="#trust">CASE STUDY</a>
             <a href="#contact">CONTACT US</a>
-            <a href="#book" class="cta-btn mobile-cta">BOOK A CALL</a>
+            <a href="#strategy" class="cta-btn mobile-cta">BOOK A CALL</a>
         </div>
     </header>
     <!-- HERO SECTION -->
@@ -542,7 +542,7 @@
 
                 <p id="trustAuthor">- Odai, founder of KDX Middle East</p>
 
-                <a href="#" class="trust-link">
+                <a href="#strategy" class="trust-link">
                     <span class="underline-text">HOW WE DO IT ?</span>
                     <img src="https://res.cloudinary.com/dvj0lqopq/image/upload/v1766992449/Vector_lnwko2.svg" class="tickup">
                 </a>
@@ -1058,6 +1058,20 @@
             });
         });
     </script>
+
+    <script>
+        document.getElementById('bookCallBtn').addEventListener('click', () => {
+            const target = document.querySelector('#strategy');
+            const header = document.querySelector('.nav-header');
+            const offset = header ? header.offsetHeight : 0;
+
+            window.scrollTo({
+                top: target.offsetTop - offset,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+
 
 </body>
 </html>
