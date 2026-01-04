@@ -152,8 +152,8 @@ img {
     position: relative;
     overflow: hidden;
     /* border: 1px solid rgba(255, 255, 255, 0.1); */
-    background: #0a0a0a;
-    height: 50%;
+    /* background: #0a0a0a;
+    height: 50%; */
     /* border-radius: 12px;  */
 }
 
@@ -2175,9 +2175,9 @@ img {
 /* CONTACT SECTION */
 .contact-section {
     padding: 80px;
-    /* background:
+    background:
         url("https://res.cloudinary.com/dvj0lqopq/image/upload/v1766993449/8_jsnrdf.png") center / cover no-repeat,
-        #0F0F0F; */
+        #0F0F0F;
 
 }
 
@@ -2825,15 +2825,16 @@ img {
     }
 
     .why-progress-line {
-        width: 1px;
-        height: 0%;          /* শুরুতে 0% */
-        background: #BBFE00;
-        left: 11.1px;
-        top: 15px;           /* উপরে ফিক্সড */
-        bottom: auto;        /* bottom রিমুভ */
-        transform-origin: top; /* উপরে থেকে নিচের দিকে বাড়বে */
-        transition: height 1.4s ease-out; /* উচ্চতা পরিবর্তনে ট্রানজিশন */
-    }
+      position: absolute;
+      left: 12px;        /* DOT CENTER */
+      top: 18px;         /* first dot center */
+      width: 1px;
+      height: 0%;
+      background: #BBFE00;
+      transform: translateX(-50%);
+      transform-origin: top;
+      transition: height 1.4s ease-out;
+  }
 
 
     /* STRATEGY */
@@ -3553,6 +3554,8 @@ img {
 
     /* CONTACT SECTION */
     .contact-section {
+        background:
+        url("https://res.cloudinary.com/dvj0lqopq/image/upload/v1766993449/8_jsnrdf.png"),#0F0F0F;
         padding: 30px 20px;
     }
 
@@ -5167,7 +5170,7 @@ img {
         /* Original padding */
         border-radius: 24px;
         /* Original border-radius */
-        height: 520px;
+        height: 100%;
         /* Match slider height */
     }
 
