@@ -104,6 +104,20 @@
             opacity: 0.9;
         } */
 
+        .custom-select {
+            position: relative;
+        }
+
+        .options-list.open {
+            display: block;
+        }
+
+        .options-list li {
+            padding: 12px 16px;
+            cursor: pointer;
+        } 
+
+
     </style>
 </head>
 
@@ -458,7 +472,7 @@
 
                 <h4>Whats included ?</h4>
 
-                <ul class="service-list" style="margin-left: ;">
+                <ul class="service-list">
                     <li><img src="https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903231/check_wwbovd.svg" class="tick"> Custom web design & developement</li>
                     <li><img src="https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903231/check_wwbovd.svg" class="tick"> Analytics & Pixel integration</li>
                     <li><img src="https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903231/check_wwbovd.svg" class="tick"> Mobile & speed optimization</li>
@@ -791,7 +805,7 @@
                 <input type="email" name="email" placeholder="Enter your email..." required>
 
                 <label class="contant-lebel">Services</label>
-                <div class="custom-select">
+                <div class="custom-select contact-dropdown">
                     <div class="selected-option" style="border: 1px solid #eaf0f3; border-radius: 16px;">Select a service...</div>
                     <ul class="options-list">
                         <li data-value="Shopify Development">Shopify Dev</li>
@@ -1002,7 +1016,7 @@
     <script>
         // EmailJS
         (function(){
-            emailjs.init(process.env.PUBLIC_EMAILJS_USERID); 
+            emailjs.init('EJwkh-UdW0dHqUzOx'); 
         })();
 
         const submitBtn = document.getElementById('submitBtn');
@@ -1046,7 +1060,7 @@
                 message: form.message.value
             };
 
-            emailjs.send(process.env.PUBLIC_EMAILJS_SERVICEID, process.env.PUBLIC_EMAILJS_TEMPLATEID, formData)
+            emailjs.send('service_5tigs3c', 'template_n20028b', formData)
             .then(function(response) {
                 alert('Your message has been sent successfully!');
                 form.reset();
@@ -1071,6 +1085,43 @@
             });
         });
     </script>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const dropdown = document.querySelector(".custom-select");
+                if (!dropdown) return;
+
+                const selected = dropdown.querySelector(".selected-option");
+                const options = dropdown.querySelector(".options-list");
+                const input = document.getElementById("serviceInput");
+
+                // OPEN dropdown (capture safe)
+                selected.addEventListener("pointerdown", (e) => {
+                    e.preventDefault();
+                    e.stopImmediatePropagation(); // 🔥 stronger than stopPropagation
+                    options.classList.toggle("open");
+                }, true); // 👈 CAPTURE PHASE
+
+                // OPTION select
+                options.querySelectorAll("li").forEach(li => {
+                    li.addEventListener("pointerdown", (e) => {
+                        e.preventDefault();
+                        e.stopImmediatePropagation();
+                        selected.textContent = li.textContent;
+                        input.value = li.dataset.value;
+                        options.classList.remove("open");
+                    }, true);
+                });
+
+                // Outside close
+                document.addEventListener("pointerdown", (e) => {
+                    if (!dropdown.contains(e.target)) {
+                        options.classList.remove("open");
+                    }
+                }, true);
+            });
+
+        </script>
 
 
 </body>
