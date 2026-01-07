@@ -6,8 +6,68 @@
     <title>SKYNDR</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903234/Logo_g1ao9q.svg">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
     <style>
+        
+        /* TESTIMONIAL CARD HEIGHT FIX */
+        .testimonials-slider .swiper-slide {
+            /* display: flex !important; */
+            flex-shrink: 0;
+            width: 100%;
+            height: auto !important; /* Changed from 100% to auto */
+            position: relative;
+            transition-property: transform;
+        }
+
+        /* Testimonial card styling */
+        .testimonial-card {
+            width: 100% !important;
+            max-width: 100% !important;
+            margin: 0 auto;
+            padding: 25px 20px;
+            background: #232323 !important;
+            border: 0.5px solid #EAF0F3;
+            box-sizing: border-box;
+            transform: scale(1);
+            opacity: 1;
+            min-height: 300px; 
+            height: auto;
+        }
+
+        /* Mobile specific */
+        @media (max-width: 768px) {
+            .testimonial-card {
+                min-height: 270px; 
+                height: auto;
+            }
+        }
+
+        /* Desktop specific */
+        @media (min-width: 769px) {
+            .testimonial-card {
+                min-height: 276px;
+                height: auto;
+            }
+        }
+
+        /* Ensure content inside card is properly spaced */
+        .testimonial-card p {
+            flex-grow: 1;
+            margin-bottom: 15px;
+        }
+
+        .testimonial-card .stars {
+            margin-bottom: 10px;
+        }
+
+        .testimonial-card .author {
+            margin-top: auto;
+        }
+
         .strategy-right {
             /* padding: 32px; */
             border-radius: 16px;
@@ -117,6 +177,129 @@
             cursor: pointer;
         } 
 
+    /* ============================================
+    MOBILE TESTIMONIAL CARDS - FULL WIDTH CENTERED
+    ============================================ */
+    @media (max-width: 768px) {
+        /* Testimonials slider container */
+        .testimonials-wrapper {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        /* Swiper container */
+        .testimonials-slider.swiper {
+            width: 90%;
+            padding: 0 20px;
+            box-sizing: border-box;
+             margin: 0 auto;
+        }
+
+        /* Swiper wrapper */
+        .testimonials-slider .swiper-wrapper {
+            display: flex;
+            align-items: center;
+        }
+
+        /* Individual testimonial cards */
+        .testimonials-slider .swiper-slide {
+            /* display: flex !important; */
+            flex-shrink: 0;
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transition-property: transform;
+        }
+
+        /* Testimonial card styling */
+        .testimonial-card {
+            width: 100% !important;
+            max-width: 100% !important;
+            /* min-width: 400px !important; */
+            margin: 0 auto;
+            padding: 25px 20px;
+            border-radius: 16px;
+            background: #232323 !important;
+            border: 0.5px solid #EAF0F3;
+            box-sizing: border-box;
+            transform: scale(1);
+            opacity: 1;
+            /* display: flex;
+            flex-direction: column; */
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        /* Hide other slides completely */
+        .testimonials-slider .swiper-slide:not(.swiper-slide-active) {
+            opacity: 0 !important;
+            visibility: hidden !important;
+            pointer-events: none;
+        }
+
+        /* Active slide styling */
+        .testimonials-slider .swiper-slide-active {
+            opacity: 1 !important;
+            transform: scale(1) !important;
+        }
+
+        /* Remove any side peek/padding */
+        .testimonials-slider {
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        /* Dots container */
+        .t-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0;
+            margin-top: 20px;
+            padding: 10px 0;
+            
+        }
+
+        /* Dots styling */
+        .t-dots .swiper-pagination-bullet {
+            width: 10px;
+            height: 10px;
+            background: #4A4A4A;
+            opacity: 0.5;
+            transition: all 0.3s ease;
+        }
+
+        .t-dots .swiper-pagination-bullet-active {
+            background: #BBFE00;
+            opacity: 1;
+            transform: scale(1.3);
+        }
+
+        /* Hide arrows on mobile */
+        .t-arrow {
+            display: none !important;
+        }
+    }
+
+    /* Smaller mobile devices */
+    @media (max-width: 480px) {
+        .testimonials-slider.swiper {
+            padding: 0 15px;
+        }
+
+        .testimonial-card {
+            padding: 30px 25px;
+        }
+
+        .testimonial-card p {
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        .author {
+            font-size: 14px;
+        }
+    }
 
     </style>
 </head>
@@ -581,6 +764,7 @@
             <!-- SLIDER -->
             <div class="testimonials-slider" id="tSlider">
 
+                
                 <div class="testimonial-card">
                     <div class="stars">★★★★★</div>
                     <p>
@@ -588,9 +772,9 @@
                         every stage they’ve shown exceptional professionalism, expertise,
                         and genuine care for our business.
                     </p>
-                    <span class="author">Hassan - Luster PPF</span>
+                    <span class="author">Hassan - <span class="company">Luster PPF</span></span>
                 </div>
-
+                
                 <div class="testimonial-card">
                     <div class="stars">★★★★★</div>
                     <p>
@@ -598,7 +782,7 @@
                         data-driven strategies and A/B testing. Truly a team we highly
                         recommend!
                     </p>
-                    <span class="author">Odai - KDX PPF Distributor</span>
+                    <span class="author">Odai - <span class="company">KDX PPF Distributor</span></span>
                 </div>
 
                 <div class="testimonial-card">
@@ -608,7 +792,7 @@
                         expertise and attention to detail. Their guidance saved us from
                         countless challenges along the way.
                     </p>
-                    <span class="author">Abdallah - Armadillo PPF</span>
+                    <span class="author">Abdallah - <span class="company">Armadillo PPF</span></span>
                 </div>
 
                 <!-- Duplicate for infinite scroll -->
@@ -617,7 +801,7 @@
                     <p>
                         The Skyndr team helped build our eCommerce platform with incredible expertise and attention to detail. Their guidance and experience saved us from countless challenges along the way.
                     </p>
-                    <span class="author">Ahmed - Snake Protection PPF</span>
+                    <span class="author">Ahmed - <span class="company">Snake Protection PPF</span></span>
                 </div>
 
                 <div class="testimonial-card">
@@ -625,7 +809,7 @@
                     <p>
                         After just a few A/B tests, we were able to double our conversion rate. The Skyndr team has been an incredible partner, and we’re excited to keep growing together!
                     </p>
-                    <span class="author">Mahmoud - Washclub Mobile autodetailing</span>
+                    <span class="author">Mahmoud - <span class="company">Washclub Mobile autodetailing</span></span>
                 </div>
             </div>
 
@@ -684,13 +868,11 @@
         <div class="strategy-container">
 
             <!-- LEFT SIDE CONTENT -->
-            <!-- <div class="strategy-left"> -->
-
-                
+            <!-- <div class="strategy-left"> -->                
 
                <div class="strategy-left">
 
-                <h2 style="color: #eaf0f3; "><span>Book</span> 30 Minutes <br> Strategy Call</h2>
+                <h2 style="color: #eaf0f3; "><span>Book a</span> 30 Minutes <br> Strategy Call</h2>
 
                 <div class="strategy-list">
 
@@ -783,8 +965,8 @@
                 </form>
             </div> -->
             <div class="strategy-right">
-                <div class="calendly-inline-widget" data-url="https://calendly.com/skyndrbusiness" style="min-width:320px;height:700px;"></div>
-                    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+                <div class="calendly-inline-widget" data-url="https://calendly.com/skyndrbusiness"></div>
+                <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
             </div>
         </div>
 
@@ -808,7 +990,7 @@
                 <div class="custom-select contact-dropdown">
                     <div class="selected-option" style="border: 1px solid #eaf0f3; border-radius: 16px;">Select a service...</div>
                     <ul class="options-list">
-                        <li data-value="Shopify Development">Shopify Dev</li>
+                        <li data-value="Shopify Development">Web Development</li>
                         <li data-value="Content Creation">Content</li>
                         <li data-value="Ads Management">Ads Management</li>
                         <li data-value="Graphic Design">Graphic Design</li>
@@ -828,28 +1010,7 @@
         </div>
 
         <!-- RIGHT COLUMN IMAGES - REVERSED LAYOUT -->
-        <div class="contact-right">
-            <div class="contact-images-grid-reversed">
-                <!-- Top row - 2 small images side by side -->
-                <div class="top-images-row">
-                    <div class="top-image-item left-top">
-                        <img src="https://res.cloudinary.com/dvj0lqopq/image/upload/v1767008186/image_1090_nfsddx.svg" alt="Mobile Dashboard">
-                        
-                    </div>
-                    
-                    <div class="top-image-item right-top">
-                        <img src="https://res.cloudinary.com/dvj0lqopq/image/upload/v1767008187/image_1114_h0tryv.svg" alt="Chart Dashboard">
-                        
-                    </div>
-                </div>
-                
-                <!-- Bottom row - 1 large full width image -->
-                <div class="bottom-large-image">
-                    <img src="https://res.cloudinary.com/dvj0lqopq/image/upload/v1767008188/image_1089_cilety.svg" alt="Google Analytics Dashboard">                       
-                    </div>
-                </div>
-            </div>
-        </div>
+        
     </div>
 
 </section>
@@ -1086,7 +1247,7 @@
         });
     </script>
 
-        <script>
+    <script>
             document.addEventListener("DOMContentLoaded", () => {
                 const dropdown = document.querySelector(".custom-select");
                 if (!dropdown) return;
@@ -1098,9 +1259,9 @@
                 // OPEN dropdown (capture safe)
                 selected.addEventListener("pointerdown", (e) => {
                     e.preventDefault();
-                    e.stopImmediatePropagation(); // 🔥 stronger than stopPropagation
+                    e.stopImmediatePropagation(); 
                     options.classList.toggle("open");
-                }, true); // 👈 CAPTURE PHASE
+                }, true); 
 
                 // OPTION select
                 options.querySelectorAll("li").forEach(li => {
@@ -1120,9 +1281,72 @@
                     }
                 }, true);
             });
+            
+    </script>
 
-        </script>
+                                                                                                                                                                
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const slider = document.getElementById("tSlider");
+            if (!slider) return;
 
+            const wrapper = document.createElement("div");
+            wrapper.classList.add("swiper-wrapper");
+
+            const cards = Array.from(slider.children);
+
+            cards.forEach(card => {
+                card.classList.add("swiper-slide");
+                wrapper.appendChild(card);
+            });
+
+            slider.innerHTML = "";
+            slider.classList.add("swiper");
+            slider.appendChild(wrapper);
+
+            // Swiper configuration for mobile-centered cards
+            new Swiper("#tSlider", {
+                slidesPerView: 1, 
+                centeredSlides: true, 
+                spaceBetween: 0, 
+                loop: true,
+                
+                // Navigation
+                navigation: {
+                    nextEl: "#tNext",
+                    prevEl: "#tPrev",
+                },
+                
+                // Pagination
+                pagination: {
+                    el: ".t-dots",
+                    clickable: true,
+                    type: 'bullets',
+                },
+                
+                breakpoints: {
+                    // Mobile (0px - 767px)
+                    0: {
+                        slidesPerView: 1,
+                        centeredSlides: true,
+                        spaceBetween: 0,
+                    },
+                    // Tablet (768px - 1023px)
+                    768: {
+                        slidesPerView: 'auto',
+                        centeredSlides: false,
+                        spaceBetween: 24,
+                    },
+                    // Desktop (1024px+)
+                    1024: {
+                        slidesPerView: 'auto',
+                        centeredSlides: false,
+                        spaceBetween: 30,
+                    },
+                }
+            });
+        });
+    </script>
 
 </body>
 </html>
