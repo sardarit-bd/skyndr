@@ -60,8 +60,8 @@ img {
     .t-dots .swiper-pagination-bullet {
         background: #4A4A4A !important;
         opacity: 0.5;
-        width: 10px;
-        height: 10px;
+        width: 12px;
+        height: 12px;
         transition: all 0.3s ease;
     }
     .t-dots .swiper-pagination-bullet-active {
@@ -1061,6 +1061,7 @@ img {
     text-transform: uppercase;
     margin: 100px 0 40px;
     color:#EAF0F3;
+    /* box-shadow: 0px 4px 4px 0px #00000040; */
 }
 
 .highlight {
@@ -1249,6 +1250,7 @@ img {
     font-weight: 900;
     margin-bottom: 20px;
     text-transform: uppercase;
+    color: #EAF0F3 !important;
 }
 
 .services-subtitle {
@@ -1262,6 +1264,7 @@ img {
     color: #EAF0F3;
     line-height: 36px;
     font-weight: normal;
+    font-weight: 300 !important;
 }
 
 /* SERVICE SLIDER SECTIONS */
@@ -1333,6 +1336,7 @@ img {
     align-items: center;
     gap: 6px;
     font-weight: 400;
+    line-height: 173%;
 }
 
 .tick {
@@ -2286,6 +2290,8 @@ img {
     letter-spacing: 0%;
     text-transform: uppercase;
     margin-bottom: 10px;
+    color: #EAF0F3;
+
 }
 
 .contact-sub {
@@ -2390,7 +2396,7 @@ img {
 
 .submit-btn {
     background: #BBFE00;
-    color: black;
+    color: #0F0F0F;
     font-weight: 700;
     padding: 18px;
     border-radius: 20px;
@@ -2882,7 +2888,7 @@ img {
     }
 
     .why-container {
-        padding: 10px 24px;
+        padding: 20px 24px;
     }
 
     .why-container h2 {
@@ -3245,6 +3251,17 @@ img {
     .strategy-list h4 {
         font-size: 16px;
         text-align: left;
+    }
+
+    .service-list li {
+        color: #EAF0F3;
+        font-size: 15px;
+        margin: 6px 0;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-weight: 400;
+        line-height: 173%;
     }
 
     /* CONTACT */
@@ -5486,8 +5503,8 @@ img {
     }
 
     .author {
-        font-size: 16px;
-        /* Original size */
+        font-size: 15.05px;
+        
     }
 
     .t-arrow {
@@ -5530,10 +5547,9 @@ img {
     }
 
     /* STRATEGY SECTION - Original sizes kept */
-    .strategy-section {
+    /* .strategy-section {
         padding: 60px 80px;
-        /* Original padding */
-    }
+    } */
 
     .strategy-left h2 {
         font-size: 42px;
@@ -5605,10 +5621,10 @@ img {
     }
 
     /* CONTACT SECTION - Original sizes kept */
-    .contact-section {
+    /* .contact-section {
         padding: 80px;
-        /* Original padding */
-    }
+        
+    } */
 
     .contact-left h2 {
         font-size: 70px;
@@ -5741,7 +5757,7 @@ img {
     }
 
     .footer-logo {
-        width: 239px;px;
+        width: 250px;
         /* Original size */
     }
 
@@ -5791,9 +5807,9 @@ img {
         margin-right: auto;
     }
 
-    .footer-logo {
+    /* .footer-logo {
         width: 217px;
-    }
+    } */
 
     .calendly-inline-widget{
     min-width:350px;
@@ -5937,7 +5953,7 @@ img {
 @media (min-width: 360px) and (max-width: 400px) {
 
     .testimonials-section {
-        padding: 0 8px !important;
+        padding: 30px 8px !important;
         box-sizing: border-box;
     }
     
@@ -5950,7 +5966,7 @@ img {
     
     /* Slide item */
     .testimonials-slider .swiper-slide {
-        width: 95% !important;
+        width: 95% !important; /* 95% width দিলে edge touch করবে না */
         margin: 0 auto;
         transform: translateX(0) !important;
     }
@@ -5960,14 +5976,14 @@ img {
         width: 100% !important;
         min-width: 0 !important; /* important */
         max-width: 100% !important;
-        padding: 20px 15px !important; 
+        padding: 20px 15px !important; /* padding কমিয়ে দিন */
         box-sizing: border-box;
         border-radius: 12px;
     }
     
     /* Card text */
     .testimonial-card p {
-        font-size: 14px !important;
+        font-size: 16px !important;
         line-height: 1.4 !important;
         padding: 0 5px;
     }
@@ -5976,4 +5992,5 @@ img {
     .testimonials-slider .swiper-slide:not(.swiper-slide-active) {
         display: none !important;
     }
+    
 }
