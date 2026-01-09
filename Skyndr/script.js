@@ -32,8 +32,8 @@ document.addEventListener("scroll", () => {
     if (isMobile) {
         progress.style.width = "1px";
         progress.style.height = progressPercent + "%";
-        progress.style.top = "15px";    
-        progress.style.bottom = "auto"; 
+        progress.style.top = "15px";
+        progress.style.bottom = "auto";
     } else {
         progress.style.height = "1px";
         progress.style.width = progressPercent + "%";
@@ -135,11 +135,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const titleEl = document.getElementById("trustTitle");
     const textEl = document.getElementById("trustText");
     const authorEl = document.getElementById("trustAuthor");
-    
+
     if (!tabs.length || !imgEl) return;
-    
+
     tabs.forEach(tab => {
-        tab.addEventListener("click", function() {
+        tab.addEventListener("click", function () {
             tabs.forEach(t => t.classList.remove("active"));
             this.classList.add("active");
             const key = this.getAttribute("data-target");
@@ -165,21 +165,21 @@ document.addEventListener("DOMContentLoaded", () => {
     const slider = document.getElementById("tSlider");
     const prevBtn = document.getElementById("tPrev");
     const nextBtn = document.getElementById("tNext");
-    
+
     if (!slider) return;
-    
+
     const cards = slider.querySelectorAll(".testimonial-card");
     if (cards.length === 0) return;
-    
+
     const container = slider.parentElement;
     const isMobile = () => window.innerWidth <= 768;
-    
+
     // Configurations
     const gap = 30;
     const cardWidthDesktop = 400;
     const cardWidthMobile = window.innerWidth * 0.85;
     const totalCardWidthDesktop = cardWidthDesktop + gap;
-    
+
     // State variables
     let dotsContainer = null;
     let dots = [];
@@ -187,11 +187,11 @@ document.addEventListener("DOMContentLoaded", () => {
     let isAnimating = false;
     let autoSlideTimer = null;
     let scrollTimeout = null;
-    
+
     // Create dots container for mobile
     function createDots() {
         if (dotsContainer) return;
-        
+
         dotsContainer = document.createElement("div");
         dotsContainer.className = "mobile-dots-container";
         dotsContainer.style.cssText = `
@@ -202,7 +202,7 @@ document.addEventListener("DOMContentLoaded", () => {
             width: 100%;
             margin-top: 20px;
         `;
-        
+
         for (let i = 0; i < cards.length; i++) {
             const dot = document.createElement("button");
             dot.className = "mobile-slider-dot";
@@ -220,10 +220,10 @@ document.addEventListener("DOMContentLoaded", () => {
             `;
             dotsContainer.appendChild(dot);
         }
-        
+
         container.parentNode.insertBefore(dotsContainer, container.nextSibling);
         dots = dotsContainer.querySelectorAll(".mobile-slider-dot");
-        
+
         // Add click events to dots
         dots.forEach(dot => {
             dot.addEventListener("click", function() {
@@ -232,31 +232,31 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
     }
-    
+
     // Update dots state
     function updateDots(activeIndex) {
         if (!dots || dots.length === 0) return;
-        
+
         dots.forEach((dot, i) => {
             const isActive = i === activeIndex;
             dot.style.backgroundColor = isActive ? '#ff3d00' : '#dddddd';
             dot.style.transform = `scale(${isActive ? 1.3 : 1})`;
         });
     }
-    
+
     // Go to specific slide
     function goToSlide(index) {
         if (isAnimating) return;
-        
+
         currentIndex = index;
-        
+
         if (isMobile()) {
             // Mobile: scroll to position
             const cardWidth = window.innerWidth * 0.85;
             const containerWidth = window.innerWidth;
             const offset = (containerWidth - cardWidth) / 2;
-            const scrollPosition = (index * (cardWidth + gap)) - offset;
-            
+            const scrollPosition = (index * (cardWidth + gap)) + offset;
+
             slider.scrollTo({
                 left: scrollPosition,
                 behavior: "smooth"
@@ -266,37 +266,38 @@ document.addEventListener("DOMContentLoaded", () => {
             // Desktop: transform animation
             isAnimating = true;
             slider.style.transition = "transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)";
+            if(slider.style.transform <= 0) slider.style.transform = `translateX(-${index * totalCardWidthDesktop}px)`;
             slider.style.transform = `translateX(-${index * totalCardWidthDesktop}px)`;
-            
+
             // Reset animation flag after transition
             setTimeout(() => {
                 isAnimating = false;
             }, 600);
         }
     }
-    
+
     // Next slide
     function nextSlide() {
         if (isAnimating) return;
-        
+
         if (currentIndex >= cards.length - 1) {
             goToSlide(0);
         } else {
             goToSlide(currentIndex + 1);
         }
     }
-    
+
     // Previous slide
     function prevSlide() {
         if (isAnimating) return;
-        
+
         if (currentIndex <= 0) {
             goToSlide(cards.length - 1);
         } else {
             goToSlide(currentIndex - 1);
         }
     }
-    
+
     // Setup mobile slider
     function setupMobileSlider() {
         // Hide desktop buttons
@@ -304,13 +305,13 @@ document.addEventListener("DOMContentLoaded", () => {
             prevBtn.style.display = "none";
             nextBtn.style.display = "none";
         }
-        
+
         // Create and show dots
         createDots();
         if (dotsContainer) {
             dotsContainer.style.display = "flex";
         }
-        
+
         // Apply mobile styles
         slider.style.cssText = `
             display: flex;
@@ -323,7 +324,7 @@ document.addEventListener("DOMContentLoaded", () => {
             padding-left: calc(50vw - (85vw / 2));
             gap: ${gap}px;
         `;
-        
+
         // Style cards for mobile
         cards.forEach((card, i) => {
             card.style.cssText = `
@@ -331,38 +332,38 @@ document.addEventListener("DOMContentLoaded", () => {
                 scroll-snap-align: center;
             `;
         });
-        
+
         // Hide scrollbar
         slider.style.scrollbarWidth = "none";
-        
+
         // Update dots on scroll
         function handleScroll() {
             if (scrollTimeout) clearTimeout(scrollTimeout);
-            
+
             scrollTimeout = setTimeout(() => {
                 const cardWidth = window.innerWidth * 0.85;
                 const containerWidth = window.innerWidth;
                 const offset = (containerWidth - cardWidth) / 2;
-                
+
                 const scrollLeft = slider.scrollLeft + offset;
                 const newIndex = Math.round(scrollLeft / (cardWidth + gap));
-                
+
                 if (newIndex >= 0 && newIndex < cards.length && newIndex !== currentIndex) {
                     currentIndex = newIndex;
                     updateDots(currentIndex);
                 }
             }, 150);
         }
-        
+
         slider.addEventListener("scroll", handleScroll);
-        
+
         // Clear any desktop timers
         if (autoSlideTimer) {
             clearInterval(autoSlideTimer);
             autoSlideTimer = null;
         }
     }
-    
+
     // Setup desktop slider
     function setupDesktopSlider() {
         // Show desktop buttons
@@ -370,18 +371,18 @@ document.addEventListener("DOMContentLoaded", () => {
             prevBtn.style.display = "flex";
             nextBtn.style.display = "flex";
         }
-        
+
         // Hide dots
         if (dotsContainer) {
             dotsContainer.style.display = "none";
         }
-        
+
         // Reset styles
         slider.style.cssText = `
             display: flex;
             transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         `;
-        
+
         // Reset card styles
         cards.forEach(card => {
             card.style.cssText = `
@@ -389,36 +390,36 @@ document.addEventListener("DOMContentLoaded", () => {
                 margin-right: ${gap}px;
             `;
         });
-        
+
         // Set initial position
         slider.style.transform = `translateX(0px)`;
         currentIndex = 0;
         isAnimating = false;
-        
+
         // Setup navigation
         if (nextBtn) {
             nextBtn.onclick = nextSlide;
         }
-        
+
         if (prevBtn) {
             prevBtn.onclick = prevSlide;
         }
-        
+
         // Auto-slide for desktop (optional)
         // if (autoSlideTimer) clearInterval(autoSlideTimer);
         // autoSlideTimer = setInterval(nextSlide, 4000);
-        
+
         // Pause on hover
         // slider.addEventListener("mouseenter", () => {
         //     if (autoSlideTimer) clearInterval(autoSlideTimer);
         // });
-        
+
         // slider.addEventListener("mouseleave", () => {
         //     if (autoSlideTimer) clearInterval(autoSlideTimer);
         //     autoSlideTimer = setInterval(nextSlide, 4000);
         // });
     }
-    
+
     // Handle resize
     function handleResize() {
         if (isMobile()) {
@@ -427,33 +428,33 @@ document.addEventListener("DOMContentLoaded", () => {
             setupDesktopSlider();
         }
     }
-    
+
     // Initialize
     handleResize();
-    
+
     // Resize listener with debounce
     let resizeTimer;
     window.addEventListener("resize", () => {
         clearTimeout(resizeTimer);
         resizeTimer = setTimeout(handleResize, 250);
     });
-    
+
     // Touch/swipe support
     let touchStartX = 0;
     let touchStartY = 0;
-    
+
     slider.addEventListener("touchstart", (e) => {
         touchStartX = e.touches[0].clientX;
         touchStartY = e.touches[0].clientY;
     });
-    
+
     slider.addEventListener("touchend", (e) => {
         const touchEndX = e.changedTouches[0].clientX;
         const touchEndY = e.changedTouches[0].clientY;
-        
+
         const diffX = touchStartX - touchEndX;
         const diffY = touchStartY - touchEndY;
-        
+
         // Only handle horizontal swipes (not vertical scrolls)
         if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
             if (diffX > 0) {
@@ -466,3 +467,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+
+
+
