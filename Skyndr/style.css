@@ -1665,7 +1665,7 @@ img {
 .testimonials-section {
     padding: 40px 0;
     background:
-        url("https://res.cloudinary.com/dvj0lqopq/image/upload/v1767000183/hero1_h3ikg4.png") center / cover no-repeat,
+        url("https://res.cloudinary.com/dg83pvgls/image/upload/v1769230090/Hero_12_1_wh8mgi.svg") center / cover no-repeat,
         #0F0F0F;
 
     text-align: center;
@@ -1955,7 +1955,7 @@ img {
     inset: 50%;
     width: 20px;
     height: 20px;
-    background: url("https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903238/dot-circle_escunb.png") no-repeat center/contain;
+    background: url("https://res.cloudinary.com/dg83pvgls/image/upload/v1769227223/dot-circle_lqqfy9.png") no-repeat center/contain;
     transform: translate(-50%, -50%);
     opacity: 0;
     transition: opacity 0.4s ease;
@@ -2262,7 +2262,7 @@ img {
 .contact-section {
     padding: 80px;
     background:
-        url("https://res.cloudinary.com/dvj0lqopq/image/upload/v1766993449/8_jsnrdf.png") center / cover no-repeat,
+        url("https://res.cloudinary.com/dg83pvgls/image/upload/v1769230245/8_1_ewaoly.svg") center / cover no-repeat,
         #0F0F0F;
 
 }
@@ -3313,14 +3313,14 @@ img {
     }
 
     /* CONTACT SECTION */
-  .contact-section {
-    background: 
-      url("https://res.cloudinary.com/dvj0lqopq/image/upload/v1766993449/8_jsnrdf.png"), center / cover no-repeat, #0F0F0F;;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 100% 100%;
-  }
+    .contact-section {
+        background: 
+        url("https://res.cloudinary.com/dg83pvgls/image/upload/v1769230245/8_1_ewaoly.svg"), center/cover no-repeat, #0F0F0F;;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 100% 100%;
+    }
 
 }
 
@@ -3697,7 +3697,7 @@ img {
     /* CONTACT SECTION */
     .contact-section {
         background:
-        url("https://res.cloudinary.com/dvj0lqopq/image/upload/v1766993449/8_jsnrdf.png"),#0F0F0F;
+        url("https://res.cloudinary.com/dg83pvgls/image/upload/v1769230245/8_1_ewaoly.svg"),#0F0F0F;
         padding: 30px 20px;
     }
 
