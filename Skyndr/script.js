@@ -100,31 +100,31 @@ const trustData = {
         title: "Ads Management + Strategy",
         text: `We've been partnering with Skyndr for nearly a year now, and their impact on our ad performance has been outstanding. From the very beginning, they took the time to understand our brand, our audience, and our goals and then built campaigns that actually delivered results.<br><br>What sets Skyndr apart is their strategic approach. They don't just run ads; they constantly analyze, test, and optimize every detail to make sure each dollar spent creates real growth.`,
         author: "Odai, Founder of KDX Middle East",
-        image: "https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903234/whyus_fuozyi.png"
+        image: "https://res.cloudinary.com/dg83pvgls/image/upload/v1769227221/whyus_kthxxn.png"
     },
     washclub: {
         title: "Paid Social",
         text: `We've worked with Skyndr for several months now, and the difference in our paid social results has been incredible. Their team took over our Meta ads, optimized our funnels, and even improved parts of our website to help increase conversions.`,
         author: "Mahmoud CEO of Washclub",
-        image: "https://res.cloudinary.com/dvj0lqopq/image/upload/v1766903235/whyus3_cmiuxe.jpg"
+        image: "https://res.cloudinary.com/dg83pvgls/image/upload/v1769232317/whyus3_tkwezu.jpg"
     },
     luster: {
         title: "Full-Service Marketing (Strategy + Ads + UGC)",
         text: `Our partnership with Skyndr has completely transformed our online presence. From ad strategy to creative production and content testing, they've managed every detail with precision and passion.`,
         author: "Hassan Co-founder of Luster ",
-        image: "https://res.cloudinary.com/dvj0lqopq/image/upload/v1767008189/div.flex-50_2_u9wygj.svg"
+        image: "https://res.cloudinary.com/dg83pvgls/image/upload/v1769226021/div.flex-50_1_c6uxzn.svg"
     },
     sunguard: {
         title: "UGC Content + Creative Ads",
         text: `Working with Skyndr on our creative ad strategy has been a game changer. They helped us completely revamp our content with fresh UGC-style videos and authentic visuals that actually connect with our audience.`,
         author: "Saad CEO of Sunguard",
-        image: "https://res.cloudinary.com/dvj0lqopq/image/upload/v1767008193/div.flex-50_g3rnn6.svg"
+        image: "https://res.cloudinary.com/dg83pvgls/image/upload/v1769226021/div.flex-50_2_yrlrem.svg"
     },
     snake: {
         title: "Branding",
         text: `Our experience with Skyndr on our paid social, branding, and content creation has been nothing short of amazing. They took our scattered online presence and transformed it into a cohesive, high-performing brand.`,
         author: "Ahmad Owner of Snake Protection",
-        image: "https://res.cloudinary.com/dvj0lqopq/image/upload/v1767076596/div.flex-50_jhw4lo.png"
+        image: "https://res.cloudinary.com/dg83pvgls/image/upload/v1769227227/whyus6_koipo2.png"
     }
 };
 
